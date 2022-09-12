@@ -1,0 +1,109 @@
+\NeedsTeXFormat{LaTeX2e}[2009/10/15]
+\ProvidesPackage{tags}[2013/04/03 v0.9 LaTeX package for tags]
+
+% For testing parameters
+\RequirePackage{etoolbox}
+% For command definitions
+\RequirePackage{xparse}
+
+\makeatletter
+
+\NewDocumentCommand\tagsDeclare{m}{%
+  \newtoggle{tags-#1}%
+  \toggletrue{tags-#1}%
+  \csdef{tags-#1-tags}{}%
+  \csdef{tags-#1-targets}{}%
+}
+
+\NewDocumentCommand\tagsCheckExistance{m}{%
+  \providetoggle{tags-#1}%
+  \nottoggle{tags-#1}{%
+    \typeout{}\typeout{tags '#1' is not defined!}\typeout{} \tags@foo@contents%
+  }{}%
+}
+
+\NewDocumentCommand\tagsDump{m}{%
+  % Check if tags exists.
+  \tagsCheckExistance{#1}%
+  List of tags and their targets:
+  \begin{itemize}
+  \setlength{\itemsep}{-4pt}
+  \newcommand*{\dumpTag}[1]{
+    \item Tag \textbf{##1}'s targets:
+    {\newcommand*{\dumpTagTargets}[1]{\item ####1}
+    \begin{itemize}
+      \setlength{\itemsep}{-4pt}
+      \tagsLoopTagTargets{#1}{##1}{\dumpTagTargets}
+    \end{itemize}}
+  }
+  \tagsLoopTags{#1}{\dumpTag}
+  \end{itemize}
+  List of targets and their tags:
+  \begin{itemize}
+  \setlength{\itemsep}{-4pt}
+  \newcommand*{\dumpTarget}[1]{
+    \item Target \textbf{##1}'s tags:
+    {\newcommand*{\dumpTargetTags}[1]{\item ####1}
+    \begin{itemize}
+      \setlength{\itemsep}{-4pt}
+      \tagsLoopTargetTags{#1}{##1}{\dumpTargetTags}
+    \end{itemize}}
+  }
+  \tagsLoopTargets{#1}{\dumpTarget}
+  \end{itemize}
+}
+
+\NewDocumentCommand\tagsAddTag{mmm}{%
+  \message{tagsAddTag{#1}{#2}{#3}}
+  % Check if tags exists.
+  \tagsCheckExistance{#1}%
+  % Add target to target list if not present
+  \xifinlistcs{#2}{tags-#1-targets}{}{%
+    \listcsadd{tags-#1-targets}{#2}%
+    \csdef{tags-#1-targets-#2}{}%
+  }%
+  % Add tag to targets
+  \xifinlistcs{#3}{tags-#1-targets-#2}{}{%
+    \listcsadd{tags-#1-targets-#2}{#3}%
+  }%
+  % Add tag to tag list if not present
+  \xifinlistcs{#3}{tags-#1-tags}{}{%
+    \listcsadd{tags-#1-tags}{#3}%
+    \csdef{tags-#1-tags-#3}{}%
+  }%
+  % Add target to tags
+  \xifinlistcs{#2}{tags-#1-tags-#3}{}{%
+    \listcsadd{tags-#1-tags-#3}{#2}%
+  }%
+}
+
+\NewDocumentCommand\tagsLoopTags{mm}{%
+  % Check if tags exists.
+  \tagsCheckExistance{#1}%
+  % Call for loop
+  \forlistcsloop{#2}{tags-#1-tags}%
+}
+
+\NewDocumentCommand\tagsLoopTagTargets{mmm}{%
+  % Check if tags exists.
+  \tagsCheckExistance{#1}%
+  % Call for loop
+  \forlistcsloop{#3}{tags-#1-tags-#2}%
+}
+
+\NewDocumentCommand\tagsLoopTargets{mm}{%
+  % Check if tags exists.
+  \tagsCheckExistance{#1}%
+  % Call for loop
+  \forlistcsloop{#2}{tags-#1-targets}%
+}
+
+\NewDocumentCommand\tagsLoopTargetTags{mmm}{%
+  % Check if tags exists.
+  \tagsCheckExistance{#1}%
+  % Call for loop
+  \forlistcsloop{#3}{tags-#1-targets-#2}%
+}
+
+\makeatother
+

@@ -1,0 +1,96 @@
+\NeedsTeXFormat{LaTeX2e}[2009/10/15]
+\ProvidesPackage{pi}[2013/04/03 v0.9 LaTeX package for parameterized input]
+
+% For the parameters
+\RequirePackage{pgfkeys}
+% For testing parameters
+\RequirePackage{etoolbox}
+% For command definitions
+\RequirePackage{xparse}
+
+\makeatletter
+
+% Inputs a file with given parameters using the same scope.
+\ProvideDocumentCommand\piInputUnscoped{mo}{
+  % No parameters -> empty parameter string.
+  \IfNoValueTF{#2}{ \edef\pi@input@unscoped@params{} }{ \edef\pi@input@unscoped@params{#2} }
+
+  % This command sets the keys inside its own pgfkeys namespace.
+  \def\pgfeqkeys [##1] {%
+    \let\EA\expandafter%
+    \def\pi@input@unscoped@tikz@path{/parameterized input}%
+    \EA\pgfqkeys\EA{\EA\pi@input@unscoped@tikz@path\EA}\EA{##1}%
+  }
+
+  % Auxiliary command to process all parameters.
+  \DeclareDocumentCommand\piParse{}{\expandafter\pgfeqkeys[\pi@input@unscoped@params] }
+
+  % Auxiliary command to declare a string parameter.
+  \DeclareDocumentCommand\piDeclareString{mm}{\pgfkeyssetvalue{/parameterized input/##1}{##2}}
+
+  % Auxiliary command to check a string parameter.
+  \DeclareDocumentCommand\piIfString{mm+m+m}{%
+    \edef\pi@input@unscoped@value{\pgfkeysvalueof{/parameterized input/##1}}%
+    \ifdefstring{\pi@input@unscoped@value}{##2}{##3}{##4}%
+  }
+
+  % Auxiliary command to output a string parameter.
+  \DeclareDocumentCommand\piString{m}{\pgfkeysvalueof{/parameterized input/##1}}
+
+  % Auxiliary command to declare a bool parameter.
+  \DeclareDocumentCommand\piDeclareBool{mm}{%
+    \providebool{##1}%
+    \setbool{##1}{##2}%
+    \pgfkeys{/parameterized input/##1/.is if=##1}
+  }
+
+  % Funcitonality for testing bools already exists!
+  \let\piIfBool\ifbool
+
+  % Set file parameter to file name.
+  \piDeclareString{file}{#1}
+
+  % Input the target file.
+  \input{#1}
+}
+
+% Inputs a file with given parameters using the same scope.
+\ProvideDocumentCommand\piInput{mo}{{\piInputUnscoped{#1}[#2]}}
+
+
+
+% Configure all files that are marked for configuration.
+\ProvideDocumentCommand\piLoadConfigurations{}{%
+  % The command to be invoked by the file.
+  \DeclareDocumentCommand\piConfigurator{m}{%
+    \providetoggle{pi@configured@##1}
+    \nottoggle{pi@configured@##1}{\piInputUnscoped{##1}[job=config]}{}
+    \toggletrue{pi@configured@##1}
+  }
+
+  % Read the file which shall execute the above command for every file to be configured. 
+  \IfFileExists{\jobname.piconf}{\input{\jobname.piconf}}{}
+
+  % Create file.
+  \newwrite\piconfFile
+  \immediate\openout\piconfFile=\jobname.piconf
+
+  % Close file afterwards.
+  \AtEndDocument{\immediate\closeout\piconfFile}
+}
+
+% Inputs a file with given parameters ensuring that it is 
+% called before with arguments 'job=config' in the preamble.
+\ProvideDocumentCommand\piInputConfigured{mo}{%
+  % Ensures that the toggle exists.
+  \providetoggle{pi@configured@#1}
+  % Input if configured and output warning if not.
+  \iftoggle{pi@configured@#1}{\piInput{#1}[#2]}{%
+    [\textbf{??} pi: #1 registered for configuration. Please recompile. ]%\ref{piInputConfiguredPleaseRebuild}]%
+  }
+  % Register for configuration in next run.
+  \immediate\write\piconfFile{\string\piConfigurator{#1}}
+}
+
+\makeatother
+
