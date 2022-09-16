@@ -1,0 +1,167 @@
+\NeedsTeXFormat{LaTeX2e}[2009/10/15]
+\ProvidesPackage{common}[2013/04/14 v0.91 LaTeX package for common exercise functionality]
+
+% For parameterized input
+\RequirePackage{pi}
+% For the tagging system
+\RequirePackage{tags}
+% All exercises are in utf-8
+\RequirePackage[utf8]{inputenc}
+
+\makeatletter
+
+% Whether to print the solution or not.
+\newbool{printsolution}
+\@ifundefined{printsolution}{
+  \boolfalse{printsolution}
+}{
+  \setbool{printsolution}{\printsolution}
+}
+
+% Task number and score engine
+\newcounter{exercise@this@task@score}
+\newcounter{exerciseTaskCounter}
+
+\DeclareDocumentCommand\@printTaskCounter{}{\arabic{exerciseTaskCounter}}
+
+% Start with a table having no tasks
+\def\exercise@exam@table@tasks{}
+\def\exercise@exam@table@scores{}
+\def\exercise@exam@table@spaces{}
+\newcounter{exercise@exam@table@task@number}
+\setcounter{exercise@exam@table@task@number}{0}
+\newcounter{exercise@exam@table@point@sum}
+\setcounter{exercise@exam@table@point@sum}{0}
+
+% This method is called by .aux file and registers the tasks.
+\NewDocumentCommand\exercise@exam@task{mm}{%
+  % Append to table row containing tasks
+  \edef\exercise@exam@table@tasks@help{\exercise@exam@table@tasks}%
+  \global\edef\exercise@exam@table@tasks{\exercise@exam@table@tasks@help{}~#1~ &}%
+  % Append to table row containing scores
+  \edef\exercise@exam@table@scores@help{\exercise@exam@table@scores}%
+  \global\edef\exercise@exam@table@scores{\exercise@exam@table@scores@help{}#2 &}%
+  % Append to table row containing spaces
+  \edef\exercise@exam@table@spaces@help{\exercise@exam@table@spaces}%
+  \global\edef\exercise@exam@table@spaces{\exercise@exam@table@spaces@help{}~ &}%
+  % Set/add to counters
+  \stepcounter{exercise@exam@table@task@number}%
+  \addtocounter{exercise@exam@table@point@sum}{#2}%
+}
+
+% This method prints a task/score table for exams.
+\NewDocumentCommand\exerciseExamTable{ooo}{%
+  \ifnumcomp{\theexercise@exam@table@task@number}{=}{0}{%
+    %[?? exercises: exam table in preparation. Please recompile. \ref{exercisesExamTablePleaseRebuild}]
+  }{%
+    \renewcommand{\arraystretch}{1.7}%
+    \begin{tabular}{|l|*{\theexercise@exam@table@task@number}{c|}c|}
+    \hline
+    \textbf{\IfValueTF{#1}{#1}{Aufgabe}} & \exercise@exam@table@tasks  \,$\sum$\,       \\ \hline
+    \textbf{\IfValueTF{#2}{#2}{max. P.}} & \exercise@exam@table@scores \,\theexercise@exam@table@point@sum\, \\ \hline
+    \textbf{\IfValueTF{#3}{#3}{Punkte}}  & \exercise@exam@table@spaces \\ \hline
+    \end{tabular}
+  }
+}
+
+% Set number of next task explicitly
+\DeclareDocumentCommand\taskNumber{m}{\setcounter{exerciseTaskCounter}{#1-1}}
+
+% Write the task #2 and give an optional score of #1.
+\NewDocumentCommand\exerciseTask{om}{%
+  \stepcounter{exerciseTaskCounter}
+  \pagebreak[3]
+  \medskip
+
+  \textbf{Aufgabe~\@printTaskCounter}
+  \IfValueTF{#1}{%
+    \hfill (#1 Punkte)%
+    \setcounter{exercise@this@task@score}{#1}%
+    \label{task-\arabic{exerciseTaskCounter}-\arabic{exercise@this@task@score}}
+    % Write \exerciseScoreTask command
+    \immediate\write\@auxout{\string\exercise@exam@task{\arabic{exerciseTaskCounter}}{\arabic{exercise@this@task@score}}}%
+  }{}%
+  \smallskip
+
+  #2
+}
+
+% Write solution #1 to task.
+\NewDocumentCommand\exerciseSolution{m}{%
+  \pagebreak[3]
+  \medskip
+
+  \textbf{Lösung:}
+  \smallskip
+
+  #1
+}
+
+% Write task #2 and solution #3 and give an optional score of #1.
+\NewDocumentCommand\exerciseBoth{omm}{%
+  \exerciseTask[#1]{#2}
+  \exerciseSolution{#3}
+}
+
+% Write task #2 with optional score of #1 and
+% if the boolean flag 'printsolution' is true
+% also write the solution #3.
+\NewDocumentCommand\exerciseConditional{omm}{%
+  \ifbool{printsolution}{\exerciseBoth[#1]{#2}{#3}}{\exerciseTask[#1]{#2}}
+}
+
+
+
+
+
+% Set path in which the exercises are found.
+\DeclareDocumentCommand\exercise@path{}{exercises/}
+\NewDocumentCommand\exercisePath{m}{\DeclareDocumentCommand\exercise@path{}{#1}}
+
+% This method inputs the exercise file inside the path.
+\NewDocumentCommand\exercise@input@helper{mm}{%
+  \let\EA\expandafter
+  \EA\piInputConfigured\EA{\exercise@path/#1}[#2]
+}
+
+% exercise*Input commands: same but we input from a file using the pi package.
+
+\NewDocumentCommand\exerciseTaskInput{omm}{%
+  \exerciseTask[#1]{\exercise@input@helper{#2}{job=task,#3}}
+}
+
+\NewDocumentCommand\exerciseSolutionInput{omm}{%
+  \exerciseSolution[#1]{\exercise@input@helper{#2}{job=solution,#3}}
+}
+
+\NewDocumentCommand\exerciseBothInput{omm}{%
+  \exerciseBoth[#1]{\exercise@input@helper{#2}{job=task,#3}}{\exercise@input@helper{#2}{job=solution,#3}}
+}
+
+\NewDocumentCommand\exerciseConditionalInput{omm}{%
+  \exerciseConditional[#1]{\exercise@input@helper{#2}{job=task,#3}}{\exercise@input@helper{#2}{job=solution,#3}}
+}
+
+\makeatother
+
+
+% Auxiliary function which calls the tagging mechanism
+% while an exercise file is configured.
+
+\NewDocumentCommand\exerciseTag{m}{%
+  % Defer adding to tag list since lists do not work in preamble.
+  \expandafter\edef\expandafter\target\expandafter{\piString{file}}%
+  \edef\tag{#1}%
+  \let\EA\expandafter
+  % Wierd shit: expand \target and \tag before \AtBeginDocument{\tagsAddTag{exercises} is expanded
+  \EA\EA\EA\AtBeginDocument\EA\EA\EA{\EA\EA\EA\tagsAddTag\EA\EA\EA{\EA\EA\EA e%
+  \EA\EA\EA x\EA\EA\EA e\EA\EA\EA r\EA\EA\EA c\EA\EA\EA i\EA\EA\EA s\EA\EA\EA e%
+  \EA\EA\EA s\EA\EA\EA}\EA\EA\EA{\EA\target\EA}\EA{\tag}}
+}
+
+% Declare the tag namespace 'exercises'.
+\tagsDeclare{exercises}
+
+% Load configs of all registered exercise files.
+\piLoadConfigurations
+

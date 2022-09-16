@@ -1,0 +1,106 @@
+\documentclass{imo_en}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[english=british]{csquotes}
+
+\usetikzlibrary{arrows, shadings} % for triangle45 arrows
+\usetikzlibrary{calc} % for out/in angle of arcs in graph
+\usepackage{enumerate}
+
+% useful packages
+\usepackage{amsmath,amssymb,amstext}          % math related
+\usepackage{array,booktabs,dcolumn,colortbl}  % table features
+\usepackage{tikz}  
+
+% My macros
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PSD}{\mathcal{S}}
+
+\newcommand{\set}[1]{\{#1\}}
+
+\input{course}
+
+\sheetnumber{1}
+\sheetdeadline{July 22, 2020}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .1}} \bigskip 
+
+Consider the polynomial optimization problem
+
+$$ \inf \set{f(x) \mid x \in \R^n} $$
+
+with $f \in \R[X]$.
+
+Show that the following holds:
+\begin{enumerate}[a)]
+	\item If $n = 1$ and the infimum is finite, it will be attained at some $x \in \R^n$. 
+	\item For every $n \geq 2$, there exists a polynomial $f$ such that the infimum is finite but not attained.
+\end{enumerate} 
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .2}} \bigskip 
+
+Show that if a matrix $A \in \PSD^k$ is psd, then it can be written as
+
+$$ A = u_1 u_1^\top + \ldots + u_r u_r^\top $$
+
+for finitely many vectors $u_1, \ldots, u_r \in \R^k$.
+
+Can the choice of $r$ be bounded in terms of $k$?
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .3}} \bigskip 
+
+Consider the polynomial
+
+$$ f = 2 + X_1^2 + X_1^2 X_2^4 - 4X_1 X_2.$$
+
+\begin{enumerate}[a)]
+	\item Show that $f$ is SOS.
+	\item Determine a vector $m(X)$ of monomials and a PSD matrix $Z$ with $f = {m(X)}^\top Z m(X)$.
+	\item Describe, for your choice of $m(X)$, all PSD matrices $Z$ satisfying $f = {m(X)}^\top Z m(X)$.
+\end{enumerate}
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .4}} \bigskip 
+
+Consider the homogenization
+
+$$ h(X_1, X_2, X_3):= X_3^6 - 3X_1^2 X_2^2 X_3^2 + X_1^2 X_2^4 + X_1^4 X_2^2 $$
+of the Motzkin polynomial (called the \emph{Motzkin form}). Show that
+
+\begin{enumerate}[a)]
+	\item $f = h(X_1 , 1, X_3 )$ is non-negative.
+	\item $f$ is not SOS.
+	\item $h(X_1, 1, X_3) + c$ is SOS for some $c \in \R$.
+\end{enumerate}
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\large \textbf{Exercise \thesheetnumber .5}} \bigskip 
+%
+%Show that $f \in \R[X]$ is the zero polynomial if and only if $f = 0$ on $\R^n$ .
+
+\end{document}
+

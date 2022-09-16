@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: POLY_OPT_edit_matthias.aux
+The style file: amsalpha.bst
+Database file #1: references.bib
+Warning--missing pages in chua2016gram
+Warning--missing pages in dur2010copositive
+Warning--missing pages in lombardi2014elementary
+Warning--missing note in Laurent:Vallentin:2012
+You've used 23 entries,
+            2624 wiz_defined-function locations,
+            735 strings with 8662 characters,
+and the built_in function-call counts, 8346 in all, are:
+= -- 758
+> -- 359
+< -- 13
++ -- 123
+- -- 116
+* -- 726
+:= -- 1345
+add.period$ -- 23
+call.type$ -- 23
+change.case$ -- 137
+chr.to.int$ -- 22
+cite$ -- 27
+duplicate$ -- 364
+empty$ -- 662
+format.name$ -- 148
+if$ -- 1672
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 52
+newline$ -- 79
+num.names$ -- 67
+pop$ -- 128
+preamble$ -- 1
+purify$ -- 158
+quote$ -- 0
+skip$ -- 275
+stack$ -- 0
+substring$ -- 441
+swap$ -- 62
+text.length$ -- 13
+text.prefix$ -- 9
+top$ -- 0
+type$ -- 156
+warning$ -- 4
+while$ -- 82
+width$ -- 28
+write$ -- 271
+(There were 4 warnings)

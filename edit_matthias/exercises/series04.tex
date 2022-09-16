@@ -1,0 +1,92 @@
+\documentclass{imo_en}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[english=british]{csquotes}
+
+\usetikzlibrary{arrows, shadings} % for triangle45 arrows
+\usetikzlibrary{calc} % for out/in angle of arcs in graph
+\usepackage{enumerate}
+
+% useful packages
+\usepackage{amsmath,amssymb,amstext}          % math related
+\usepackage{array,booktabs,dcolumn,colortbl}  % table features
+\usepackage{tikz}  
+
+% My macros
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PSD}{\mathcal{S}}
+\newcommand{\sprod}[2]{\left\langle #1 , #2 \right\rangle}
+\newcommand{\intr}{\operatorname{int}}
+
+\newcommand{\set}[1]{\{#1\}}
+
+\input{course}
+
+\sheetnumber{4}
+\sheetdeadline{July 27, 2020}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .1}} \bigskip 
+
+Let $m, n \in \N$, let $K \subseteq \R^n$ and $L \subseteq \R^m$ be closed convex cones and let $A \in \R^{m \times n}, c \in \R^n$ and $b \in \R^m$. Consider the problems
+	\begin{equation*}
+	\alpha := \inf \set{ \sprod{c}{x} \mid x \in K, \ A x - b \in L}
+	\end{equation*}
+	and
+	\begin{equation*}
+	\beta := \sup \set{ \sprod{y}{b} \mid y \in L^\ast, \ c - A^\top y \in K^\ast}.
+	\end{equation*}
+	Show that the following hold:
+	\begin{enumerate}[(a)]
+		\item The problems satisfy weak duality. 
+		\item If there exists an $x'$ with $x' \in \intr(K)$ and $A x - b \in \intr(L)$, then strong duality holds.
+		\item If there exists an $y'$ with $y' \in \intr(L^\ast)$ and $c - A^\top y \in \intr(K^\ast)$, then strong duality holds.
+	\end{enumerate}
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .2}} \bigskip
+
+Show that for every $k \in \N$ one has $(\PSD_+^k)^\ast = \PSD_+^k$ (i.e., the cone $\PSD_+^k$ is self-dual).
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .3}} \bigskip 
+
+Formulate the problem of computing the largest eigenvalue of a symmetric matrix as an SDP.
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .4}} \bigskip 
+
+Consider the SDP
+$$\inf \left\{ x~\colon~\begin{pmatrix} 0 & x \\ x & y \end{pmatrix} \ \text{psd},~x  \ge -1 \right\}. $$
+	\begin{enumerate}[(a)]
+		\item What is the optimal value of this problem? 
+		\item What is the optimal value of its dual?
+	\end{enumerate}
+%\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\large \textbf{Exercise \thesheetnumber .5}} \bigskip 
+%
+%Show that $f \in \R[X]$ is the zero polynomial if and only if $f = 0$ on $\R^n$ .
+
+\end{document}
+

@@ -1,0 +1,123 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{BGHED14}
+
+\bibitem[AM16]{Atiyah:Macdonald:2016}
+M.~F. Atiyah and I.~G. Macdonald, \emph{Introduction to commutative algebra},
+  economy ed., Addison-Wesley Series in Mathematics, Westview Press, Boulder,
+  CO, 2016, For the 1969 original see [ MR0242802]. \MR{3525784}
+
+\bibitem[Ave13]{averkov2013constructive}
+Gennadiy Averkov, \emph{Constructive proofs of some positivstellensätze for
+  compact semialgebraic subsets of $\mathbb{R}^d$}, Journal of Optimization
+  Theory and Applications \textbf{158} (2013), no.~2, 410--418.
+
+\bibitem[BCR98]{Bochnak:Coste:Roy:1998}
+Jacek Bochnak, Michel Coste, and Marie-Fran\c{c}oise Roy, \emph{Real algebraic
+  geometry}, Ergebnisse der Mathematik und ihrer Grenzgebiete (3) [Results in
+  Mathematics and Related Areas (3)], vol.~36, Springer-Verlag, Berlin, 1998,
+  Translated from the 1987 French original, Revised by the authors.
+  \MR{1659509}
+
+\bibitem[BGHED14]{MR3212780}
+Bernd Bank, Marc Giusti, Joos Heintz, and Mohab~Safey El~Din, \emph{Intrinsic
+  complexity estimates in polynomial optimization}, J. Complexity \textbf{30}
+  (2014), no.~4, 430--443. \MR{3212780}
+
+\bibitem[CL77]{choi1977old}
+Man~Duen Choi and Tsit~Yuen Lam, \emph{An old question of hilbert}, Queen’s
+  papers in pure and applied mathematics \textbf{46} (1977), no.~385-405, 11.
+
+\bibitem[CPSV16]{chua2016gram}
+Lynn Chua, Daniel Plaumann, Rainer Sinn, and Cynthia Vinzant, \emph{Gram
+  spectrahedra}, arXiv preprint arXiv:1608.00234 (2016).
+
+\bibitem[D{\"u}r10]{dur2010copositive}
+Mirjam D{\"u}r, \emph{Copositive programming—a survey}, Recent advances in
+  optimization and its applications in engineering \textbf{320} (2010).
+
+\bibitem[GKR16]{goel2016choi}
+Charu Goel, Salma Kuhlmann, and Bruce Reznick, \emph{On the choi--lam analogue
+  of hilbert's 1888 theorem for symmetric forms}, Linear Algebra and its
+  Applications \textbf{496} (2016), 114--120.
+
+\bibitem[GM12]{Gaertner:Matousek:2012}
+Bernd G\"artner and Ji\v{r}{\'\i} Matou\v{s}ek, \emph{Approximation algorithms
+  and semidefinite programming}, Springer, Heidelberg, 2012. \MR{3015090}
+
+\bibitem[Las15]{lasserre2015anintroduction}
+Jean~Bernard Lasserre, \emph{An introduction to polynomial and semi-algebraic
+  optimization}, Camb. Texts Appl. Math., Cambridge: Cambridge University
+  Press, 2015 (English).
+
+\bibitem[Lau09]{laurent2009sumsofsquares}
+Monique Laurent, \emph{Sums of squares, moment matrices and optimization over
+  polynomials}, Emerging applications of algebraic geometry. Papers of the IMA
+  workshops Optimization and control, January 16--20, 2007 and Applications in
+  biology, dynamics, and statistics, March 5--9, 2007, held at IMA,
+  Minneapolis, MN, USA, New York, NY: Springer, 2009, pp.~157--270 (English).
+
+\bibitem[LPR14]{lombardi2014elementary}
+Henri Lombardi, Daniel Perrucci, and Marie-Fran{\c{c}}oise Roy, \emph{An
+  elementary recursive bound for effective positivstellensatz and hilbert 17-th
+  problem}, arXiv preprint arXiv:1404.2338 (2014).
+
+\bibitem[Mar08a]{marshall2008positivepolynomials}
+Murray Marshall, \emph{Positive polynomials and sums of squares}, Math. Surv.
+  Monogr., vol. 146, Providence, RI: American Mathematical Society (AMS), 2008
+  (English).
+
+\bibitem[Mar08b]{Marshall:2008}
+\bysame, \emph{Positive polynomials and sums of squares}, Mathematical Surveys
+  and Monographs, vol. 146, American Mathematical Society, Providence, RI,
+  2008. \MR{2383959}
+
+\bibitem[ML12]{Laurent:Vallentin:2012}
+F.~Vallentin M.~Laurent, \emph{Semidefinite optimization lecture notes}, 2012.
+
+\bibitem[MS09]{MR2742714}
+Kurt Mehlhorn and Michael Sagraloff, \emph{Isolating real roots of real
+  polynomials}, I{SSAC} 2009---{P}roceedings of the 2009 {I}nternational
+  {S}ymposium on {S}ymbolic and {A}lgebraic {C}omputation, ACM, New York, 2009,
+  pp.~247--254. \MR{2742714}
+
+\bibitem[MS11]{MR2736359}
+\bysame, \emph{A deterministic algorithm for isolating real roots of a real
+  polynomial}, J. Symbolic Comput. \textbf{46} (2011), no.~1, 70--90.
+  \MR{2736359}
+
+\bibitem[Par03]{Parrilo:2003}
+Pablo~A. Parrilo, \emph{Semidefinite programming relaxations for semialgebraic
+  problems}, Math. Program. \textbf{96} (2003), no.~2, Ser. B, 293--320,
+  Algebraic and geometric methods in discrete optimization. \MR{1993050}
+
+\bibitem[PR01]{Powers:Reznick:2001}
+Victoria Powers and Bruce Reznick, \emph{A new bound for {P}\'olya's theorem
+  with applications to polynomials positive on polyhedra}, J. Pure Appl.
+  Algebra \textbf{164} (2001), no.~1-2, 221--229, Effective methods in
+  algebraic geometry (Bath, 2000). \MR{1854339}
+
+\bibitem[PS12]{Pfister:Scheiderer:2012}
+Albrecht Pfister and Claus Scheiderer, \emph{An elementary proof of {H}ilbert's
+  theorem on ternary quartics}, J. Algebra \textbf{371} (2012), 1--25.
+  \MR{2975385}
+
+\bibitem[Rez78]{Reznick1978}
+Bruce Reznick, \emph{Extremal {PSD} forms with few terms}, Duke Math. J.
+  \textbf{45} (1978), no.~2, 363--374. \MR{0480338}
+
+\bibitem[Rud76]{Rudin}
+Walter Rudin, \emph{Principles of mathematical analysis}, third ed.,
+  McGraw-Hill Book Co., New York-Auckland-D\"usseldorf, 1976, International
+  Series in Pure and Applied Mathematics. \MR{0385023}
+
+\bibitem[SM16]{MR3385951}
+Michael Sagraloff and Kurt Mehlhorn, \emph{Computing real roots of real
+  polynomials}, J. Symbolic Comput. \textbf{73} (2016), 46--86. \MR{3385951}
+
+\end{thebibliography}

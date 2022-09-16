@@ -1,0 +1,56 @@
+\contentsline {section}{\numberline {0}Introduction}{6}{section.0}%
+\contentsline {subsection}{\numberline {0.1}Global non-linear optimization}{6}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Polynomial optimization}{7}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Prerequisites}{8}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Notation}{8}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.5}Numbering}{10}{subsection.0.5}%
+\contentsline {subsection}{\numberline {0.6}Software}{10}{subsection.0.6}%
+\contentsline {section}{\numberline {1}Non-negativity and sums of squares}{11}{section.1}%
+\contentsline {subsection}{\numberline {1.1}A Topic of real algebra}{11}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Unconstrained polynomial optimization}{12}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Sum-of-squares relaxation from the dual formulation}{12}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}SOS-relaxations and semidefinite optimization}{13}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Employing Newton polytopes to reduce the size of an SDP}{16}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Unconstrained univariate POP gets reduced to SDP}{19}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}The case of degree two gets reduced to linear algebra}{20}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Non-negativity vs. SOS: multivariate counterexamples}{20}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Equivalence of non-negativity and SOS for two-variate polynomials of degree four}{24}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Non-negativity vs. SOS: Summary}{29}{subsection.1.10}%
+\contentsline {section}{\numberline {2}Stellensätze with denominators and Hilbert's 17th problem}{30}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Hilbert's 17th problem}{30}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Ordered fields}{30}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Quantifier elimination and Tarski's transfer principle}{32}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Solution of Hilbert's 17th problem}{35}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}An algebraic certificate of non-negativity}{36}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}A Farkas-type lemma for polynomial inequalities}{40}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Stellensätze with denominators}{40}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Remarks on Stellensätze}{41}{subsection.2.8}%
+\contentsline {section}{\numberline {3}Positivstellensätze without denominators}{43}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Affine version of Farkas lemma}{43}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}P\'olya: a positivstellensatz on a simplex}{43}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}P\'olyas theorem and copositivity}{45}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Handelman: a positivstellesatz on a polytope}{47}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Handelman's theorem and linear programming}{49}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Quadratic modules and constrained polynomial optimization}{50}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Positivstellensätze involving quadratic modules}{51}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Schmüdgen: Positivstellensatz on a general compact semialgebraic set}{53}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Putinar: cases where quadratic modules certify positivity}{54}{subsection.3.9}%
+\contentsline {section}{\numberline {4}Duality for conic and semidefinite optimization}{55}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Every nonlinear problem is a conic problem (in principle)}{55}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Duality operations for convex sets}{56}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Farkas lemmas in conic optimization}{57}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Duality of conic optimization problems}{58}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Duality for more general formulations}{59}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Semidefinite optimization}{61}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Duality for SDP}{63}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}SDP duality applied to polynomial optimization}{64}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Truncated moment problem}{66}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Peculiarities of SDP}{67}{subsection.4.10}%
+\contentsline {subsection}{\numberline {4.11}Detour: Second-order cone programming}{68}{subsection.4.11}%
+\contentsline {subsection}{\numberline {4.12}Detour: Linear stochastic optimization}{69}{subsection.4.12}%
+\contentsline {section}{\numberline {5}Interior-point methods for linear and semidefinite optimization}{71}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Ways to solve constrained convex problems: a very short synopsis}{71}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Central path for LP with constraints $Ax \le b$}{71}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Central path for LP with constraints $Ax=b, x \ge 0$}{72}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}$\qopname \relax o{ln}(\qopname \relax m{det}(X))$ is a good barrier for SDP}{73}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Interior-point methods for SDP}{75}{subsection.5.5}%

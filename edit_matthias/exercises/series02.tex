@@ -1,0 +1,83 @@
+\documentclass{imo_en}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[english=british]{csquotes}
+
+\usetikzlibrary{arrows, shadings} % for triangle45 arrows
+\usetikzlibrary{calc} % for out/in angle of arcs in graph
+\usepackage{enumerate}
+
+% useful packages
+\usepackage{amsmath,amssymb,amstext}          % math related
+\usepackage{array,booktabs,dcolumn,colortbl}  % table features
+\usepackage{tikz}  
+
+% My macros
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PSD}{\mathcal{S}}
+
+\newcommand{\set}[1]{\{#1\}}
+
+\input{course}
+
+\sheetnumber{2}
+\sheetdeadline{July 23, 2020}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .1}} \bigskip 
+
+The field $\R(X)$ can be ordered in more than one way.
+\begin{enumerate}[a)]
+	\item Try to find orderings other than the one presented in the lecture that extend the ordering of $\R$. 
+	\item Can you describe all such orderings?
+\end{enumerate} 
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .2}} \bigskip 
+
+Show the following: For a real closed field $R$, the set $\sum R^2$ is the
+unique ordering of $R$. Even more specifically, an element of $R$ is non-negative if and
+only if it is a square $x^2$ with $x \in R$.
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .3}} \bigskip 
+
+Let $k \in \N$. Is the positive semidefinte cone $\PSD^k_+$ semialgebraic? Is it basic semialgebraic?
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\large \textbf{Exercise \thesheetnumber .4}} \bigskip 
+
+Find a quantifier-free formula equivalent to
+
+$$ F(p, q) := \exists x~[~-1 \leq x \leq 1,~ x^2 + px + q = 0~].$$
+
+Draw a sketch of the respective semialgebraic set $S :=  \set{(p, q) \in \R^2 : F(p, q) \text { is \emph{true}} }$. Is it basic semialgebraic?
+
+%\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{\large \textbf{Exercise \thesheetnumber .5}} \bigskip 
+%
+%Show that $f \in \R[X]$ is the zero polynomial if and only if $f = 0$ on $\R^n$ .
+
+\end{document}
+
