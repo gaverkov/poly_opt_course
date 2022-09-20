@@ -21,7 +21,7 @@
 \contentsline {subsection}{\numberline {2.2}Ordered fields}{30}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Quantifier elimination and Tarski's transfer principle}{32}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Solution of Hilbert's 17th problem}{35}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}An algebraic certificate of non-negativity}{36}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.5}An algebraic certificate of non-negativity}{37}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}A Farkas-type lemma for polynomial inequalities}{40}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}Stellensätze with denominators}{40}{subsection.2.7}%
 \contentsline {subsection}{\numberline {2.8}Remarks on Stellensätze}{41}{subsection.2.8}%

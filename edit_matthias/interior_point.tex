@@ -11,7 +11,7 @@ Yet, another method is the ellipsoid method. In principle, it can be applied for
 
 For solving SDP we are free to choose any of the methods listed above; however, so far the interior-point methods have been the most successful ones. To develop an interior-point method, we need to decide which barrier we could use and then to figure out how to compute the derivatives of the modified objective function. 
 
-\subsection{Central path for LP with constraints $Ax \le b$}
+\subsection{Central path for LP with constraints \texorpdfstring{$Ax \le b$}{Ax <= b}}
 
 Consider the system $A x \le b$ which we can write as $\sprod{a_i}{x} \le b_i$, so $a_1,\ldots,a_m$ are the rows of $A$. We assume that the polyhedron $P$ defined by $A x \le b$ has non-empty interior. We assume that none of the inequalities are trivial ones having the form $\sprod{0}{x} \le 0$. In this case the interior of $P$ is described by $A x < b$. We introduce the objective $f(x) = \sprod{c}{x}$. Our problem is $\inf \setcond{f(x)}{x \in P}$. For every $\mu \ge 0$ consider the auxiliary objective function 
 \[
@@ -27,7 +27,7 @@ Thus, if $P$ is bounded, the auxiliary problem has a unique optimal solution $x^
 
 The idea of central path methods is to start with $x^\ast(\mu)$ for some $\mu>0$ and then decrease $\mu$ until a desired accuracy is reached. If $\mu_2 \ge \mu_1$ and $x^\ast(\mu_2)$ is given we can use $x^\ast(\mu_2)$ as an approximation for $x^\ast(\mu_1)$, so that one can invoke various kinds of iterative methods (most notably Newton and damped Newton) that would start with $x^\ast(\mu_2)$ to determine $x^\ast(\mu_1)$. In this way, we can gradually decrease $\mu$ reaching arbitrarily small values and making our auxiliary problem arbitrarily close to the original one.
 
-\subsection{Central path for LP with constraints $Ax=b, x \ge 0$}
+\subsection{Central path for LP with constraints \texorpdfstring{$Ax=b, x \ge 0$}{Ax = b, x >= 0}}
 
 Here we consider the problem in the form 
 \[
@@ -80,7 +80,7 @@ All the equations are linear apart from the equations $s_i x_i = \mu$.
 	\]
 	So, our solutions are optimal up to the additive tolerance $n \mu$. 
 
-\subsection{$\ln(\det(X))$ is a good barrier for SDP}
+\subsection{\texorpdfstring{$\ln(\det(X))$}{ln(det(X))} is a good barrier for SDP}
 
 A natural barrier we can employ for the SDP cone is $\ln(\det(X))$. Indeed, on the boundary of $\cS_+^k$ the determinant gets zero, while in the interior of $\cS_+^k$ the determinant is strictly positive. So, taking the logarithm, we create a function that goes to (minus) infinity on the boundary. This is exactly what we want. 
 

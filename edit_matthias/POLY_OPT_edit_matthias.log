@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.9.1)  16 SEP 2022 15:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.9.1)  20 SEP 2022 10:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -758,24 +758,24 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 (./POLY_OPT_edit_matthias.aux)
 \openout1 = `POLY_OPT_edit_matthias.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -799,14 +799,11 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-
-Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
-ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
-your preamble.
- on input line 29.
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 \c@lstlisting=\count329
-Package hyperref Info: Link coloring OFF on input line 29.
+Package hyperref Info: Link coloring OFF on input line 32.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -818,21 +815,21 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count330
 )
-LaTeX Info: Redefining \ref on input line 29.
-LaTeX Info: Redefining \pageref on input line 29.
-LaTeX Info: Redefining \nameref on input line 29.
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
 
 (./POLY_OPT_edit_matthias.out) (./POLY_OPT_edit_matthias.out)
 \@outlinefile=\write5
 \openout5 = `POLY_OPT_edit_matthias.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -841,12 +838,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <logoCoreOVGUText.png, id=232, 442.453pt x 69.058pt>
 File: logoCoreOVGUText.png Graphic file (type png)
 <use logoCoreOVGUText.png>
-Package pdftex.def Info: logoCoreOVGUText.png  used on input line 38.
+Package pdftex.def Info: logoCoreOVGUText.png  used on input line 41.
 (pdftex.def)             Requested size: 341.43306pt x 53.29176pt.
 <love_maths.png, id=234, 424.58624pt x 437.635pt>
 File: love_maths.png Graphic file (type png)
 <use love_maths.png>
-Package pdftex.def Info: love_maths.png  used on input line 46.
+Package pdftex.def Info: love_maths.png  used on input line 49.
 (pdftex.def)             Requested size: 199.16928pt x 205.28781pt.
  [1
 
@@ -865,13 +862,9 @@ Package pdftex.def Info: love_maths.png  used on input line 46.
 
 ] [6
 
-] [7]
-Overfull \hbox (22.61519pt too wide) in paragraph at lines 150--171
-[] 
- []
-
-[8] [9]
-Overfull \hbox (33.04398pt too wide) in paragraph at lines 220--230
+] [7] [8]
+[9]
+Overfull \hbox (24.50806pt too wide) in paragraph at lines 220--230
  [] 
  []
 
@@ -884,28 +877,22 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 (./code/chol_example.m) [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
 [25] [26] [27] [28]) [29] (./with_denominators.tex [30
 
-] [31]
-Overfull \hbox (39.82114pt too wide) in paragraph at lines 102--103
-\OT1/cmr/m/n/10.95 elim-i-na-tion al-go-rithms can carry out the quan-ti-fier e
-lim-i-na-tion pro-ce-dure in $\OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 ((\OML/cm
-m/m/it/10.95 md\OT1/cmr/m/n/10.95 )[])$
+] [31] [32] [33] [34]
+Overfull \hbox (9.96388pt too wide) in paragraph at lines 181--182
+[][]\OT1/cmr/m/n/10.95 AN INCLUSION-MAXIMAL PRE-ORDER-ING AS ABOVE MIGHT BE UNI
+QUE
  []
 
-[32] [33] [34] [35] [36] [37] [38] [39]
-Overfull \hbox (1.54977pt too wide) in paragraph at lines 344--345
-\OT1/cmr/m/n/10.95 The fol-low-ing the-o-rem con-tains a Pos-i-tivstel-len-satz
- (positive-locus the-o-rem), a Nicht-
- []
+[35] [36] [37] [38] [39] [40] [41]) [42] (./without_denominators.tex [43
 
-[40] [41]) [42] (./without_denominators.tex [43
-
-] [44] [45]
-<sdp_ellipse.png, id=749, 150.5625pt x 152.82094pt>
+]
+[44] [45]
+<sdp_ellipse.png, id=753, 150.5625pt x 152.82094pt>
 File: sdp_ellipse.png Graphic file (type png)
 <use sdp_ellipse.png>
 Package pdftex.def Info: sdp_ellipse.png  used on input line 138.
 (pdftex.def)             Requested size: 150.0pt x 152.26321pt.
-<polya_polyhedra.jpg, id=750, 562.1pt x 421.575pt>
+<polya_polyhedra.jpg, id=754, 562.1pt x 421.575pt>
 File: polya_polyhedra.jpg Graphic file (type jpg)
 <use polya_polyhedra.jpg>
 Package pdftex.def Info: polya_polyhedra.jpg  used on input line 145.
@@ -943,7 +930,7 @@ re-spec-tively and $[] \OT1/cmr/m/n/10.95 =
  []
 
 [59] [60] [61]
-<spectrahedron.png, id=930, 459.7175pt x 449.68pt>
+<spectrahedron.png, id=934, 459.7175pt x 449.68pt>
 File: spectrahedron.png Graphic file (type png)
 <use spectrahedron.png>
 Package pdftex.def Info: spectrahedron.png  used on input line 317.
@@ -962,76 +949,9 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no ) in font nullfont!
 Missing character: There is no ; in font nullfont!
 [62 <./spectrahedron.png>] [63] [64] [65] [66] [67] [68] [69]) [70]
-(./interior_point.tex
+(./interior_point.tex [71
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 14.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\le' on input line 14.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 14.
-
-[71
-
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 30.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ge' on input line 30.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 30.
-
-[72]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathop' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathgroup' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\symoperators' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathop' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathgroup' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\symoperators' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\nmlimits@' on input line 83.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 83.
-
-[73] [74] [75] [76]
+] [72] [73] [74] [75] [76]
 Overfull \hbox (4.27156pt too wide) in paragraph at lines 226--227
 []\OT1/cmr/m/n/10.95 Inserting this ex-pres-sion for $^^A\OML/cmm/m/it/10.95 X$
  \OT1/cmr/m/n/10.95 into [], which can be writ-ten as [],
@@ -1042,14 +962,14 @@ Overfull \hbox (4.27156pt too wide) in paragraph at lines 226--227
 ]) [79] (./POLY_OPT_edit_matthias.aux)
 Package rerunfilecheck Info: File `POLY_OPT_edit_matthias.out' has not changed.
 
-(rerunfilecheck)             Checksum: 9D9BC45A23A521BD7749B489049CBC7B;14490.
+(rerunfilecheck)             Checksum: F272E68C1D4744A621B547F38550588D;14542.
  ) 
 Here is how much of TeX's memory you used:
- 34222 strings out of 480080
- 773796 string characters out of 5891146
- 1301307 words of memory out of 5000000
- 51276 multiletter control sequences out of 15000+600000
- 479471 words of font info for 66 fonts, out of 8000000 for 9000
+ 34225 strings out of 480080
+ 773839 string characters out of 5891146
+ 1304748 words of memory out of 5000000
+ 51278 multiletter control sequences out of 15000+600000
+ 479807 words of font info for 68 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  100i,16n,104p,1559b,1748s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
@@ -1072,10 +992,10 @@ blic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm109
 5.pfb>
-Output written on POLY_OPT_edit_matthias.pdf (79 pages, 755893 bytes).
+Output written on POLY_OPT_edit_matthias.pdf (79 pages, 756491 bytes).
 PDF statistics:
- 1240 PDF objects out of 1440 (max. 8388607)
- 1085 compressed objects within 11 object streams
+ 1244 PDF objects out of 1440 (max. 8388607)
+ 1089 compressed objects within 11 object streams
  368 named destinations out of 1000 (max. 500000)
  486 words of extra memory for PDF output out of 10000 (max. 10000000)
 
