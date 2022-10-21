@@ -78,7 +78,7 @@ Solving the problem means, as usual, to determine the optimal value which can be
 \begin{solution}
 	As for $n=1$, we see that for $|x| \to \infty$, the dominating term will be the one for the monomial of the highest degree. The degree must be even, say $2d$, for otherwise, the polynomial wouldn't be bounded from below. The coefficient at $2d$ should be positive by the same reasons. So we see that $f(x)>0$ if $x$ is sufficiently large. Thus, \eqref{unconst:POP:eq} can be turned into the optimization of a polynomial over a \blue{closed} segment. Since polynomial functions are continuous, we are done. 
 	
-	As for $n \ge 2$, of course it is sufficient to deal with the case $n=2$. Consider $f(X_1,X_2) := X_2^2 + (X_1 X_2 -1)^2$. The infimum is zero, because $f$ is nonnegative on $\R^2$ and $f(t,1/t) = t^2 \to 0$ as $t \to 0$. Let $x_1, x_2 \in \R$. If $x_2 \ne 0$, then $f(x_1,x_2) \ge x_2^2 > 0$. If $x_2=0$, then $f(x_1,x_2) \ge 1 > 0$. 
+	As for $n \ge 2$, of course it is sufficient to deal with the case $n=2$. Consider $f(X_1,X_2) := X_2^2 + (X_1 X_2 -1)^2$. The infimum is zero, because $f$ is nonnegative on $\R^2$ and $\blue{f(1/t,t)} = t^2 \to 0$ as $t \to 0$. Let $x_1, x_2 \in \R$. If $x_2 \ne 0$, then $f(x_1,x_2) \ge x_2^2 > 0$. If $x_2=0$, then $f(x_1,x_2) \ge 1 > 0$. 
 \end{solution}
 
 \subsection{Sum-of-squares relaxation from the dual formulation}
@@ -152,11 +152,11 @@ We'll see that \eqref{unconst:POP:dual:SOS:eq} can be formulated as a semidefini
 	\]
 	For each $j$, the matrix $u_j u_j^\top$ is psd (of rank at most $1$). Hence, the sum $Z = (z_{\alpha,\beta})_{\alpha,\beta \in E_d^n}$ is psd, too. We arrive at the representation 
 	\[
-		f(X) = m(X)^\top Z m(X).
+		\blue{f} = m(X)^\top Z m(X).
 	\]
 	The latter can be described as a system of linear \blue{equations in}  the coefficients of~$Z$, \blue{and this system is written explicitly as \eqref{SOS:sdp:eq}.} 
 	
-	Conversely, if \eqref{SOS:sdp:eq} is fulfilled, then we have $f(X)= m(X)^\top Z m(X)$. Since $Z$ is psd, we can write it as $Z = \sum_{j=1}^r u_j u_j^\top$ for some finitely many vectors $u_1,\ldots,u_r \in \R^{E_d^n}$. This yields \blue{$f=f_1^2 + \cdots + f_j^2$} for $f_j = \sprod{m(X)}{u_j}$. 
+	Conversely, if \eqref{SOS:sdp:eq} is fulfilled, then we have $\blue{f}= m(X)^\top Z m(X)$. Since $Z$ is psd, we can write it as $Z = \sum_{j=1}^r u_j u_j^\top$ for some finitely many vectors $u_1,\ldots,u_r \in \R^{E_d^n}$. This yields \blue{$f=f_1^2 + \cdots + f_j^2$} for $f_j = \sprod{m(X)}{u_j}$. 
 \end{proof}
 
 In the last step of the previous proof, we used a fact from linear algebra, which we formulate as an exercise
@@ -191,18 +191,18 @@ With Proposition~\ref{sos:as:sdp:feasibility} we can easily convert the SOS-rela
 \begin{corollary}
 	Let $f \in \R[X]$ be of degree at most $2 d$, where $d \in \Z_+$. Then \eqref{unconst:POP:dual:SOS:eq} is an SDP of the form
 	\begin{equation}
-		\sup \setcond{y \in \R}{Z \ \textpsd, \  m(X)^\top Z m(X) + y = f(X)}. \label{unconst:POP:dual:SOS:as:sdp:eq}
+		\sup \setcond{y \in \R}{Z \ \textpsd, \  m(X)^\top Z m(X) + y = \blue{f}}. \label{unconst:POP:dual:SOS:as:sdp:eq}
 	\end{equation}
 	where $m(X) := (X^\alpha)_{\alpha \in E^n_d}$ and the decision-variable $Z$ is a $k \times k$ symmetric matrix with $k=|E^n_d|$. 
 \end{corollary}
 
 The linear equality system 
 \[
-	m(X)^\top Z m(X) + y = f(X)
+	m(X)^\top Z m(X) + y = \blue{f}
 \]
-in unknowns $Z$ and $y$ can be written explicitly, similarly to the system \eqref{SOS:sdp:eq}, but one can use also the above concise form. Already from this form it is clear that this is a linear system: $f(X)$ is the right hand side of the system and $Z$ and $y$ occur linearly in the left hand side.
+in unknowns $Z$ and $y$ can be written explicitly, similarly to the system \eqref{SOS:sdp:eq}, but one can use also the above concise form. Already from this form it is clear that this is a linear system: $\blue{f}$ is the right hand side of the system and $Z$ and $y$ occur linearly in the left hand side.
 
-The total number of variables of the latter system is \blue{$k^2+1$}, where $k = \binom{n+d}{d}$ and the number of equations is $|E_{2d}^n| = \binom{n+2d}{2d}$. 
+The total number of variables of the latter system is \blue{$\binom{k+1}{2}+1 \in O(k^2)$}, where $k = \binom{n+d}{d}$ and the number of equations is $|E_{2d}^n| = \binom{n+2d}{2d}$. 
 
 \subsection{Employing Newton polytopes to reduce the size of an SDP} 
 
@@ -242,7 +242,9 @@ The latter can be \blue{generalized} to
 	The equality for the degrees is an obvious consequence of the equality for the Newton polytopes (the information about the degree is saved in the Newton polytope). 
 \end{proof}
 
-For \eqref{unconst:POP:dual:SOS:as:sdp:eq} to be feasible, we need to have $f - y>0$ on $\R^n$ for at least one $y \in \R$. With such choice $\newt(f-y) = \conv(\newt(f) \cup \{0\})$. So, by \blue{Proposition~\ref{newton:SOS}},  for feasibility it is necessary that $\conv(\newt(f) \cup \{0\})$ is of the form $2 P$, where $P$ is a polytope with integer vertices (so called integer polytope). \blue{Proposition~\ref{newton:SOS}} also shows that in that case, we can use $m(X)$ of the form $m(X) = (X^\alpha)_{\alpha \in P \cap \Z^n}$. So, rather than using \blue{exponent vectors} from the whole set $E_n^d$, we can restrict ourselves to $P \cap \Z^n$ (a subset of $E_n^d$), so that the size of the SDP \eqref{unconst:POP:dual:SOS:as:sdp:eq} gets reduced. 
+For \eqref{unconst:POP:dual:SOS:as:sdp:eq} to be feasible, we need to have \blue{$f - y$ is SOS} for at least one $y \in \R$.
+\blue{Such $y \in \R$ exists if and only if $\bar y \in \R$ with $\bar y \neq 0$ and $f - \bar y$ is SOS exists.}
+With such a choice $\newt(f - \bar y) = \conv(\newt(f) \cup \{0\})$. So, by \blue{Proposition~\ref{newton:SOS}},  for feasibility it is necessary that $\conv(\newt(f) \cup \{0\})$ is of the form $2 P$, where $P$ is a polytope with integer vertices (so called integer polytope). \blue{Proposition~\ref{newton:SOS}} also shows that in that case, we can use $m(X)$ of the form $m(X) = (X^\alpha)_{\alpha \in P \cap \Z^n}$. So, rather than using \blue{exponent vectors} from the whole set $\blue{E^n_d}$, we can restrict ourselves to $P \cap \Z^n$ (a subset of $\blue{E^n_d}$), so that the size of the SDP \eqref{unconst:POP:dual:SOS:as:sdp:eq} gets reduced. 
 
 \begin{exercise}
 	Consider 
@@ -532,7 +534,7 @@ It turns out that for every $n \ge 2$, there exist non-negative $n$-variate poly
 	\end{center}	
 	One immediately sees that the only way to obtain the representation $(2,2) = \frac{1}{2} ( 2 \alpha + 2 \beta)$ is by taking both $\alpha$ and $\beta$ equal to $(1,1)$. This shows that $\sum_{j=1}^r c_{j,(1,1)}^2$ is the coefficient of $f$ at the monomial $X^\gamma$ with $\gamma = (2,2)$. But this coefficient is $-3$, and we arrive at $-3 \ge 0$, which is a contradiction. 
 	
-	(d): The proof of (c) can be used without any changes if $y \ne 1$. If $y=1$, then the Newton polytope of $f$ gets different, because the constant term disappears. In this case, however we see that $f -y $ is not SOS, because $f$ attains negative values. We get $f-1 = X_1^2 X_2^2 (-3 + \blue{X_1^2} + X_2^2)$. So $f(x_1,x_2)<0$ if $x_1,x_2 \in \R \setminus \{0\}$ and the distance of $(x_1,x_2)$ to $(0,0)$ is strictly less than $\sqrt{3}$. 
+	(d): The proof of (c) can be used without any changes if $y \ne 1$. If $y=1$, then the Newton polytope of $f$ gets different, because the constant term disappears. In this case, however we see that $f -y $ is not SOS, because $f$ attains negative values. We get $f-1 = X_1^2 X_2^2 (-3 + \blue{X_1^2} + X_2^2)$. So $\blue{f(x_1,x_2) - 1} < 0$ if $x_1,x_2 \in \R \setminus \{0\}$ and the distance of $(x_1,x_2)$ to $(0,0)$ is strictly less than $\sqrt{3}$. 
 \end{proof}
 
 \begin{itemize}
@@ -636,9 +638,9 @@ We show that for two-variate polynomials of degree four, SOS is equivalent to no
 	\]
 \end{lemma}
 \begin{proof}
-	Changing coordinates and rescaling, we can assume that $q = X^2 + 1$. Since $f$ is non-negative \blue{and non-zero}, its degree is at least two. 
+	Changing coordinates and rescaling, we can assume that $q = X^2 + 1$. Since $f$ is non-negative \blue{and w.l.o.g.~non-zero}, its degree is at least two. 
 	
-	If the degree of $f$ is two, we can write $f$ as $f = (X+a)^2 + b^2$ for some $a,b \in \R$. In this case $\xi^2$ must be a constant, an we show that an appropriate constant can be chosen. We want the constant $\xi$ to be chosen in such a way that $f- q\xi^2$ is a square of a polynomial. Let's compute the coefficients of $f-q \xi^2$:
+	If the degree of $f$ is two, we can write $f$ as $f = (X+a)^2 + b^2$ for some $a,b \in \R$. In this case $\xi^2$ must be a constant, and we show that an appropriate constant can be chosen. We want the constant $\xi$ to be chosen in such a way that $f- q\xi^2$ is a square of a polynomial. Let's compute the coefficients of $f-q \xi^2$:
 	
 	\begin{align*}
 		f - q \xi^2 & = (X+a)^2 + b^2 - (X^2 + 1) \xi^2 
@@ -687,9 +689,9 @@ Having this lemma, we can now prove the following.
 		f(X,Y,Z) := Z^4 g(X/Z,Y/Z).
 	\]
 %	In terms of exponent vectors, the homogenization from $g$ to $f$ goes by replacing an exponent vector in $\Z_+^2$ with an exponent vector in $\Z_+^3$ by appending a new component so that the sum of the components of the new exponent vector is $4$.
-\blue{We have seen in Lemma~\ref{homogenization}}, that whenever $g \ge 0$ on $\R^2$, the homogenization $f$ is non-negative on $\R^3$. Using this operation, we replace the study of arbitrary non-negative polynomials of degree at most $4$ in $2$ indeterminates by a study of homogeneous non-negative polynomials of degree exactly $4$ in $3$ indeterminates. Let's denote by $C$ the cone of these polynomials 
+\blue{We have seen in Lemma~\ref{homogenization}}, that whenever $g \ge 0$ on $\R^2$, the homogenization $f$ is non-negative on $\R^3$. Using this operation, we replace the study of arbitrary non-negative polynomials of degree at most $4$ in $2$ indeterminates by a study of homogeneous non-negative polynomials of degree \blue{at most} $4$ in $3$ indeterminates. Let's denote by $C$ the cone of these polynomials 
 	\[
-		C:= \setcond{ f \in \R[X,Y,Z]}{f \ \text{homogeneous}, f \ge 0 \ \text{on} \ \R^3, \ \deg(f) = 4}.
+		C:= \setcond{ f \in \R[X,Y,Z]}{f \ \text{homogeneous}, f \ge 0 \ \text{on} \ \R^3, \ \blue{\deg(f) \leq 4}}.
 	\]
 	Clearly, the cone is finite-dimensional, convex and closed. It is also not hard to see that the cone is pointed. To see this, we need to consider $f \in C \cap (-C)$. Such $f$ satisfies $f=0$ on $\R^3$. But, since our underlying domain of coefficients is $\R$,  the latter implies that $f$ is a zero polynomial. Let's recall that a zero polynomial is a polynomial, whose all coefficients are zero. Thus, out of $f(x,y,z) =0$ for all $(x,y,z) \in \R^3$ one needs to conclude that all coefficients of $f$ are zero. This is not particularly difficult but still requires a small argument (we leave the verification as an exercise). 
 	
@@ -697,7 +699,7 @@ Having this lemma, we can now prove the following.
 	\[
 		S := \setcond{(x,y,z) \in \R^3}{x^2 + y^2 + z^2 = 1}.
 	\]
-	Due to the homogeneity, the condition $f \ge 0$ on $\R^3$ for homogeneous polynomials can be expressed as $f \ge 0$ on $S$. If a homogeneous polynomial $f$ is strictly positive on $S$, then $f$ would lie in the interior of $C$, as one would have $f+ h \ge 0$ on~$S$ for a homogeneous polynomial~$h$ with sufficiently small coefficients. Polynomials in the interior of $C$ are not \blue{contained} in the extremal rays of $C$. So, we can assume that $f \in C$ is equal to zero for at least one $(x,y,z) \in S$. Applying a rotation of $\R^3$ around $(0,0,0)$ we can assume that $f(0,0,1) = 0$. 
+	Due to the homogeneity, the condition $f \ge 0$ on $\R^3$ for homogeneous polynomials can be expressed as $f \ge 0$ on $S$. If a homogeneous polynomial $f$ is strictly positive on $S$, then $f$ would lie in the interior of $C$, as one would have $f+ h \ge 0$ on~$S$ for \blue{every} homogeneous polynomial~$h$ with sufficiently small coefficients. Polynomials in the interior of $C$ are not \blue{contained} in the extremal rays of $C$. So, we can assume that $f \in C$ is equal to zero for at least one $(x,y,z) \in S$. Applying a rotation of $\R^3$ around $(0,0,0)$ we can assume that $f(0,0,1) = 0$. 
 	
 	We can interpret $\R[X,Y,Z]$ as $\R[X,Y][Z]$ and correspondingly write $f$ as 
 	\[
@@ -705,7 +707,7 @@ Having this lemma, we can now prove the following.
 	\] 
 	where $f_j \in \R[X,Y]$ is homogeneous of degree $j$, or the zero polynomial. Since $f(0,0,1)=0$, we get $f_0=0$. But then we can also see that $f_1 = 0$. A rigorous way to see this is as follows: We have 
 	\[
-		0 \le z^{-3} f(x,y,z) = f_1(x,y)  + f_2(x,y) z^{-1} + f_3 z^{-2} \to f_1(x,y), \qquad \text{as} \ z \to +\infty.
+		0 \le z^{-3} f(x,y,z) = f_1(x,y)  + f_2(x,y) z^{-1} + f_3 z^{-2} \blue{ + f_4 z^{-3}} \to f_1(x,y), \quad \text{as} \ z \to +\infty.
 	\]
 	This shows $f_1(x,y) \ge 0$, where $f_1$ is a homogeneous polynomial $f_1$ of degree $1$ or equal to $0$. This implies $f_1=0$. 
 
@@ -716,7 +718,7 @@ Having this lemma, we can now prove the following.
 	That is, out of the assumption $f(0,0,1)$ we came to the conclusion that the degree of $f$ with respect to $Z$ is at most two. We proceed by looking at the properties of the `coefficient polynomials' $f_2$ and $f_3$ and $f_4$. Clearly, $f_4 \ge 0$ on $\R^2$ since $f_4(X,Y)= f(X,Y,0)$. On the other hand we have $f_2 \ge 0$ on $\R^2$, which can be shown using an argument similar to the one that we used to show $f_1 \ge 0$ above. We distinguish cases according to the properties of the quadratic form $f_2(X,Y)$.
 	
 \smallskip
-	\emph{Case~1:}	$f_2(X,Y)=0$. Then $f(X,Y,Z) = f_3(X,Y) Z + f_4(X,Y)$ and we must have $f_3 = 0$. Indeed, if we did have $f_3 \ge 0$, then there would be a point $(x,y) \in \R^2$ with $f_3(x,y) \ne 0$. Then $f(x,y,Z)$ is a polynomial of degree one, and we know that a polynomial of degree one cannot be non-negative, which is a contradiction. Hence $f(X,Y,Z) = f_4(X,Y)$. Since $f_4(X,Y) \ge 0$ on $\R^2$, we conclude that $f_4(X,1) \ge 0$ is non-negative on $\R$. \blue{In view of Exercise~\ref{univariate}}, we can write $f_4(X,1)$ as a sum of squares $f_4(X,1) = \sum_{j=1}^r g_j(X)^2$ of polynomials $g_j$ of degree at most two.  Homogenizing this we have 
+	\emph{Case~1:}	$f_2(X,Y)=0$. Then $f(X,Y,Z) = f_3(X,Y) Z + f_4(X,Y)$ and we must have $f_3 = 0$. Indeed, if we did have $f_3 \ge 0$, then there would be a point $(x,y) \in \R^2$ with $f_3(x,y) \ne 0$. Then $f(x,y,Z)$ is a polynomial of degree one, and we know that a polynomial of degree one cannot be non-negative, which is a contradiction. Hence $f(X,Y,Z) = f_4(X,Y)$. Since $f_4(X,Y) \ge 0$ on $\R^2$, we conclude that $f_4(X,1) \ge 0$ is non-negative on $\R$. \blue{In view of Exercise~\ref{univariate}}, we can write $f_4(X,1)$ as a sum of squares $f_4(X,1) = \sum_{j=1}^r g_j(X)^2$ of polynomials $g_j$ of degree at most two \blue{(actually we could choose $r=2$)}.  Homogenizing this we have 
 	\[
 		\blue{f(X,Y,Z) = }f_4(X,Y) = Y^4 f_4(X/Y,1) = \sum_{j=1}^r (Y^2 g_j(X/Y))^2,
 	\]
@@ -733,7 +735,9 @@ Having this lemma, we can now prove the following.
 		f = (l Z)^2 + 2 g_2 (l Z) + f_4 = (l Z + g_2)^2 + f_4 - \blue{g_2^2. }
 	\]
 	
-	Clearly, $f_4 - \blue{g_2^2}$ is non-negative and so SOS (just consider $f(x,y,z)$ for $z= - g_2(x,y) / l(x,y)$ with $l(x,y) \ne 0$). It follows that $f$ is SOS. 
+	Clearly, \blue{the homogeneous bivariate polynomial} $f_4 - \blue{g_2^2}$ \blue{of degree four} is non-negative (just consider $f(x,y,z)$ for $z= - g_2(x,y) / l(x,y)$ with $l(x,y) \ne 0$, \blue{and use the continuity of polynomials}).
+	\blue{Thus, by homogenizing Exercise~\ref{univariate}, it is SOS.}
+	It follows that $f$ is SOS. 
 	
 \smallskip
 	\emph{Case~3:} The set of zeros of $f_2$ is $\{(0,0)\}$. Then 
@@ -745,7 +749,7 @@ Having this lemma, we can now prove the following.
 	\[
 		4 f_2 f = (2 f_2 Z)^2 + 2 f_3 ( 2 f_2 Z) + 4 f_2 f_4 = (2 f_2 Z + f_3)^2 + 4 f_2 f_4 - f_3^2.
 	\]
-	As above, we see that $4 f_2 f_4 - f_3^2$ is non-negative. Thus, by Lemma~\ref{ternary:quartics:lem}, there exist bivariate polynomials $\xi(x,y)$ and $\eta(x,y)$ of degrees $2$ and $3$ respectively such that 
+	As above, we see that $4 f_2 f_4 - f_3^2$ is non-negative. Thus, \blue{by applying Lemma~\ref{ternary:quartics:lem} after the dehomogenization $(X,Y) \mapsto (X,1)$ of all involved polynomials, and then homogenizing back again}, there exist bivariate polynomials $\xi(x,y)$ and $\eta(x,y)$ of degrees $2$ and $3$ respectively such that 
 	\[
 		\eta^2 + \xi^2 f_2 = 4 f_2 f_4 - f_3^2.
 	\] 
