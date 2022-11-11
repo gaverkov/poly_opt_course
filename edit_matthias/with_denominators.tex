@@ -32,7 +32,7 @@ Every ordering $P$ of $F$ defines a total-order relation $\le$ on $F$ given by $
 	\label{ex:ordering:rational:functions}
 	Let $n=1$ and consider the field $\R(X)$ of univariate rational functions. We order the subfield $\R$ of $\R(X)$ in a standard way ($\R_+$ is the standard ordering of $\R$). Let's order the whole $\R(X)$ by claiming that $X \ge r$ for every $r \in \R$. Once this is required, it is clear how the rest of $\R(X)$ gets ordered. For example, we have $X^2 \ge X$ and $X^3 \ge X$.
 	\blue{Since $X \in P$ and $-1 \notin P$ (see Exercise~\ref{ex:ordering-preordering}), we cannot have $-1/X \in P$, and thus $1/X \in P$.
-	Therefore, $r - 1/X = (rX-1) / X \in P$, which implies that} $1/X < r$ for every $r \in \R$ with $r > 0$. In this ordering $X$ is infinitely large, $X^2$ is even larger, $1/X$ is infinitely small positive, $1/X^2$ is even smaller etc. 
+	Therefore, for every $r \in \R$ with $r > 0$, we have $r - 1/X = (rX-1) / X \in P$, which implies that $1/X < r$}. In this ordering $X$ is infinitely large, $X^2$ is even larger, $1/X$ is infinitely small positive, $1/X^2$ is even smaller etc. 
 \end{example}
 
 \begin{exercise}
@@ -49,19 +49,20 @@ Every ordering $P$ of $F$ defines a total-order relation $\le$ on $F$ given by $
 	(b): Yet another general possibility (that covers the case of $1/X$ or $-1/X$ being infinitely large) is to fix a number $a \in \R$ and require $X-a$ to be infinitely small positive or infinitely small negative. It is not very hard to convince oneself that the above suggestions cover all possible orderings. In fact, $\R$ is already ordered, and $X$ should occupy some place with respect to the real numbers. We can put it either behind all real numbers or before all real numbers, or fix $a \in \R$ and put $X$ before $a$ or behind $a$ (infinitely close to $a$). 
 \end{solution}
 
-We call a field $R$ \emph{real closed} if $R$ is not algebraically closed but $R[\sqrt{-1}]$ is an algebraically closed field. That is, in $R$ we only miss an imaginary unit for representing the roots of polynomial equations. The abstract field $R[\sqrt{-1}]$ is in the same relation to the abstract field $R$ as the field $\mathbb{C}$ of complex numbers to the field $\R$ of real numbers. 
+We call a field $R$ \emph{real closed} if $R$ is not algebraically closed but \blue{$R(\sqrt{-1})$} is an algebraically closed field. That is, in $R$ we only miss an imaginary unit for representing the roots of polynomial equations. The abstract field \blue{$R(\sqrt{-1})$} is in the same relation to the abstract field $R$ as the field $\mathbb{C}$ of complex numbers to the field $\R$ of real numbers. 
 
 \begin{exercise}
 Show the following. For a real closed field $R$, the set  $\sum R^2$ is the unique ordering of $R$. Even more specifically, an element of $R$ is non-negative \blue{with respect to any given ordering} if and only if it is a square $x^2$ with $x \in R$. 
 \end{exercise}
 \begin{solution}
-	Let $i:= \sqrt{-1}$. Consider an arbitrary ordering of $R$ and let's denote the corresponding order relation (as usual) by $\le$. If $a \in R \setminus \{0\}$ satisfies $a \ge 0$,
-	then the equation $\lambda^2 = a$ has two roots in $R[i]$. These roots are either of the form $\pm b$ with $b \in R \setminus \{0\}$ or of the form $\pm i b$ with $b \in R \setminus \{0\}$. In the first case $a = b^2$. In the second case $a = - b^2$. Since $b^2 \ge 0$, we see that in the former case $a \ge 0$ and in the latter case $a \le 0$. Thus, the whole $R$ gets decomposed into squares and `minus squares' (that intersect at the element $0$). This shows that squares are all the non-negative elements with respect to our ordering. 
+	Let $i:= \sqrt{-1}$. Consider an arbitrary ordering of $R$ and let's denote the corresponding order relation (as usual) by $\le$.
+%	If $a \in R \setminus \{0\}$ satisfies $a \ge 0$,
+    \blue{For any $a \in R \setminus \{0\}$, }the equation $\lambda^2 = a$ has two roots in \blue{$R(i)$}. These roots are either of the form $\pm b$ with $b \in R \setminus \{0\}$ or of the form $\pm i b$ with $b \in R \setminus \{0\}$. In the first case $a = b^2$. In the second case $a = - b^2$. Since $b^2 \ge 0$, we see that in the former case $a \ge 0$ and in the latter case $a \le 0$. Thus, the whole $R$ gets decomposed into squares and `minus squares' (that intersect at the element $0$). This shows that squares are all the non-negative elements with respect to our ordering. 
 \end{solution}
 
 \begin{theorem}
 	\label{thm:extending:to:real:closed}
-	For every ordered field $F$ there exists a (unique) real closed extension of $R$. This means $R$ is an extension of the field $F$, $R$ is a real closed field and the set of all elements in $R$ which are non-negative in $R$ and belong to $F$ is exactly the set of all elements of $F$ that are non-negative in $F$. 
+	For every ordered field $F$ there exists a (unique) real closed extension~\blue{$R$ of~$F$}. This means $R$ is an extension of the field $F$, $R$ is a real closed field and the set of all elements in $R$ which are non-negative in $R$ and belong to $F$ is exactly the set of all elements of $F$ that are non-negative in $F$. 
 \end{theorem}
 \begin{proof}
 	The proof is contained in \cite{Bochnak:Coste:Roy:1998} (one of the first chapters). 
@@ -72,12 +73,12 @@ Show the following. For a real closed field $R$, the set  $\sum R^2$ is the uniq
 Let $R$ be a real closed field (for example, $R=\R$).  We start with some terminology
 \begin{itemize}
 	\item A \emph{boolean formula} is a formula based on and,or,not operations and involving boolean variables (true/false-variables).
-	\item A quantifier-free formula $F$ is obtained by plugging in relations of the form $f(X)=0, f(X)>0, f(X) \ge 0$ etc. for $f \in R[X]$ into a boolean formula. So, a quantifier-free formula depends on indeterminates. If the underlying polynomials have rational coefficients (that is $f \in \Q[X]$), we say that the formula has rational coefficients.
-	\item A first-order formula is a formula, in which some of the variables are quantified. It has the form 
+	\item A \emph{quantifier-free formula} $F$ is obtained by plugging in relations of the form $f(X)=0, f(X)>0, f(X) \ge 0$ etc. for $f \in R[X]$ into a boolean formula. So, a quantifier-free formula depends on indeterminates. If the underlying polynomials have rational coefficients (that is $f \in \Q[X]$), we say that the formula has rational coefficients.
+	\item A \emph{first-order formula} is a formula, in which some of the variables are quantified. It has the form 
 	\[
 		F(X):= \mathcal{Q}_1 Y_1 \ldots \mathcal{Q}_k Y_k \ \ G(X_1,\ldots,X_n,Y_1,\ldots,Y_k),
-	\] where a $G$ is a quantifier free-formula and $\mathcal{Q}_1,\ldots,\mathcal{Q}_k \in \{ \forall, \exists\}$ are quantifiers.
-	\item Two formulas $F_1(X)$ and $F_2(X)$ are said to be equivalent over $R$ if $F_1(x)=F_2(x) \ \blue{\in \{\texttt{true},\texttt{false}\} = \{0,1\}}$, for all $x \in R^n$. 
+	\] where $G$ is a quantifier-free formula and $\mathcal{Q}_1,\ldots,\mathcal{Q}_k \in \{ \forall, \exists\}$ are quantifiers.
+	\item Two formulas $F_1(X)$ and $F_2(X)$ are said to be \emph{equivalent} over $R$ if $F_1(x)=F_2(x) \ \blue{\in \{\texttt{true},\texttt{false}\} = \{0,1\}}$, for all $x \in R^n$. 
 \end{itemize}
 
 
@@ -86,10 +87,11 @@ Let $R$ be a real closed field (for example, $R=\R$).  We start with some termin
 	Let $R$ be a real closed field. Let $F$ be a first-order formula with rational coefficients. Then there exists an algorithm that constructs a quantifier-free formula $G$ with rational coefficients equivalent to $F$. The algorithm depends only on $F$ and not on the choice of the underlying real closed field $R$. 
 \end{theorem}
 \begin{proof}[About the proof]
-	The proof is not particularly hard but a bit long. It proceeds by induction, and one basic thing one should learn to do is counting real roots of a polynomial in an interval (to start the induction). A complete proof can be found in \cite[Th.~1.4.6]{Bochnak:Coste:Roy:1998}. If abstraction is not your favorite activity, one can read the proof setting $R=\R$, but the point is that for every real closed field $R$ the proof works just the same, and this will turn out to be a \emph{crucial} observation when it comes to proving Stellensätze. 
+	The proof is not particularly hard but a bit long. It proceeds by induction, and one basic thing one should learn to do is counting real roots of a polynomial in an interval (to start the induction). A complete proof can be found in \cite[Thm.~1.4.6]{Bochnak:Coste:Roy:1998}. If abstraction is not your favorite activity, one can read the proof setting $R=\R$, but the point is that for every real closed field $R$ the proof works just the same, and this will turn out to be a \emph{crucial} observation when it comes to proving Stellensätze. 
 \end{proof}
 
-Sets defined by a first-order formula are called \emph{semialgebraic}, these are the sets of the form $\setcond{x \in R^n}{F(x)=0}$, where $F(X)$ is a first-order formula with free variables $X=(X_1,\ldots,X_n)$. Semialgebraic sets defined by a system of only non-strict resp.\ only strict polynomial inequalities are called \emph{basic closed} resp.\ \emph{basic open}.
+Sets defined by a first-order formula are called \emph{semialgebraic}.
+These are precisely the sets of the form $\setcond{x \in R^n}{F(x)=0}$, where $F(X)$ is a first-order formula with free variables $X=(X_1,\ldots,X_n)$. Semialgebraic sets defined by a system of only non-strict resp.\ only strict polynomial inequalities are called \emph{basic closed} resp.\ \emph{basic open}.
 
 \begin{exercise}
 	Let $k,d \in \N$. 
@@ -102,11 +104,11 @@ Sets defined by a first-order formula are called \emph{semialgebraic}, these are
 \end{exercise}
 
 \begin{remark}[Quantifier elimination algorithms]
-	Currently, the best algorithms to perform quantifier elimination carry out the quantifier elimination procedure in $O((m d)^{O(n^{4 (t+1)})})$ arithmetic operations, where $m$ is the number of polynomials involved, $d$ \blue{is an upper bound on the degree of those polynomials}, and $t$ is the number of quantifier alternations. In particular, if there are no alternations (say, all the quantifiers are existential), the time bound is exponential. In principle, one can solve polynomial optimization problems using quantifier elimination in exponential time (though, no one  would dare to do that on large problems). One reason for the running time being so high, is that in certain situations the output (quantifier-free formula equivalent to the given one) is exponentially large. 
+	Currently, the best algorithms to perform quantifier elimination carry out the quantifier elimination procedure in $O((m d)^{O(n^{4 (t+1)})})$ arithmetic operations, where $m$ is the number of polynomials involved, $d$ \blue{is an upper bound on the degree of those polynomials}, and $t$ is the number of quantifier alternations. In particular, if there are no alternations (say, all the quantifiers are existential), the time bound is exponential. In principle, one can solve polynomial optimization problems using quantifier elimination in exponential time, \blue{so that POP is in EXP as mentioned in the introduction;} but no one would dare to do that on large problems. One reason for the running time being so high, is that in certain situations the output (quantifier-free formula equivalent to the given one) is exponentially large. 
 \end{remark}
 
 \begin{remark}[Fourier-Motzkin elimination]
-	Fourier-Motzkin elimination is a special case of quantifier elimination occurring in the theory of polyhedra and linear programming. We have a system of affine linear inequalities of the form $f_1(x,y) \ge 0,\ldots,f_m(x,y) \ge 0$ in variables $x \in \R^n$ and $y \in \R$ and we want to write the condition that there exists \blue{a real number} $y$ satisfying $f_1(x,y) \ge 0,\ldots, f_m(x,y) \ge 0$ in terms of $x$-variables only. This is possible. \blue{Due to the linearity of the functions $f_i$}, the inequalities can be written in the form $y \le u_i(x)$, $y \ge l_j(x)$ and $g_k(x) \ge 0$ with $i \in I$, $j \in J$ and $k \in K$. That is, each inequality either provides an upper bound on $y$, or a lower bound on $y$, or is independent of $y$. Now, the existence of $y$ can be written as the system $\max_{j \in J} l_j(x) \le y \le \min_{i \in I} u_i(x)$, $g_k(x) \ge 0$ for every $k$. The system can be reformulated without any use of $y$ as $l_j(x) \le u_i(x), g_k(x) \ge 0$ for all $i \in I, j \in J, k \in K$. One can see that out of $m$ original inequalities one gets up to $\Theta(m^2)$ inequalities after elimination. There exist examples that show that this cannot be avoided. The situation with a general quantifier elimination is pretty similar. 
+	Fourier-Motzkin elimination is a special case of quantifier elimination occurring in the theory of polyhedra and linear programming. We have a system of affine linear inequalities of the form $f_1(x,y) \ge 0,\ldots,f_m(x,y) \ge 0$ in variables $x \in \R^n$ and $y \in \R$ and we want to write the condition that there exists \blue{a real number} $y$ satisfying $f_1(x,y) \ge 0,\ldots, f_m(x,y) \ge 0$ in terms of $x$-variables only. This is possible. \blue{Due to the linearity of the functions $f_i$}, the inequalities can be written in the form $y \le u_i(x)$, $y \ge l_j(x)$ and $g_k(x) \ge 0$ with $i \in I$, $j \in J$ and $k \in K$. That is, each inequality either provides an upper bound on $y$, or a lower bound on $y$, or is independent of $y$. Now, the existence of $y$ can be written as the system $\max_{j \in J} l_j(x) \le y \le \min_{i \in I} u_i(x)$, $g_k(x) \ge 0$ for every $k$. The system can be reformulated without any use of $y$ as $l_j(x) \le u_i(x), g_k(x) \ge 0$ for all $i \in I, j \in J, k \in K$. One can see that out of $m$ original inequalities one gets up to $\Theta(m^2)$ inequalities after elimination. There exist examples that show that this cannot be avoided. The situation in general quantifier elimination is pretty similar. 
 \end{remark}
 
 Just to get a feeling how quantifier elimination can be carried out, let us consider a particular example. 
@@ -119,7 +121,7 @@ Just to get a feeling how quantifier elimination can be carried out, let us cons
 	Draw a sketch of the respective semialgebraic set $S:= \setcond{(p,q) \in \R^2}{F(p,q) =0}$. 
 \end{exercise}
 \begin{solution}
-	The condition $F(p,q)$ just tells us that the quadratic polynomial $f(X):=X^2 + p X + q$ given by coefficients $p$ and $q$ has a root in the segment $[-1,1]$. Let's figure out how we could characterize this condition in $p$ and $q$ directly, without any use of quantifiers. If the signs of $f$ at the endpoints of $[-1,1]$ are different, we'll get a root in $[-1,1]$ (by the intermediate value theorem from analysis). So, we'll have a root if $f(-1) \ge 0$ and $f(1) \ge 0$ or $f(-1) \le 0$ and $f(1) \ge 0$. If $f(-1) < 0$ and $f(1) < 0$, we'll have no roots in $[-1,1]$, because $f$ is convex. So, we are left with the case $f(-1) \ge 0, f(1) \ge 0$. Note that the global \blue{minimum} of $f$ is attained at $x = -p/2$. Thus, if $x = -p/2$ is in $[-1,1]$ and $f(-p/2) \le 0$, then $f$ has a root in $[-1,1]$. 
+	The condition $F(p,q)$ just tells us that the quadratic polynomial $f(X):=X^2 + p X + q$ given by coefficients $p$ and $q$ has a root in the segment $[-1,1]$. Let's figure out how we could characterize this condition in $p$ and $q$ directly, without any use of quantifiers. If the signs of $f$ at the endpoints of $[-1,1]$ are different, we'll get a root in $[-1,1]$ (by the intermediate value theorem from analysis). So, we'll have a root if $f(-1) \ge 0$ and \blue{$f(1) \le 0$}, or if $f(-1) \le 0$ and $f(1) \ge 0$. If $f(-1) < 0$ and $f(1) < 0$, we'll have no roots in $[-1,1]$, because $f$ is convex. So, we are left with the case $f(-1) \ge 0, f(1) \ge 0$. Note that the global \blue{minimum} of $f$ is attained at $x = -p/2$. Thus, if $x = -p/2$ is in $[-1,1]$ and $f(-p/2) \le 0$, then $f$ has a root in $[-1,1]$. 
 	
 	To sum up, if at least one of the following cases occurs, $f$ has a root in $[-1,1]$:
 	\begin{enumerate}[(a)]
@@ -130,7 +132,7 @@ Just to get a feeling how quantifier elimination can be carried out, let us cons
 	Conversely, if neither of the above cases occurs, we must have $f(-1)<0, f(1) < 0$ or $f(-1) > 0, f(1) > 0$. In the former situation, $f$ has no roots in $[-1,1]$, which follows from convexity of $f$. In the latter situation, if $-p/2$ lies outside $[-1,1]$, then $f$ has no roots in $[-1,1]$ (because $f$ either grows or falls in $[-1,1]$ and remains strictly positive on the whole segment). If $-p/2 \in [-1,1]$, we have $f(-p/2) > 0$ (for, otherwise, the third condition would be fulfilled), which shows that $f$ is strictly positive on $\R$ and thus also on $[-1,1]$. Thus, we have characterized $F(p,q)$ by the above three conditions. In terms of $p$ and $q$ the conditions can be formulated as 
 	\begin{enumerate}[(A)]
 		\item $1 - p + q \le 0, 1 + p + q \ge 0$ or 
-		\item $1 - p + q \ge 0, 1 + p + q \le 0$
+		\item $1 - p + q \ge 0, 1 + p + q \le 0$, or
 		\item $1 - p+ q \ge 0, 1 + p + q \ge 0$, $-1 \le -p/2 \le 1$, $p^2 - 4 q \ge 0$. 
 	\end{enumerate}
 	Here is a picture of the semialgebraic set described by $F(p,q)$: 
@@ -157,15 +159,20 @@ As a consequence of \blue{the Tarski-Seidenberg theorem}, we obtain the followin
 
 \begin{corollary}[Tarski's transfer principle]  
 	\label{cor:tarski}
-	Let $R$ be a real ordered field, which is an ordered extension of the field $\R$. Let $F(X)$ be a first-order formula with coefficients in $\R$. If there exists $x^\ast \in R^n$ such that $F(x^\ast)$ is fulfilled, then there exists also $x' \in \R^n$ such that $F(x')$ is fulfilled. 
+	Let $R$ be a real ordered field, \blue{that is,} an ordered extension of the field $\R$. Let $F(X)$ be a first-order formula with coefficients in $\R$. If there exists an $x^\ast \in R^n$ such that $F(x^\ast)$ is fulfilled, then there exists also an $x' \in \R^n$ such that $F(x')$ is fulfilled. 
 \end{corollary}
 \begin{proof}
-	The proof is borrowed from \cite[Cor.~1.4.7]{Bochnak:Coste:Roy:1998}. \blue{In view of Theorem~\ref{thm:extending:to:real:closed}}, it is known that every real ordered field can be extended to a real closed field (see \cite{Bochnak:Coste:Roy:1998}). So, without loss of generality we assume that $R$ is real closed. 
+	The proof is borrowed from \cite[Cor.~1.4.7]{Bochnak:Coste:Roy:1998}. \blue{In view of Theorem~\ref{thm:extending:to:real:closed}}, it is known that the real ordered field \blue{$R$} can be extended to a real closed field \blue{$R'$} (see \cite{Bochnak:Coste:Roy:1998}).
+	\blue{We work over the larger field $R'$.}
+%	So, without loss of generality we assume that $R$ is real closed. 
 	
 	Let $Y=(Y_1,\ldots,Y_k)$ be the quantified variables used in $F(X)$. 
-	Each polynomial $f \in \R[X,Y]$ involved in $F(X)$ can be written as $f(X,Y) = g(X,Y,a)$ where $a \in \R^m$ is independent of $f$ and where $g \in \Q[X,Y,Z]$ (a polynomial with rational coefficients) and $Z=(Z_1,\ldots,Z_m)$ are additional indeterminates. For example, if $f(X,Y) = \sqrt{2} X^2 + \sqrt{3} (X-Y) + \sqrt{2} Y^2$ we can introduce $g(X,Y,Z_1,Z_2) = Z_1 X^2 + Z_2 (X-Y) + Z_1 Y^2 \in \Q[X,Y,Z_1,Z_2]$ with $f(X,Y,a) = f(X,Y)$ for $a=(\sqrt{2},\sqrt{3})$.
-	
-	That is, we put all the real coefficients of all the polynomials involved in $F(X)$ into a vector $a$. This gives rise to a first-order formula $G(X,Z)$ such that $G(X,a) = F(X)$. By Tarski-Seidenberg \blue{(Theorem~\ref{thm:tarski-seidenberg})}, $\exists X : G(X,Z)$ can be turned into a quantifier-free formula. So, there exists a quantifier-free formula $H(Z)$ with rational coefficients equivalent to $\exists X : G(X,Z)$ over every real closed field. We plug in $Z=a$ and see that $\exists X : G(X,a)$ is equivalent to $H(a)$, where $H(a)$ is independent of $X$ and so $H(a)$ is either true or false. By assumption $\exists X : G(X,a) = \exists X : F(X)$ is true over $R$. So, $H(a)$ is true and so $\exists X : G(X,a) = \exists X : F(X)$ is true over every real closed field containing $\R$ including $\R$ itself. This gives the assertion. 
+	Each polynomial $f \in \R[X,Y]$ involved in $F(X)$ can be written as $f(X,Y) = g(X,Y,a)$, where $a \in \R^m$
+%	is independent of $f$
+	and where $g \in \Q[X,Y,Z]$ (a polynomial with rational coefficients) and $Z=(Z_1,\ldots,Z_m)$ are additional indeterminates. For example, if $f(X,Y) = \sqrt{2} X^2 + \sqrt{3} (X-Y) + \sqrt{2} Y^2$ we can introduce $g(X,Y,Z_1,Z_2) = Z_1 X^2 + Z_2 (X-Y) + Z_1 Y^2 \in \Q[X,Y,Z_1,Z_2]$ with $f(X,Y,a) = f(X,Y)$ for $a=(\sqrt{2},\sqrt{3})$.
+		That is, we put all the real coefficients of all the polynomials involved in $F(X)$ into a vector $a$.
+		
+		This gives rise to a first-order formula $G(X,Z)$ such that $G(X,a) = F(X)$. By Tarski-Seidenberg \blue{(Theorem~\ref{thm:tarski-seidenberg})}, $\exists X : G(X,Z)$ can be turned into a quantifier-free formula. So, there exists a quantifier-free formula $H(Z)$ with rational coefficients equivalent to $\exists X : G(X,Z)$ over every real closed field. We plug in $Z=a$ and see that $\exists X : G(X,a)$ is equivalent to $H(a)$, where $H(a)$ is independent of $X$ and so $H(a)$ is either true or false. By assumption $\exists X : G(X,a) = \exists X : F(X)$ is true over~$R$, \blue{and hence true over $R'$}. So, $H(a)$ is true and so $\exists X : G(X,a) = \exists X : F(X)$ is true over every real closed field containing $\R$ including $\R$ itself. This gives the assertion. 
 \end{proof}
 
 \subsection{Solution of Hilbert's 17th problem}
@@ -178,10 +185,14 @@ As a consequence of \blue{the Tarski-Seidenberg theorem}, we obtain the followin
 	\blue{Every} inclusion-maximal preordering $P$ with the properties $T \subseteq P$ and $f \not\in P$ is an ordering. 
 \end{lemma}
 
-\blue{AN INCLUSION-MAXIMAL PREORDERING AS ABOVE MIGHT BE UNIQUE - WHY IS THAT??}
-
 \begin{proof}
 	Note that the existence of $P$ follows from Zorn's lemma (and is by this based on the axiom of choice).
+	\blue{The partially ordered set to be considered is
+	\[
+    \mathcal{P} := \left\{ P \subseteq F : T \subseteq P, f \notin P \textrm{ and } P \textrm{ is a preordering}\right\}.
+	\]
+    If $\mathcal{C} \subseteq \mathcal{P}$ is a chain, then the set $I = \bigcup_{P \in \mathcal{C}} P$ is an upper bound on~$\mathcal{C}$ in~$\mathcal{P}$.
+	}
 	
 	We recall that a preordering is a set closed under addition, multiplication and taking squares. We also shortly mention that a preordering is closed under divisions, too. If both $a$ and $b$ are in the preordering and $b$ is not zero, then $a/b = a b (1/b)^2$ and so, we see that immediately.
 	
@@ -206,6 +217,21 @@ As a consequence of \blue{the Tarski-Seidenberg theorem}, we obtain the followin
 
 \begin{remark}
 The previous proof is not constructive, so it does not provide a method to write a non-negative polynomial as a sum of squares of rational functions. E.g., from the proof, it is not clear \emph{how} the Motzkin polynomial (or other non-SOS-polynomials) can be represented as a sum of squares of rational functions. 
+
+\blue{However, there is a way to often find such representations based on the following idea: If you want to write a non-negative polynomial $f \in \R[X]$ as
+\[
+f = \left(\frac{h_1}{g_1}\right)^2 + \ldots + \left(\frac{h_r}{g_r}\right)^2
+\]
+for some $h_i,g_i \in \R[X]$, then one could try to go for a common denominator~$q$ and represent $q \cdot f$ as a sum of squares of polynomials.
+For instance, if~$f$ is the Motzkin polynomial, then one finds
+\begin{align*}
+(1 + X^2 + Y^2) \cdot f &= (X^2 - Y)^2 + (XY^2 - X)^2 + (X^2Y^2 - 1)^2 + \frac14 (XY^3 - X^3Y)^2\\
+&\phantom{=} + \frac34 (XY^3 + X^3Y - 2XY)^2.
+\end{align*}
+Hence, multiplying once more with $(1+X^2+Y^2)$ results in a representation for $f \in \sum \R(X,Y)^2$.}
+
+\blue{This works almost in all cases in view of a result of Reznick (1995); see~\cite{reznick1995uniform}: If $f \in \R[X]$ is such that $\inf_{x \in \R^n} f(x) > 0$, then there is an $r \in \N_0$ such that $(1 + X_1^2 + \ldots + X_n^2)^r \cdot f$ is SOS.
+}
 \end{remark}
 
 \begin{remark}
@@ -231,6 +257,7 @@ the so-called preordering generated by $g$, defined as
 	\\ & := \setcond{\sum_{e:=(e_1,\ldots,e_s) \in \{0,1\}^s} \sigma_e g_1^{e_1} \ldots g_s^{e_s} }{ \sigma_e \ \text{is SOS} \ \text{for every} \ e \in \{0,1\}^s}.
 \end{align*}
 For example, for $s=2$, $\cP(g_1,g_2)$ consists of polynomials $\sigma_{0,0} + \sigma_{1,0} g_1 + \sigma_{0,1} g_2 + \sigma_{1,1} g_1 g_2$, where $\sigma_{0,0}, \sigma_{1,0}, \sigma_{1,0}, \sigma_{1,1}$ are SOS. 
+\blue{Also, $\cP(0) = \sum \R[X]^2$.}
 
 Clearly, $\cP(g)$ is indeed a preordering and it is the inclusion-minimal preordering containing all the polynomials $g_1,\ldots,g_s$. Each $f \in \cP(g)$ is non-negative on $\{g \ge 0\}$. Furthermore, we can recover $\{g \ge 0\}$ from $\cP(g)$ since we obviously have 
 \[
@@ -276,13 +303,21 @@ We recall that an ideal $I$ in a commutative ring $(R,+,\cdot)$ is an additive s
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
- \eqref{I:ideal}: Since $P$ is closed under addition, $I$ too is closed under addition. Since $0 \in P$, we have $0 \in I$ and it is clear that $I + I = I$. For every $f \in I$ also $-f \in I$. So $(I,+)$ is a subgroup of $\R[X]$. Let $q \in I = P \cap (-P)$. As we did above, we use a formula telling us that every element of $\R[X]$ is a difference of two squares.
+ \eqref{I:ideal}: Since $P$ is closed under addition, $I$ too is closed under addition. Since $0 \in P$, we have $0 \in I$ and it is clear that $I + I = I$. For every $f \in I$ also $-f \in I$. So $(I,+)$ is a subgroup of $\R[X]$.
  
- For every $p \in \R[X]$, one has $ 4 p = (1+p)^2 - (1-p)^2$. Since $(1+p)^2 q \in P \cap (-P)$ and $(1-p)^2 q \in P \cap (-P)$, we conclude that $4 p q \in P \cap (-P)$. Dividing by $4$, we get $p q \in P \cap (-P)$. Here is a bit more detailed explanation how we can get the conclusion: From $q \in P$ and $-q \in P$, we get $(1+p)^2 q \in P$ and $-(1-p)^2 q \in P$, respectively. This yields $(1+p)^2 q - (1-p)^2 q \in P$, meaning $4 p q \in P$. Dividing by $4$, we get $p q \in P$. Completely analogously, we also get $p q \in -P$. 
+ Let $q \in I = P \cap (-P)$. As we did above, we use a formula telling us that every element of $\R[X]$ is a difference of two squares.
+  For every $p \in \R[X]$, one has $ 4 p = (1+p)^2 - (1-p)^2$. Since $(1+p)^2 q \in P \cap (-P)$ and $(1-p)^2 q \in P \cap (-P)$, we conclude that $4 p q \in P \cap (-P)$.
+ \blue{The latter holds since we just showed that $(I,+)$ is a group.}
+  Dividing by $4$, we get $p q \in P \cap (-P)$.
+%  Here is a bit more detailed explanation how we can get the conclusion: From $q \in P$ and $-q \in P$, we get $(1+p)^2 q \in P$ and $-(1-p)^2 q \in P$, respectively. This yields $(1+p)^2 q - (1-p)^2 q \in P$, meaning $4 p q \in P$. Dividing by~$4$, we get $p q \in P$. Completely analogously, we also get $p q \in -P$. 
  
  \eqref{I:proper}: If $-1 \in P$, then using $ 4 p = (1+p)^2 - (1-p)^2$, we conclude that $P = \R[X]$. Hence $I=P \cap (-P) = \R[X]$, which is a contradiction. 
  
- \eqref{sum:non-neg:zero}: Since, $p,q \in P$, we have $p+q \in P$. So we just need to show $-p, -q \in P$. Indeed, showing this, we get $-(p+q) \in P$ and conclude $p+q \in P \cap (-P) = I$. By $p+q \in I$ we have $-p - q \in P$. So $-p \in q + P \subseteq P$ and $-q  \in p +P \subseteq P$, \blue{because $1$ is a square and thus contained in~$P$.}
+ \eqref{sum:non-neg:zero}:
+% Since, $p,q \in P$, we have $p+q \in P$.
+% So we just need to show $-p, -q \in P$. Indeed, showing this, we get $-(p+q) \in P$ and conclude $p+q \in P \cap (-P) = I$.
+ \blue{Since $p+q \in I$, we have $-p - q \in P$. So $-p \in q + P \subseteq P$ and $-q  \in p +P \subseteq P$, because $p,q \in P$ and $P$ is closed under addition.
+ Hence, $p,q \in P \cap (-P) = I$.}
 \end{proof}
 
 The ideal $\cP^0(g)$ should help us to certify the condition $f=0$ on $\{g \ge 0\}$. However, $\cP^0(g)$ may have an undesired property of being non-prime. Here is just a small example with $g=(g_1,g_2)$, $g_1=X_1 X_2, g_2 = -X_1 X_2$. In this case, the set $\{g \ge 0\} = \{X_1 X_2 = 0\}$ is just the union of two coordinate axes. The polynomial $X_1$ does not belong to $\cP(g)$, because $X_1$ is not non-negative on $\{g \ge 0\}$. Analogously, the polynomial $X_2$ does not belong to $\cP(g)$ because $X_2$ is not non-negative on $\{g \ge 0\}$. It is clear that the product $X_1 X_2$ belongs to $\cP^0(g)$. So, we conclude that neither $X_1$ nor $X_2$ belongs to $\cP^0(g)$ but their product $X_1 X_2$ does belong to $\cP^0(g)$. This shows that the ideal $\cP^0(g)$ is not prime. The reason of $\cP^0(g)$ being non-prime is the fact that the variety $\{X_1 X_2 = 0\}$ is not irreducible. 
@@ -303,8 +338,8 @@ In the proof of our positivstellensatz  we'll need a step of enlarging $\cP^0(g)
 	\label{lem:prime:ideals}
 	In the notation of Lemma~\ref{lem:ideals}, we have 
 	\begin{enumerate}[(a)]
-		\item If $I$ is a proper subset of $\R[X]$ and if $J$ is an inclusion-minimal prime ideal containing $I$, then, for all $p,q \in P$ satisfying $p, q \in P$ and $p+q \in J$, one has $p, q \in J$. 
-		\item For the ideal $J$ in (a) and the field $F$ of fractions over the integral domain $\R[X] / J$, the set
+		\item If $I$ is a proper subset of $\R[X]$ and if $J$ is an inclusion-minimal prime ideal containing $I$, then, for all $p,q \in P$ satisfying $p+q \in J$, one has $p, q \in J$. 
+		\item For the ideal $J$ in (a) and the field of fractions $F$ over the integral domain $\R[X] / J$, the set
 		\[
 			P' := \setcond{ \sum_{e \in \{0,1\}^s} \sigma_e g^e }{\sigma_e \in \sum F^2}
 		\] 
@@ -314,7 +349,7 @@ In the proof of our positivstellensatz  we'll need a step of enlarging $\cP^0(g)
 \begin{proof} See \cite[Prop.~2.1.7]{Marshall:2008}. 
  (a): It is known that there exists an inclusion-minimal prime ideal $J \subseteq \R[X]$ with $I \subseteq J$ (follows by applying Zorn's lemma to the family of all prime ideals that contain $I$ as a subset). It is also known that in this case for every $p \in J$, there exists an integer $m \ge 0$ and an element $q \in \R[X] \setminus J$ with $p^m q \in I$; see any basic book on commutative algebra, for example, \cite[Prop.~1.14]{Atiyah:Macdonald:2016}. Here is an illustration in the context of number theory of how this works. The ideal $12 \Z$ is contained in two inclusion-minimal prime ideals $2 \Z$ and $3 \Z$. If we raise an element of $2 \Z$ to the power two and then multiply with $3 \not\in 2 \Z$, we get an element of $12 \Z$. An illustration in terms of polynomial rings is as follows. The ideal $X_1^4 X_2 \R[X_1,X_2]$ is contained in two prime ideals $X_1 \R[X_1,X_2]$ and $X_2 \R[X_1,X_2]$. Taking a fourth power of an element of $X_1 \R[X_1,X_2]$ and multiplying it with $X_2 \not\in X_1 \R[X_1,X_2]$, we get an element of $X_1^4 X_2 \R[X_1,X_2]$. 
  
- So, if $p+q \in J$, then $(p+q)^m u \in I$ holds for some $n \ge 0$ and $u \not\in J$. This gives $u^2 (p+q)^m \in I$. We can always assume that $m$ is odd. If $m$ is even, just increase $m$ by one, by multiplying with $(p+q)$.  Using binomial expansion we can write $u^2 (p+q)^m$ as a non-negative linear combination of the terms $u^2 p^i q^{m-i}$ with $i \in \{0,\ldots,m\}$. Depending on whether $i$ is odd or even, we can write the latter term as a square multiplied by $p$ or a square multiplied by $q$. So we conclude that $u^2 (p+q)^m$ is an element of $I$ which can be written as a sum of terms belonging to $P$. By Lemma~\ref{lem:ideals}(c), every term $u^2 p^i q^{m-i}$ belongs to $I$. In particular also $u^2 p^m \in I$. Since $I \subseteq J$, $J$ is prime and $u \not \in J$, we get $p \in J$. Indeed, $u^2 \not \in J$ since $u \not\in J$ and $J$ is prime (see Exercise~\ref{powers:prime:ideals}). Then from $u^2 \not\in J$ and $u^2 p^m \in J$, we deduce that $p^m \in J$ (since $J$ is prime). From $p^m$ we deduce $p \in J$ (see Exercise~\ref{powers:prime:ideals}). Since $p$ and $q$ play the same roles, we also get $q \in J$. 
+ So, if $p+q \in J$, then $(p+q)^m u \in I$ holds for some $m \ge 0$ and $u \not\in J$. This gives $u^2 (p+q)^m \in I$. We can always assume that $m$ is odd. If $m$ is even, just increase $m$ by one, by multiplying with $p+q$.  Using binomial expansion we can write $u^2 (p+q)^m$ as a non-negative linear combination of the terms $u^2 p^i q^{m-i}$ with $i \in \{0,\ldots,m\}$. Depending on whether $i$ is odd or even, we can write the latter term as a square multiplied by $p$ or a square multiplied by $q$. \blue{Since $p \in P$ and $q \in P$, }we conclude that $u^2 (p+q)^m$ is an element of $I$ which can be written as a sum of terms belonging to $P$. By Lemma~\ref{lem:ideals}(c), every term $u^2 p^i q^{m-i}$ belongs to $I$. In particular also $u^2 p^m \in I$. Since $I \subseteq J$, $J$ is prime and $u \not \in J$, we get $p \in J$. Indeed, $u^2 \not \in J$ since $u \not\in J$ and $J$ is prime (see Exercise~\ref{powers:prime:ideals}). Then from $u^2 \not\in J$ and $u^2 p^m \in J$, we deduce that $p^m \in J$ (since $J$ is prime). From \blue{$p^m \in J$} we deduce $p \in J$ (see Exercise~\ref{powers:prime:ideals}). Since $p$ and $q$ play the same roles, we also get $q \in J$. 
 
 (b): This is related to \cite[Prop.~2.1.6]{Marshall:2008}. Assume the contrary, that is, $P'= F$. Then $-1 \in P'$. This means
 \[
@@ -322,13 +357,13 @@ In the proof of our positivstellensatz  we'll need a step of enlarging $\cP^0(g)
 \]
 for some $\sigma_e \in \sum F^2$, $g^e := g_1^{e_1} \cdots g_s^{e_s}$ and $e=(e_1,\ldots,e_s)$. Note that $F$ is a field of fractions over the integral domain $\R[X]/J$. The terms $\sigma_e$ are sums of squares of fractions of elements of $\R[X]/J$. So, setting $f$ to be the product of all the denominators in the mentioned fractions, we get
 \[
-	-f^2 = \sum_{e \in \{0,1\}^s} \sigma_e g^e,
+	-f^2 = \sum_{e \in \{0,1\}^s} \blue{\bar\sigma_e} g^e,
 \]
-for some $\sigma_e \in \sum (\R[X]/J)^2$ and $f \in R[X]/J$ with $f \ne 0$ in $\R[X]/J$. The latter identity can be written as an identity modulo $J$. So, coming from $\R[X] / J$ to $\R[X]$, this gives
+for some $\blue{\bar\sigma_e} \in \sum (\R[X]/J)^2$ and $f \in \R[X]/J$ with $f \ne 0$ in $\R[X]/J$. The latter identity can be written as an identity modulo $J$. So, coming from $\R[X] / J$ to $\R[X]$, this gives
 \[
-	-f^2 \in \underbrace{\sum_{e \in \{0,1\}^s} \sigma_e g_e}_{=:h} + J,
+	-f^2 \in \underbrace{\sum_{e \in \{0,1\}^s} \blue{\bar\sigma_e} g^e}_{=:h}\ +\ J,
 \]
-for some $f \in \R[X]$ and $f \not\in J$ and some choices $\sigma_e \in \sum \R[X]^2$. 
+for some $f \in \R[X]$ and $f \not\in J$ and some choices $\blue{\bar\sigma_e} \in \sum \R[X]^2$. 
 
 We have thus shown $h + f^2 \in J$. Here, $h \in P$ by construction, and $f^2 \in P$, because $f^2$ is a square. By (a), we conclude $f^2 \in J$. Since $J$ is prime, we get $f \in J$, which is a contradiction. 
 \end{proof}
@@ -341,7 +376,7 @@ We have thus shown $h + f^2 \in J$. Here, $h \in P$ by construction, and $f^2 \i
 	Let $g = (g_1,\ldots,g_s) \in \R[X]^s$. Then $\{g \ge 0\} = \emptyset$ if and only if $-1 \in \cP(g)$. 
 \end{theorem}
 \begin{proof}
-	The sufficiency is clear, so we need to prove the necessity. Assume $-1 \not\in \cP(g)$. We will prove that $\{g \ge 0\}$ is non-empty. Consider the ideal $I := \cP^0(g)$. Since $\cP(g) \supseteq I$, we have $-1 \not\in I$, that is, $I$ is a proper subset of $\R[X]$. There exists a prime ideal $J$ containing $I$ as a subset and being minimal with respect to inclusion with respect to this property. Let $F$ be the field of fractions of $\R[X]/J$. The preordering $P'$ from Lemma~\ref{lem:prime:ideals} is a proper subset of $F$ and so, using Lemma~\ref{lem:Serre}, we can find an ordering $P$ with $P \supseteq P'$. With the ordering $P$, the field $F$ becomes an ordered field. Consider the natural homomorphisms $f \mapsto f+J \mapsto \frac{f+J}{1}$ on the spaces $\R[X] \to \R[X] / J \to F$. These homomorphisms send $X_1,\ldots,X_n \in \R[X]$ to some $x_1,\ldots,x_n \in F$. By construction, we have $g_1(x_1,\ldots,x_n) \ge 0,\ldots g_s(x_1,\ldots,x_n) \ge 0$ for the constructed $(x_1,\ldots,x_n) \in F^n$ (with respect to the ordering $P$ we've fixed for $F$). Thus, we found a solution of the system $g \ge 0$ in the space $F^n$. By \blue{Tarski's transfer principle} (Corollary~\ref{cor:tarski}), there exists also a solution in $\R^n$. 
+	The sufficiency is clear, so we need to prove the necessity. Assume $-1 \not\in \cP(g)$. We will prove that $\{g \ge 0\}$ is non-empty. Consider the ideal $I := \cP^0(g)$. Since $\cP(g) \supseteq I$, we have $-1 \not\in I$, that is, $I$ is a proper subset of $\R[X]$. There exists a prime ideal $J$ containing $I$ as a subset and being minimal with respect to inclusion with respect to this property. Let $F$ be the field of fractions of $\R[X]/J$. The preordering~$P'$ from Lemma~\ref{lem:prime:ideals} is a proper subset of $F$ and so, using Lemma~\ref{lem:Serre}, we can find an ordering $P$ with $P \supseteq P'$. With the ordering $P$, the field $F$ becomes an ordered field. Consider the natural homomorphisms $f \mapsto f+J \mapsto \frac{f+J}{1}$ on the spaces $\R[X] \to \R[X] / J \to F$. These homomorphisms send $X_1,\ldots,X_n \in \R[X]$ to some $x_1,\ldots,x_n \in F$. By construction, we have $g_1(x_1,\ldots,x_n) \ge 0,\ldots g_s(x_1,\ldots,x_n) \ge 0$ for the constructed $(x_1,\ldots,x_n) \in F^n$ (with respect to the ordering $P$ we've fixed for $F$). Thus, we found a solution of the system $g \ge 0$ in the space $F^n$. By \blue{Tarski's transfer principle} (Corollary~\ref{cor:tarski}), there exists also a solution in $\R^n$. 
 \end{proof}
 
 \begin{remark}
@@ -382,7 +417,8 @@ The following result contains a Positivstellensatz (positive-locus theorem), a N
 			I = \R[X] g_1 + \cdots + \R[X] g_s
 		\]
 		is the so-called ideal generated by $g_1,\ldots,g_s$. Thus, working with equality constraints we have a particularly simple certificate of positivity. This observation can be extended to non-negativity condition and to the case where both inequality and equality constraints are present. 
-		\item In classical algebraic geometry (over an \blue{algebraically closed} field, like the complex numbers), one would try to describe polynomials that vanish on $\{g=0\} = \{g_1=0,\ldots,g_s=0\}$. We can characterize  $f=0$ on $\{g=0\}$ algebraically. By Theorem~\ref{stellensaetze}(c), we've got $-f^{2m} \in \cP(-g,g)$. Since $\cP(g,-g) = \SOS{\R[X]} +I$, with $I$ as above, we have the certificate $-f^{2m} = \SOS{\R[X]} +I$ for the condition $f = 0$ on $\{g=0\}$. This is analogous to the Nullstellensatz from classical algebraic geometry. 
+		\item In classical algebraic geometry (over an \blue{algebraically closed} field, like the complex numbers), one would try to describe polynomials that vanish on $\{g=0\} = \{g_1=0,\ldots,g_s=0\}$. We can characterize  $f=0$ on $\{g=0\}$ algebraically. By Theorem~\ref{stellensaetze}(c), we've got $-f^{2m} \in \cP(-g,g)$. Since $\cP(g,-g) = \SOS{\R[X]} +I$, with $I$ as above, we have the certificate $-f^{2m} \in \SOS{\R[X]} +I$ for the condition $f = 0$ on $\{g=0\}$. This is analogous to the Nullstellensatz from classical algebraic geometry. 
+
 		\item Of course, one may wonder whether one really needs denominators. Our \blue{initial} intention was to describe the preordering 
 		\[
 		\Tilde{\cP}(g):=\setcond{f \in \R[X]}{f(x) \ge 0 \ \text{on} \ \{g \ge 0\}} \blue{\supseteq \cP(g)},

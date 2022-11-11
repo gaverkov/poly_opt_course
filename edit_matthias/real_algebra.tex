@@ -243,8 +243,8 @@ The latter can be \blue{generalized} to
 \end{proof}
 
 For \eqref{unconst:POP:dual:SOS:as:sdp:eq} to be feasible, we need to have \blue{$f - y$ is SOS} for at least one $y \in \R$.
-\blue{Such $y \in \R$ exists if and only if $\bar y \in \R$ with $\bar y \neq 0$ and $f - \bar y$ is SOS exists.}
-With such a choice $\newt(f - \bar y) = \conv(\newt(f) \cup \{0\})$. So, by \blue{Proposition~\ref{newton:SOS}},  for feasibility it is necessary that $\conv(\newt(f) \cup \{0\})$ is of the form $2 P$, where $P$ is a polytope with integer vertices (so called integer polytope). \blue{Proposition~\ref{newton:SOS}} also shows that in that case, we can use $m(X)$ of the form $m(X) = (X^\alpha)_{\alpha \in P \cap \Z^n}$. So, rather than using \blue{exponent vectors} from the whole set $\blue{E^n_d}$, we can restrict ourselves to $P \cap \Z^n$ (a subset of $\blue{E^n_d}$), so that the size of the SDP \eqref{unconst:POP:dual:SOS:as:sdp:eq} gets reduced. 
+\blue{Such $y \in \R$ exists if and only if $\bar y \in \R$ with $\bar y \neq 0$ and $f - \bar y$ is SOS exists.
+With such a choice $\newt(f) = \conv(\newt(f - \bar y) \cup \{0\})$.} So, by \blue{Proposition~\ref{newton:SOS}},  for feasibility it is necessary that \blue{$\newt(f)$} is of the form $2 P$, where $P$ is a polytope with integer vertices (so called integer polytope), \blue{and that one of its vertices is~$0$}. \blue{Proposition~\ref{newton:SOS}} also shows that in that case, we can use $m(X)$ of the form $m(X) = (X^\alpha)_{\alpha \in P \cap \Z^n}$. So, rather than using \blue{exponent vectors} from the whole set $\blue{E^n_d}$, we can restrict ourselves to $P \cap \Z^n$ (a subset of $\blue{E^n_d}$), so that the size of the SDP \eqref{unconst:POP:dual:SOS:as:sdp:eq} gets reduced. 
 
 \begin{exercise}
 	Consider 
