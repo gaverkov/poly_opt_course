@@ -9,7 +9,7 @@ The chapter was motivated by various literature sources including \cite{Laurent:
 \[
 	H^\le(u,\beta) := \setcond{ x \in \R^n}{ \sprod{u}{x} \le \beta}
 \]
-for $u \in \R^n$ and $\beta \in \R$. If $u \ne 0$, such $H^\le(u,\beta)$ is a closed half-space. An analogous notation can also be used for the relations $=,\ge,<,>$, giving also notation for hyperplanes and open half-spaces.
+for $u \in \R^n$ and $\beta \in \R$. If $u \ne 0$, such that $H^\le(u,\beta)$ is a closed half-space. An analogous notation can also be used for the relations $=,\ge,<,>$, giving also notation for hyperplanes and open half-spaces.
 
 \subsection{Every nonlinear problem is a conic problem (in principle)}
 
@@ -19,11 +19,11 @@ A conic problem is a problem of optimizing a linear function $\sprod{c}{x}$ unde
 
 It is clear that LP in any of its forms, say, in the form of optimizing $\sprod{c}{x}$ subject to $A x = b$ and $x \ge 0$ is a conic problem. For this form one can use the cones $\{0\}$ and $\R_+^n$ and write the constraints as $b- A x \in \{0\}$ and $x \in \R_+^n$. So, if we use the non-negative orthant in the definition of conic problem, we end up with a linear problem. 
 
-Are there any other interesting cones around? Yes, there are a few other cones which are good in terms of efficiency and are useful for modeling various situations. Consider for example the facility location problem of minimizing $f(x) := \sum_{i=1}^s \|x- p_i\|$, which is the total sum of distances to given facilities $p_1, \ldots,p_s \in \R^n$. We can write the problem as the problem of minimizing $\sum_{i=1}^s y_j$ for with $y_1,\ldots,y_s \in \R$, $x \in \R^n$ and $y_i \le \|x-p_i\|$ for all $i$. If we define the second order cone $\SOC_n:=\setcond{(x,y)}{y \ge \|x\|}$, then our problem can be written using the conic constraints $(x - p_i,y_i) \in \SOC_n$ for $i \in [s]$. 
+Are there any other interesting cones around? Yes, there are a few other cones which are good in terms of efficiency and are useful for modeling various situations. Consider for example the facility location problem of minimizing $f(x) := \sum_{i=1}^s \|x- p_i\|$, which is the total sum of distances to given facilities $p_1, \ldots,p_s \in \R^n$. We can write the problem as the problem of minimizing $\sum_{i=1}^s y_j$ for $y_1,\ldots,y_s \in \R$, $x \in \R^n$ with \blue{$y_i \ge \|x-p_i\|$} for all $i$. If we define the second order cone $\SOC_n:=\setcond{(x,y)}{y \ge \|x\|}$, then our problem can be written using the conic constraints $(x - p_i,y_i) \in \SOC_n$ for $i \in [s]$. 
 
 A very interesting case of conic programming we need in this course is semidefinite programming, arising from the cones $\cS_+^k$ of psd matrices. 
 
-Conic programming is a special case of convex programming. Interestingly, from the perspective of conic programming, we can pretend as every non-linear problem were convex. Consider, for example, the problem $\inf_{x \in \R^n} f(x)$ of constrained optimization of a polynomial $f \in \R[x]$ in $n$ variables of degree at most $d$. Let $K_{n,d}$ be the closed convex cone of all non-negative polynomials of degree at most $d$ in $n$ variables. Then our problem can be rewritten as $\sup \setcond{y \in \R}{f - y \in K_{n,d}}$. This is a conic problem with the decision variable $y$ and the conic constraint $f - y \in K_{n,d}$ for this unknown. Of course, there is a catch here: our problem did not get simpler by transformation into the conic form. The problem remains as difficult as it was. The complexity of the problem is now hidden in the cone $K_{n,d}$, which is a complicated object (checking if a given polynomial belongs to $K_{n,d}$ is hard). Nevertheless, such conic reformulations \emph{can} help computationally. The approach is to express problems using cones and then try to understand the structure of the underlying cones and exploit it in computations. 
+Conic programming is a special case of convex programming. Interestingly, from the perspective of conic programming, we can pretend as every non-linear problem was convex. Consider, for example, the problem $\inf_{x \in \R^n} f(x)$ of \blue{unconstrained} optimization of a polynomial $f \in \R[x]$ in $n$ variables of degree at most $d$. Let $\blue{P_{n,d}}$ be the closed convex cone of all non-negative polynomials of degree at most $d$ in $n$ variables. Then our problem can be rewritten as $\sup \setcond{y \in \R}{f - y \in \blue{P_{n,d}}}$. This is a conic problem with the decision variable $y$ and the conic constraint $f - y \in \blue{P_{n,d}}$ for this unknown. Of course, there is a catch here: our problem did not get simpler by transformation into the conic form. The problem remains as difficult as it was. The complexity of the problem is now hidden in the cone $\blue{P_{n,d}}$, which is a complicated object (checking if a given polynomial belongs to $\blue{P_{n,d}}$ is hard). Nevertheless, such conic reformulations \emph{can} help computationally. The approach is to express problems using cones and then try to understand the structure of the underlying cones and exploit it in computations. 
 
 
 \subsection{Duality operations for convex sets}
@@ -34,9 +34,9 @@ With each set $X \subseteq \R^n$ we associate the \emph{polar set}
 \]
 and the \emph{dual cone}
 \[
-	X^\ast = \setcond{y \in \R^n}{\sprod{y}{x} \ge 0 \ \forall x \in X}
+	X^\ast = \setcond{y \in \R^n}{\sprod{y}{x} \ge 0 \ \forall x \in X} \,.
 \]
-In what follows we will need $X^\ast$, but it is not a bad idea to see $X^\circ$ at least once. The set $X^\circ$ is a closed, convex set containing $0$ and $X^\ast$ is a closed convex cone. The following is a main duality statement for the above duality operations. 
+In what follows we will need $X^\ast$, but it is not a bad idea to see $X^\circ$ at least once. The set $X^\circ$ is a closed, convex set containing $0$ and $X^\ast$ is a closed convex cone. The following is the main duality statement for the above duality operations. 
 \begin{proposition}
 	For every non-empty set $X \subseteq \R^n$, one has
 	\begin{align*}
@@ -50,7 +50,7 @@ In what follows we will need $X^\ast$, but it is not a bad idea to see $X^\circ$
 		& & & x' \in (X^\circ)^\circ 
 		\\ &\Leftrightarrow & & 
 		\sprod{x'}{y} \le 1 \ \text{for all} \  y \in X^\circ
-		\\ &\Leftrightarrow & & \sprod{x'}{y} \le 1 \ \text{for all $y$ with $\sprod{y}{x} \le 1\forall x \in X$}. 
+		\\ &\Leftrightarrow & & \sprod{x'}{y} \le 1 \ \text{for all $y$ with $\sprod{y}{x} \le 1$ \text{for all} $x \in X$}. 
 	\end{align*}
 	This shows that $(X^\circ)^\circ$ is the intersection of all half-spaces of the form $H_{y,1}^\le$ containing the set $X$. Such subspaces definitely contain $0$. So, we see that $X \cup \{0\} \subseteq (X^\circ)^\circ$ holds. Since polar sets are always closed convex sets, we even get $\cl(\conv(X \cup \{0\}) \subseteq (X^\circ)^\circ$, which is the `easy' inclusion. The converse inclusion relies on separation theorems from the theory of convex sets. 
 	
@@ -60,37 +60,36 @@ In what follows we will need $X^\ast$, but it is not a bad idea to see $X^\circ$
 	(b): The proof is analogous to (a). We `spell out' what $(X^\ast)^\ast$ means: 
 	\begin{align*}
 		&& &x' \in (X^\ast)^\ast
-		\\ &\Leftrightarrow & &\sprod{x'}{y} \ge 0 & &\text{für alle} \ y \in X^\ast
-		\\ &\Leftrightarrow & & \sprod{x'}{y} \ge 0 & & \text{für alle} \ y \ \text{mit} \ \sprod{y}{x} \ge 0 \ \forall x \in X
+		\\ &\Leftrightarrow & &\sprod{x'}{y} \ge 0 & &\text{for all} \ y \in X^\ast
+		\\ &\Leftrightarrow & & \sprod{x'}{y} \ge 0 & & \text{for all} \ y \ \text{mit} \ \sprod{y}{x} \ge 0 \text{ for all } x \in X.
 	\end{align*}
 	
-	So $(X^\ast)^\ast$ is the intersection of all half-spaces $H_{y,0}^\ge $ given by a vector $y \ne 0$ that contain $X$ as a subset. Following the same steps as in (a), this shows $\cl(\cone(X)) \subseteq (X^\ast)^\ast$. Conversely: if a point $x'$ is not in $\cl(\conv(X))$, then by separation theorems for convex cones there exists a vector $u$ with $\sprod{u}{x'} < 0$ and $\sprod{u}{x} \ge 0$ for all $x \in \cl(\conv(X))$. That is, $x'$ is not in $H_{u,0}^\ge$, while $H_{u,0}^\ge $ contains $X$ as a subset. This gives $x' \not \in (X^\ast)^\ast$. 
+	So $(X^\ast)^\ast$ is the intersection of all half-spaces $H_{y,0}^\ge $ given by a vector $y \ne 0$ that contain $X$ as a subset. Following the same steps as in (a), this shows $\cl(\cone(X)) \subseteq (X^\ast)^\ast$. Conversely: if a point $x'$ is not in $\cl(\cone(X))$, then by separation theorems for convex cones there exists a vector $u$ with $\sprod{u}{x'} < 0$ and $\sprod{u}{x} \ge 0$ for all $x \in \cl(\cone(X))$. That is, $x'$ is not in $H_{u,0}^\ge$, while $H_{u,0}^\ge $ contains $X$ as a subset. This gives $x' \not \in (X^\ast)^\ast$. 
 \end{proof}
 
 
 \subsection{Farkas lemmas in conic optimization}
 
 
-Farkas lemmas in linear programming involve conditions like $A x \le b$ or $x \ge 0$. Recall that Farkas lemmas provide a certificate for infeasiblity. The template for Farkas lemmas is: a system of conditions is infeasible if and only if there is some data (certificate) that can be used to make the infeasiblity algebraically apparent. For conic optimization, we deal with conic constraints of the forms $b - A x \in K$ and $x \in K$, where $K$ is an arbitrary closed cone (choosing $K$ to be a non-negative orthant we get back the linear programming duality). The duality of linear programming is perfect in the sense that it gives a complete characterization of infeasiblity. For conic-programming duality the situation is quite good, too, but not really perfect. There is a necessary and a sufficient condition for infeasiblity that look very similar but do not quite match. 
+Farkas lemmas in linear programming involve conditions like $A x \le b$ or $x \ge 0$. Recall that Farkas lemmas provide a certificate for infeasiblity. The template for Farkas lemmas is: a system of conditions is infeasible if and only if there is some data (certificate) that can be used to make the infeasibility algebraically apparent. For conic optimization, we deal with conic constraints of the forms $b - A x \in K$ and $x \in K$, where $K$ is an arbitrary closed cone (choosing $K$ to be a non-negative orthant we get back the linear programming duality). The duality of linear programming is perfect in the sense that it gives a complete characterization of infeasibility. For conic-programming duality the situation is quite good, too, but not really perfect. There is a necessary and a sufficient condition for infeasibility that look very similar but do not quite match. 
 
-In one step of the proof we use the following fact
+In one step of the proof we use the following fact:
 
 \begin{exercise}
-	Show the following. If $A \in \R^{m \times n}$, where $m,n \in \N$, then the image $\im(A)$ of $A$ and the kernel $\ker(A^\top)$ are related by $\im(A) = \ker(A^\top)^\perp$. 
+If $A \in \R^{m \times n}$, where $m,n \in \N$, then the image $\im(A)$ of $A$ and the kernel $\ker(A^\top)$ are related by $\im(A) = \ker(A^\top)^\perp$. 
 \end{exercise}
 
 The formula $\im(A) = \ker(A^\top)^\perp$ is one possible way to express the duality of linear algebra. 
  
-
 \begin{theorem}[Farkas-lemma for the system $x \in K, A x =b$]
 	\label{thm:farkas:kegel}
-	Let $K \subseteq \R^n$ be a closed convex cone, let $A \in \R^{m \times n}$ and $b \in \R^m$. Then implications (1) $\Rightarrow$ (2) $\Rightarrow$ (3) hold for conditions (1), (2) and (3) described as follows: 
+	Let $K \subseteq \R^n$ be a closed convex cone, let $A \in \R^{m \times n}$ and $b \in \R^m$. Then, the implications (1) $\Rightarrow$ (2) $\Rightarrow$ (3) hold for the conditions (1), (2) and (3) described as follows: 
 	\begin{enumerate}[(1)]
 		\item There exists an $y \in \R^m$ with $A^\top y \in K^\ast$ and $\sprod{y}{b} < 0$.
 		\item There exists no $x \in K$ with $A x = b$.
-		\item There exists $y \in \R^m$ with $A^\top y \in K^\ast$ and $\sprod{y}{b} \le 0$, where $A^\top y$ or $\sprod{y}{b}$ is not $0$.
+		\item There exists $y \in \R^m$ with $A^\top y \in K^\ast$ and $\sprod{y}{b} \le 0$, where $A^\top y$ or $\sprod{y}{b}$ is not equal to~$0$.
 	\end{enumerate}
-	In other words, (1) is a sufficient condition for infeasiblity of the system $x \in K, A x = b$, while (3) is a necessary one.
+	In other words, (1) is a sufficient condition for infeasibility of the system $x \in K, A x = b$, while (3) is a necessary one.
 \end{theorem}
 \begin{proof}
 	We introduce the notation $X := \setcond{x \in \R^n}{A x = b}$. 
@@ -106,16 +105,23 @@ The formula $\im(A) = \ker(A^\top)^\perp$ is one possible way to express the dua
 	Since $\ker(A)^\perp = \im(A^\top)$, one has $u = A^\top y$ for some $y$. Thus, $\sprod{u}{x} = \sprod{A^\top y}{x} = \sprod{y}{A x} = \sprod{y}{b} \le \alpha \le 0$ for all $x \in X$. The vector $u=A^\top y$ is not  $0$.
 \end{proof}
 
+\blue{
+\begin{remark}
+The duality is perfect if the cone $AK = \left\{ Ax : x \in K \right\}$ is closed.
+Indeed, in this case, assuming (2), means that $b \notin AK$, and so $b$ and $AK$ can be strictly separated by a hyperplane.
+Similarly as in the proof of Theorem~\ref{thm:farkas:kegel} it follows that (1) holds.
+\end{remark}
+}
 
 
 \subsection{Duality of conic optimization problems}
 \label{subsec:konische:Dualitaet}
 
-We'll extend the LP-duality corresponding to the case $K=\R_+^n$ to general closed cones $K$. The weak duality extends easily, for the extension of the strong duality we need a kind of assumption that excludes degenerate situations. 
+We'll extend the LP-duality corresponding to the case $K=\R_+^n$ to general closed \blue{convex} cones $K$. The weak duality extends easily, for the extension of the strong duality we need a kind of assumption that excludes degenerate situations. 
 
 \begin{theorem}
 	\label{thm:kon:dualitaet}
-	Let $K \subseteq \R^n$ be closed convex cone, let $A \in \R^{m \times n}, b \in \R^m$ and $c \in \R^n$ and consider the following conic problems
+	Let $K \subseteq \R^n$ be a closed convex cone, let $A \in \R^{m \times n}, b \in \R^m$ and $c \in \R^n$ and consider the following conic problems
 	\begin{align}
 		\alpha & = \inf \setcond{\sprod{c}{x}}{x \in K, \ Ax -b = 0 } \label{eq:kon:primal}
 		\\ \beta & = \sup \setcond{\sprod{y}{b}}{y  \in \R^m, \  c - A^\top y \in K^\ast}. \label{eq:kon:dual}
@@ -158,14 +164,14 @@ We'll extend the LP-duality corresponding to the case $K=\R_+^n$ to general clos
 	yields the existence of $y \in \R^m$ and $\mu \in \R$ with $\mu c - A^\top y \in K^\ast$ and $\mu( \alpha - \eps) - \sprod{y}{b} \le 0$, where $\mu c - A^\top y$ or $\mu(\alpha - \eps) - \sprod{y}{b}$ is not $0$. We'll produce a feasible solution of the dual problem out of  $\mu$ and $y$. Since the dual solution will have to be linked to the primal one, we derive the following inequalities:
 	\begin{equation}
 		\label{eq:maybe:strict}
-		\mu \sprod{c}{x'} - \sprod{y}{b} = \mu \sprod{c}{x'} - \sprod{y}{A x'} = \sprod{\underbrace{\mu c - A^\top y}_{\in K^\ast}}{\underbrace{x'}_{\in K}} \ge 0,
+		\mu \sprod{c}{x'} - \sprod{y}{b} = \mu \sprod{c}{x'} - \sprod{y}{A x'} = \sprod{\underbrace{\mu c - A^\top y}_{\in K^\ast}}{\underbrace{x'}_{\in K}} \ge 0.
 	\end{equation}
 	So, we get
 	\begin{equation}
 		\label{eq:at:least:one:is:strict}
-		\mu(\alpha - \eps) \le \sprod{y}{b} \le \mu \sprod{c}{x'} 
+		\mu(\alpha - \eps) \le \sprod{y}{b} \le \mu \sprod{c}{x'} .
 	\end{equation}
-	By the implication (2) $\Rightarrow$ (3) of Theorem~\ref{thm:farkas:kegel} one has $\mu c - A^\top y \ne 0$ or $\mu ( \alpha - \eps) - \sprod{y}{b} < 0$. In the former case, the inequality in \eqref{eq:maybe:strict} is strict, because $x'$ lies in $\intr(K)$. In the latter case the inequality $\mu (\alpha - \eps) < \sprod{y}{b}$ is strict. This yields that at least one of the two inequalities in \eqref{eq:at:least:one:is:strict} is strict. We get $\mu (\alpha - \eps) < \mu \sprod{c}{x'}$. 
+	By the implication (2) $\Rightarrow$ (3) of Theorem~\ref{thm:farkas:kegel} one has $\mu c - A^\top y \ne 0$ or $\mu ( \alpha - \eps) - \sprod{y}{b} < 0$. In the former case, the inequality in \eqref{eq:maybe:strict} is strict, because $x'$ lies in $\intr(K)$. In the latter case, the inequality $\mu (\alpha - \eps) < \sprod{y}{b}$ is strict. This yields that at least one of the two inequalities in \eqref{eq:at:least:one:is:strict} is strict. We get $\mu (\alpha - \eps) < \mu \sprod{c}{x'}$. 
 
 	Taking into account that $\sprod{c}{x'} > \alpha - \eps$  holds for all $x \in K \cap X$, we get $\mu > 0$. Now, wlog we can assume $\mu=1$, because we can rescale $y$  to $y/\mu$ and $\mu$ to $\mu/\mu =1$. After this change we get $c - A^\top y \in K^\ast$ and $\sprod{y}{b} \ge \alpha - \eps$. So, for an arbitrary $\eps>0$ we have found a feasible solution of  \eqref{eq:kon:dual}, which satisfies $\sprod{y}{b} \ge \alpha - \eps$. Thus, $\beta \ge \alpha - \eps$ for every $\eps> 0$, and we get the inequality $\beta \ge \alpha$.
 \end{proof}
@@ -176,14 +182,14 @@ The conic problems \eqref{eq:kon:primal} and \eqref{eq:kon:dual} are called \emp
 	\label{compl:slackness}
 	Show that, in the notation of  Theorem~\ref{thm:kon:dualitaet}, the following hold: 
 	\begin{enumerate}[(a)]
-		\item If $x$ and $y$ are feasible solutions of \eqref{eq:kon:primal} and \eqref{eq:kon:dual}, respectively and $\sprod{c -A^\top y}{x} = 0$ holds, then $x$ and $y$ are optimal for \eqref{eq:kon:primal} and \eqref{eq:kon:dual}, respectively. 
+		\item If $x$ and $y$ are feasible solutions of \eqref{eq:kon:primal} and \eqref{eq:kon:dual}, respectively, and the identity $\sprod{c -A^\top y}{x} = 0$ holds, then $x$ and $y$ are optimal solutions for \eqref{eq:kon:primal} and \eqref{eq:kon:dual}, respectively. 
 		\item If $\alpha = \beta$ and \eqref{eq:kon:primal} and \eqref{eq:kon:dual} have optimal solutions $x^\ast$ and $y^\ast$, respectively, then $\sprod{c - A^\top y^\ast}{x^\ast} =0$ holds. 
 	\end{enumerate}
 \end{exercise}
 \begin{solution}
 	To get both assertions, just look at the derivation of the weak duality
 	\[
-		\sprod{b}{y} = \sprod{A x}{y} = \sprod{x}{A^\top y} \le \sprod{x}{c}.
+		\sprod{b}{y} = \sprod{A x}{y} = \sprod{x}{A^\top y} \le \sprod{x}{c}.\qedhere
 	\]
 \end{solution}
 
@@ -204,8 +210,9 @@ We'll need the following simple observation.
 	$(y_1,\ldots,y_t) \in (X_1 \times \ldots \times X_t)^\ast$ means $\sprod{(y_1,\ldots,y_t)}{(x_1,\ldots,x_t)} \ge 0$ for all $(x_1,\ldots,x_t) \in X_1 \times \ldots \times X_t$. Plugging in $0$ for all  $x_i$ but one, we get $\sprod{y_i}{x_i} \ge 0$ for all $i \in [t]$ and $x_i \in X_i$. This shows $y_i \in X_i^\ast$ for all $i \in [k]$. The converse inclusion $X_1^\ast \times \ldots \times X_t^\ast \subseteq (X_1 \times \ldots \times X_t)^\ast$ also follows directly: a vector $(y_1,\ldots,y_t)$ belonging to the left hand side satisfies  $\sprod{y_i}{x_i} \ge 0$ for all $i \in [t]$ and all $x_i \in X_i$. This yields $(y_1,\ldots,y_t) \in (X_1 \times \ldots \times X_t)^\ast$.
 \end{solution}
 
-\begin{exercise}
-	Show the following. Let $m, n \in \N$, let $K \subseteq \R^n$ and $L \subseteq \R^m$ be closed convex cones and let $A \in \R^{m \times n}, c \in \R^n$ and $b \in \R^m$. Consider the problems
+\begin{corollary}
+\label{cor:duality-K-and-L}
+ Let $m, n \in \N$, let $K \subseteq \R^n$ and $L \subseteq \R^m$ be closed convex cones and let $A \in \R^{m \times n}, c \in \R^n$ and $b \in \R^m$. Consider the problems
 	\begin{equation}
 		\label{eq:primal:K:L}
 	\alpha := \inf \setcond{ \sprod{c}{x} }{x \in K, \ A x - b \in L}
@@ -218,24 +225,24 @@ We'll need the following simple observation.
 	Then the following hold:
 	\begin{enumerate}[(a)]
 		\item The problems satisfy weak duality. 
-		\item If there exists an $x'$ with $x' \in \intr(K)$ and $A x - b \in \intr(L)$, then strong duality holds.
-		\item If there exists an $y'$ with $y' \in \intr(L^\ast)$ and $c - A^\top y \in \intr(K^\ast)$, then strong duality holds.
+		\item If there exists an $x'$ with $x' \in \intr(K)$ and $A x' - b \in \intr(L)$, then strong duality holds.
+		\item If there exists an $y'$ with $y' \in \intr(L^\ast)$ and $c - A^\top y' \in \intr(K^\ast)$, then strong duality holds.
 	\end{enumerate}
-\end{exercise}
-\begin{solution} 
+\end{corollary}
+\begin{proof} 
 	\emph{(a):} We reformulate the minimization problem as follows:
 	\begin{align*}
 		\alpha & = \inf \setcond{ \sprod{c}{x} }{ (x,u) \in K \times L, \ A x - u = b}
-		\\ & = \inf \setcond{ \sprod{\begin{pmatrix} c \\ 0 \end{pmatrix} }{ \begin{pmatrix} x \\ u \end{pmatrix} } }{ (x,u) \in K \times L, \ \begin{pmatrix} A & -I \end{pmatrix} \begin{pmatrix} x \\ u \end{pmatrix} = b}
+		\\ & = \inf \setcond{ \sprod{\begin{pmatrix} c \\ 0 \end{pmatrix} }{ \begin{pmatrix} x \\ u \end{pmatrix} } }{ (x,u) \in K \times L, \ \begin{pmatrix} A & -I \end{pmatrix} \begin{pmatrix} x \\ u \end{pmatrix} = b}.
 	\end{align*}
-	Application of Theorem~\ref{thm:kon:dualitaet} yields the dual problem
+	An application of Theorem~\ref{thm:kon:dualitaet} yields the dual problem
 	\[
 		\sup \setcond{\sprod{y}{b}}{ \begin{pmatrix}c\\ 0 \end{pmatrix} - \begin{pmatrix} A^\top \\ - I \end{pmatrix} y  \in (K \times L)^\ast}.
 	\]
-	Application of Exercise~\ref{dual:of:product} yields $(K \times L)^\ast = K^\ast \times L^\ast$.
+	Applying Exercise~\ref{dual:of:product} yields $(K \times L)^\ast = K^\ast \times L^\ast$.
 	 So, the latter problem can be reformulated as \eqref{eq:dual:K:L}.
 	 
-	\emph{(b):} From the proof of (a) and in view of  Theorem~\ref{thm:kon:dualitaet}, one can see that the strong duality holds whenever there exists $(x',u') \in \intr(K \times L) = \intr(K) \times \intr(L)$ with $Ax' - u' =b$.
+	\emph{(b):} From the proof of (a) and in view of  Theorem~\ref{thm:kon:dualitaet}, one can see that strong duality holds whenever there exists $(x',u') \in \intr(K \times L) = \intr(K) \times \intr(L)$ with $Ax' - u' =b$.
 
 	\emph{(c):} We reformulate \eqref{eq:dual:K:L} as a minimization problem:
 	\[
@@ -250,64 +257,68 @@ We'll need the following simple observation.
 		- \beta = \sup \setcond{ - \sprod{c}{x} }{x \in K, \ A x - b \in L} = - \alpha.
 	\]
 	So, $\alpha = \beta$. 
-\end{solution}
+\end{proof}
 
 \begin{remark}
-	Now, having deduced the more general form of duality, we can `update'  Theorem~\ref{thm:kon:dualitaet} that we had formulated before. In fact, there exists another case of strong duality for problems discussed in Theorem~\ref{thm:kon:dualitaet}, namely, when there exists $y' \in \R^m$ with $c - A^\top y'\in \intr(K^\ast)$. Observe, that the whole space $\R^m$ is a convex cone whose dual cone is $(\R^m)^\ast = \{0\}$. Thus, what we do is just use the corollary for $L=\R^n$. 
+	Now, having deduced the more general form of duality, we can `update'  Theorem~\ref{thm:kon:dualitaet} that we had formulated before. In fact, there exists another case of strong duality for problems discussed in Theorem~\ref{thm:kon:dualitaet}, namely, when there exists $y' \in \R^m$ with $c - A^\top y'\in \intr(K^\ast)$. Observe, that the whole space $\R^m$ is a convex cone whose dual cone is $(\R^m)^\ast = \{0\}$. Thus, what we do is just use Corollary~\ref{cor:duality-K-and-L} for $L = \R^m$. 
 \end{remark} 
 
 We conclude this section by formulating a very general form of conic duality with an arbitrary number of conic constraints. 
 
 \begin{exercise}
-	\label{cor:K:L:dual}
-	Show the following. Let $t, s \in \N$ and consider the problems
+Let $t, s \in \N$ and consider the problems
 	\[
-		\alpha  = \inf \setcond{\sum_{i=1}^t \sprod{c_i}{x_i} }{x_i \in K_i \ \forall i \in [k], \ \sum_{j=1}^t A_{i,j} x_j - b_i \in L_i \ \forall i \in [s]}
+		\alpha  = \inf \setcond{\sum_{i=1}^t \sprod{c_i}{x_i} }{x_i \in K_i \ \forall i \in [t], \ \sum_{j=1}^t A_{i,j} x_j - b_i \in L_i \ \forall i \in [s]}
 	\]
 	and
 	\[
 		\beta = \sup \setcond{ \sum_{i=1}^s \sprod{b_i}{y_i} }{y_i \in L_i^\ast \ \forall i \in [s], \ c_i - \sum_{j=1}^s A_{j,i}^\top y_j  \in K_i^\ast \ \forall i \in [t]}
 	\]
-	based on closed convex cones $K_1,\ldots,K_t, L_1,\ldots,L_s$, Matrices $A_{i,j}$ with $i \in [s], j \in [t]$ and vectors $c_1,\ldots,c_t,b_1,\ldots,b_s$. Then: 
+	based on closed convex cones $K_1,\ldots,K_t, L_1,\ldots,L_s$, matrices $A_{i,j}$ with $i \in [s], j \in [t]$ and vectors $c_1,\ldots,c_t,b_1,\ldots,b_s$. Then: 
 	\begin{enumerate}[(a)]
-		\item The weak duality holds for this pair of problems.
-		\item If the minimization problem has solution $(x_1',\ldots,x_t')$ with $x_i' \in \intr(K_i)$ for all $i \in [t]$ and $\sum_{j=1}^t A_{i,j} x_j' - b_i \in \intr(L_i)$ for all $i \in [s]$, then the strong duality holds.
-		\item If the maximization problem has a solution $(y_1',\ldots,y_s')$ with $y_i \in \intr(L_i^\ast)$ for all $i \in [s]$ and $c_i - \sum_{j=1}^s A_{j,i}^\top y_j \in \intr(K_i^\ast)$, then the strong duality holds.
+		\item Weak duality holds for this pair of problems.
+		\item If the minimization problem has a solution $(x_1',\ldots,x_t')$ with $x_i' \in \intr(K_i)$ for all $i \in [t]$ and $\sum_{j=1}^t A_{i,j} x_j' - b_i \in \intr(L_i)$ for all $i \in [s]$, then strong duality holds.
+		\item If the maximization problem has a solution $(y_1',\ldots,y_s')$ with $y_i' \in \intr(L_i^\ast)$ for all $i \in [s]$ and $c_i - \sum_{j=1}^s A_{j,i}^\top y_j' \in \intr(K_i^\ast)$ for all $i \in [t]$, then strong duality holds.
 	\end{enumerate}
 \end{exercise}
 \begin{solution}
-	Let $x=(x_1,\ldots,x_k)$. Let $c=(c_1,\ldots,c_t)$, $b=(b_1,\ldots,b_t)$ and let $A$ be the matrix with blocks $A_{i,j}$. Then our problems can be formulated concisely as
+	Let $x=(x_1,\ldots,x_t)$. Let $c=(c_1,\ldots,c_t)$, $b=(b_1,\ldots,b_s)$ and let $A$ be the matrix with blocks $A_{i,j}$ as ``entries''. Then our problems can be formulated concisely as
 	\[
-		\inf \setcond{\sprod{c}{x}}{x \in K_1 \times \ldots \times K_t,  \ A x - b \in L_1 \times \ldots \times L_s }
+		\alpha = \inf \setcond{\sprod{c}{x}}{x \in K_1 \times \ldots \times K_t,  \ A x - b \in L_1 \times \ldots \times L_s }
 	\]
 	and
 	\[
-		\beta = \sup \setcond{\sprod{b}{y}}{y \in L_1^\ast \times \ldots \times L_t^\ast, \ c- A^\top y \in K_1^\ast \times \ldots \times K_t^\ast}
+		\beta = \sup \setcond{\sprod{b}{y}}{y \in L_1^\ast \times \ldots \times L_t^\ast, \ c- A^\top y \in K_1^\ast \times \ldots \times K_t^\ast}.
 	\]
-	The assertions now follow from Exercise~\ref{cor:K:L:dual} and Exercise~\ref{dual:of:product}.
+	The assertions now follow from Exercise~\ref{dual:of:product} and Corollary~\ref{cor:duality-K-and-L}.
 \end{solution}
 
 
 \subsection{Semidefinite optimization}
 
-Semidefinite optimization was introduced in Section~\ref{SOS:and:sdp}. Here, we are able to describe semidefinite problems concisely as a special conic problem. We work with linear spaces $\cS^k$ and with the cones $\cS_+^k$ in these spaces. For being able to write systems of linear inequalities concisely it is nice to have a scalar product fixed in $\cS^k$. The space $\cS^k$ is a subspace of $\R^{k \times k}$ (all $k \times k$ matrices, not necessarily symmetric), and in $\cS^k$ one can borrow a scalar product from $\R^{k \times k}$. For $\R^{k \times k}$, a very natural scalar product is the standard one: we can think of $\R^{k \times k}$ as a vector with $k^2$ components and define the scalar product as the standard scalar product of such vectors. It turns out that this scalar product can be expressed nicely using the trace operation: It is straightforward to check that for $A = (a_{ij}), B= (b_{ij}) \in \R^{k \times k}$, one has 
+Semidefinite optimization was introduced in Section~\ref{SOS:and:sdp}. Here, we are able to describe semidefinite problems concisely as a special conic problem. We work with the linear spaces $\cS^k$ and with the cones $\cS_+^k$ in these spaces. For being able to write systems of linear inequalities concisely it is nice to have a scalar product fixed in~$\cS^k$. The space $\cS^k$ is a subspace of $\R^{k \times k}$ (all $k \times k$ matrices, not necessarily symmetric), and in $\cS^k$ one can borrow a scalar product from $\R^{k \times k}$. For $\R^{k \times k}$, a very natural scalar product is the standard one: we can think of $\R^{k \times k}$ as a vector with $k^2$ components and define the scalar product as the standard scalar product of such vectors. It turns out that this scalar product can be expressed nicely using the trace operation: It is straightforward to check that for $A = (a_{ij}), B= (b_{ij}) \in \R^{k \times k}$, one has 
 \[
 	\sprod{A}{B}:= \sum_{i,j} a_{ij} b_{ij} = \tr(A B^\top) = \tr(A^\top B).
 \] Of course, if our matrices are symmetric we need not transpose so that we get the formula $\sprod{A}{B} = \tr(A B)$ for $A, B \in \cS^k$. 
 
 
-Geometrically, SDP can be formulated as an optimization of a linear function over an affine slice of $\cS_+^k$. That is, one optimizes a linear objective over $\cS_+^k \cap H$, where $H \subseteq \cS^k$ is an affine space. There are two ways to represent $H \cap \cS_+^k$ algebraically: one can parameterize $H$ or one can describe $H$ by a system of linear inequalities. As a consequence, there are the following two basic formulations of SDP.
+Geometrically, SDP can be formulated as an optimization of a linear function over an affine slice of $\cS_+^k$. That is, one optimizes a linear objective over $\cS_+^k \cap H$, where $H \subseteq \cS^k$ is an affine space. There are two ways to represent $H \cap \cS_+^k$ algebraically: one can parameterize $H$ or one can describe $H$ by a system of linear equations. As a consequence, there are the following two basic formulations of SDP:
 
-If we use equalities to describe $H$, we get a formulation
+\begin{itemize}
+ \item If we use equalities to describe $H$, we get a formulation
 \[
 	\inf \setcond{ \sprod{C}{X} }{ X \in \cS_+^k, \ \sprod{A_i}{X} = b_i \ \forall i \in [m]},
 \]
-where $C, A_1,\ldots,A_m \in \cS^k$ and $b_1,\ldots,b_m \in \R$. If we parameterize $H$ we end up with 
+where $C, A_1,\ldots,A_m \in \cS^k$ and $b_1,\ldots,b_m \in \R$.
 
+ \item If we parameterize $H$ we end up with 
 \[
 	\inf \setcond{ \sprod{c}{x}}{x \in \R^n, A(x) \in \cS_+^k},
 \]
-with $c \in \R^n$, where $A : \R^n \to \cS^k$ is affine map, meaning  $A(x_1,\ldots,x_n) = A_0 + A_1 x_1 + \cdots + A_n x_n$ for some $A_0,\ldots,A_n \in \cS^k$. The condition $A(x) \in \cS_+^k$ is a \emph{linear matrix inequality} for $x$, which we have already seen in Section~\ref{SOS:and:sdp}
+with $c \in \R^n$, where $A : \R^n \to \cS^k$ is affine map, meaning  $A(x_1,\ldots,x_n) = A_0 + A_1 x_1 + \cdots + A_n x_n$ for some $A_0,\ldots,A_n \in \cS^k$. 
+\end{itemize}
+%
+The condition $A(x) \in \cS_+^k$ is a \emph{linear matrix inequality} for $x$, which we have already seen in Section~\ref{SOS:and:sdp}
 (abbreviated as LMI). The expression $A(x)$ can be viewed as an affine function in $x$ with matrix coefficients or as symmetric matrices whose entries are affine functions in $x$.
 
 LMIs are generalizations of linear inequalities (if the off-diagonal entries of $A(x)$ are identically equal to zero, we merely have a system of $k$ linear inequalities). 
@@ -340,7 +351,7 @@ It turns out that $\cS_+^k$ is self-dual.
 	Formulate the problem of computing the largest eigenvalue of a symmetric matrix as an SDP. 
 \end{exercise}
 \begin{solution}
-	For $A \in \cS^k$ consider the matrix $t I - A$. It is easy to see that $\lambda$ is an eigenvalue of $A$ if and only if $t-\lambda$ is an eigenvalue of $t I - A$. A matrix $A$ is psd if and only if all its eigenvalues are non-negative. So, we arrive at the SDP
+	For $A \in \cS^k$ consider the matrix $t I - A$. It is easy to see that $\lambda$ is an eigenvalue of $A$ if and only if $t-\lambda$ is an eigenvalue of $t I - A$. A matrix $A \in \cS^k$ is PSD if and only if all its eigenvalues are non-negative. So, we arrive at the SDP
 \begin{align*}
 	\min \setcond{t \in \R}{ t I - A \in \cS_+^k}
 \end{align*}
@@ -350,7 +361,7 @@ In the same way, we can see that computation of the spectral norm of a symmetric
 \end{solution}
 
 \begin{remark}
-	Many researches are very excited about SDP. Why? It has turned out that a large number of problems can be formulated (exactly or approximately) as SDP. In particular, we have seen that polynomial problems can be formulated approximately as SDPs. Apart from that, SDPs arise in control theory, combinatorial optimization, statistics, probability etc. Yet another reasons for excitement is that SDP leads to interesting mathematical problems involving algebra, convexity and algorithms. 
+	Many researches are very excited about SDP. Why? It has turned out that a large number of problems can be formulated (exactly or approximately) as an SDP. In particular, we have seen that polynomial problems can be formulated approximately as SDPs. Apart from that, SDPs arise in control theory, combinatorial optimization, statistics, probability etc. Yet another reason for excitement is that SDP leads to interesting mathematical problems involving algebra, convexity and algorithms. 
 \end{remark}
 
 \subsection{Duality for SDP}
@@ -424,15 +435,16 @@ Let's now apply the SDP duality to the SDP problem we derived in Section~\ref{SO
 	\label{global:pop}
 	\inf \setcond{f(x)}{ x \in \R^n },
 \end{equation}
-where $f(X)= \sum_{\alpha \in E^n_{2d}} c_\alpha X^\alpha \in \R[X]=\R[X_1,\ldots,X_n]$. We introduce a formal dual problem $\sup \setcond{y}{f - y \ge 0 \ \text{on} \  \R^n}$ (the problem to find the lower bounds) and then replaced this problem by the simpler problem
+where $f(X)= \sum_{\gamma \in E^n_{2d}} c_\gamma X^\gamma \in \R[X]=\R[X_1,\ldots,X_n]$. We introduced the formal dual problem $\sup \setcond{y}{f - y \ge 0 \ \text{on} \  \R^n}$ (the problem to find the lower bounds) and then replaced this problem by the simpler problem
 \[
-	\sup \setcond{y \in \R}{ f - y \quad \text{sos}}, 
+	\sup \setcond{y \in \R}{ f - y \text{ is SOS}}, 
 \]
 which turned out to be the SDP
 \[
-	\sup \setcond{y \in \R}{ y + m(X)^\top Z m(X) = f(X), \ Z \ \text{psd} }
+	\sup \setcond{y \in \R}{ y + m(X)^\top Z m(X) = f(X), \ Z \ \text{psd}} ,
 \]
-where $m(X)= (X^\alpha)_{\alpha \in E^n_d}$ is the vector of monomials of degree at most $d$. So, the above problem is a problem with decision variables $y$ and $Z$. To dualize the problem, we write the equality constraint $y + m(X)^\top Z m(X) = f(X)$ in coordinate form. Let $Z=(z_{\alpha,\beta})_{\alpha,\beta \in E^n_d}$. Then the equality $y + m(X)^\top Z m(X)= f(X)$ is 
+where $m(X)= (X^\alpha)_{\alpha \in E^n_d}$ is the vector of monomials of degree at most $d$.
+Thus, the above problem is a problem with decision variables $y$ and $Z$. To dualize the problem, we write the equality constraint $y + m(X)^\top Z m(X) = f(X)$ in coordinate form. Let $Z=(z_{\alpha,\beta})_{\alpha,\beta \in E^n_d}$. Then the equality $y + m(X)^\top Z m(X)= f(X)$ is 
 \[
 	y + \sum_{\alpha,\beta \in E^n_d} z_{\alpha,\beta} X^{\alpha+\beta} = \sum_{\gamma \in E^n_{2d}} c_\gamma X^\gamma.
 \]
@@ -442,10 +454,10 @@ Comparing coefficients we get
 \] 
 and 
 \begin{align*}
-	\sum_{\alpha,\beta \in E^n_d : \ \alpha + \beta =\gamma} z_{\alpha,\beta} &=  c_\gamma & & \forall \gamma \in E^n_{2 d} \setminus \{0\}
+	\sum_{\alpha,\beta \in E^n_d : \ \alpha + \beta =\gamma} z_{\alpha,\beta} &=  c_\gamma & & \forall \gamma \in E^n_{2 d} \setminus \{0\}.
 \end{align*}
-
-The latter can be written as equalities
+%
+The latter can be written as the equations
 \begin{align*}
 	y + \sprod{A_0}{Z}  = c_0
 \end{align*}
@@ -457,33 +469,34 @@ where
 \begin{align*}
 	A_\gamma &:= (\delta_{\alpha+\beta,\gamma})_{\alpha,\beta \in E^n_d} & & \forall \gamma \in E^n_{2d}
 \end{align*}
-are symmetric matrices (we use the Kronecker delta notation: $\delta_{s,t}=1$ if $s=t$ and $\delta_{s,t}=0$ otherwise). Thus, our problem can now be written as 
-
+are symmetric matrices (we use the Kronecker delta notation: $\delta_{s,t}=1$ if $s=t$ and $\delta_{s,t}=0$ otherwise).
+Thus, our problem can now be written as 
+%
 \begin{equation}
 	\label{global:sos:rel:with:equalities}
 	\sup \setcond{y \in \R}{ Z \ \text{psd}, \ y+ \sprod{Z}{A_0} = c_0, \ \sprod{A_\gamma}{Z} = c_\gamma \ \text{for \ all} \ \gamma \in E^n_{2d} \setminus \{0\}}.
 \end{equation}
-
-Problem \eqref{global:sos:rel:with:equalities} can be dualized according to the principles we've discussed in previous sections.  The psd matrix variable $Z$ yields a psd constraint. The real variable $y$ yields a linear equality. Each linear equality constraint for $\gamma \in E_{2d}^n$ yields a real variable, which we denote by $v_\gamma$.
-
+%
+Problem \eqref{global:sos:rel:with:equalities} can be dualized according to the principles we've discussed in previous sections.  The psd matrix variable $Z$ yields a psd constraint. The real variable $y$ yields a linear equation. Each linear equality constraint for $\gamma \in E_{2d}^n$ yields a real variable, which we denote by $v_\gamma$.
 
 The dual is the following problem
 
 \[
-	\inf \setcond{ \sum_{\gamma \in E^n_{2d} } v_\gamma c_\gamma }{v_\gamma \in \R \ \forall \gamma \in E^n_{2d}, \ \sum_{\gamma \in E^n_{2d}} v_\gamma A_\gamma \ \text{psd}, \ v_0 = 1}
+	\inf \setcond{ \sum_{\gamma \in E^n_{2d} } v_\gamma c_\gamma }{v_\gamma \in \R \ \forall \gamma \in E^n_{2d}, \ \sum_{\gamma \in E^n_{2d}} v_\gamma A_\gamma \ \text{psd}, \ v_0 = 1}.
 \]
-
+%
 Taking into account how $A_\gamma$ were defined we see that 
 \[
 	\sum_{\gamma \in E^n_{2d}} v_\gamma A_\gamma = \Biggl( \sum_{\gamma \in E^n_{2d}} v_\gamma \delta_{\alpha + \beta,\gamma} \Biggr)_{\alpha, \beta \in E^n_d} = \Bigl( v_{\alpha+ \beta} \Bigr)_{\alpha, \beta \in E^n_d}.
 \]
-
-So, the dual SDP gets the form
-
-\[
-	\inf \setcond{ \sum_{\gamma \in E^n_{2d}} v_\gamma c_\gamma }{v_\gamma \in \R \ \forall \gamma, \ \Biggl(v_{\alpha+\beta}\Biggr)_{\alpha, \beta \in E^n_d} \ \text{psd}, \ v_0 = 1}.
-\]
-
+%
+Hence, the dual SDP gets the form
+\begin{equation}
+	\label{global:sos:rel:with:equalities:simplified}
+	\inf \setcond{ \sum_{\gamma \in E^n_{2d}} v_\gamma c_\gamma }{v_\gamma \in \R \ \forall \gamma, \ \Big(v_{\alpha+\beta}\Big)_{\alpha, \beta \in E^n_d} \ \text{psd}, \ v_0 = 1}.
+\end{equation}
+%
+%
 \begin{remark}
 The problem \eqref{global:sos:rel:with:equalities} was established to derive lower bounds on \eqref{global:pop}, but \eqref{global:sos:rel:with:equalities} does not directly suggest any choice of $x \in \R^n$ that may be good. It turns out that an $x$ can be chosen from the dual problem. It is known that, under certain assumptions, $x=(x_1,\ldots,x_n)$ with 
 \begin{align*}
@@ -491,55 +504,81 @@ The problem \eqref{global:sos:rel:with:equalities} was established to derive low
 \end{align*}
 is a good choice (see works of Marshall, Schweighofer, Lasserre, Laurent et al.). 
 \end{remark}
+%
+\blue{
+\begin{example}
+Let $f = X^2 - 2 X Y + 4 Y^2 - X - 2 Y + 3$.
+The minimum of $f$ over~$\R^2$ equals~$2$ and is attained at the point $(1,\frac12)$.
+The linear objective in the problem~\eqref{global:sos:rel:with:equalities:simplified} is given by
+\[
+3 - v_{10} - 2 v_{11} - 2 v_{01} + v_{20} + v_{02}
+\]
+and we minimize over all psd matrices of the form $V = (v_{\alpha+\beta})_{\alpha,\beta \in \{00,10,01\}}$ with $v_{00} = 1$.
+The minimum is attained by
+\[
+V =
+\left(
+\begin{matrix}
+1 & 1 & \frac12 \\
+1 & 1 & \frac12 \\
+\frac12 & \frac12 & \frac14
+\end{matrix}
+\right)
+\]
+with objective value~$2$ and $x_1 = v_{10} = 1$ and $x_2 = v_{01} = \frac12$.
+\end{example}
+}
 
 \subsection{Truncated moment problem}
 
 There is another way to arrive at the dual problem we've seen in the last section. 
 
 We show how the approach works for the unconstrained POP only, with the constrained case being similar.
+Consider
 
 \begin{equation}
 	\label{our:inf:problem}
-	\inf \setcond{f(x) }{x \in \R^n}
+	\inf \setcond{f(x) }{x \in \R^n}\,,
 \end{equation}
-with $f \in \R[X]=R[X_1,\ldots,X_n]$. Let $c = (c_\alpha)_{\alpha \in E_{2d}^n}$ be the vector of coefficients of $f$ and $m(X) = \setcond{ X^\alpha }{\alpha \in E_{2d}^n}$ the vector of all respective monomials. Then the problem can be written as 
+with $f \in \R[X]=\R[X_1,\ldots,X_n]$. Let $c = (c_\alpha)_{\alpha \in E_{2d}^n}$ be the vector of coefficients of~$f$ and $m(X) = (X^\alpha)_{\alpha \in E_{2d}^n}$ the vector of all respective monomials. Then the problem can be written as 
 \begin{equation}
 	\inf \setcond{ \sprod{c}{m(x)} }{x \in \R^n}.
 \end{equation}
-This can be viewed as a linear optimization over the set $m(\R^n):=\setcond{m(x)}{x \in \R^n}$. Thus, the problem is
+This can be viewed as linear optimization over the set $m(\R^n):=\setcond{m(x)}{x \in \R^n}$. Thus, the problem is equivalent to
 \begin{equation}
 	\inf \setcond{\sprod{c}{v}}{v \in m(\R^n)}.
 \end{equation}
 If we enlarge $m(\R^n)$ to $\conv(m(\R^n))$ or even to $\cl(\conv(m(\R^n)))$, the problem remains the same. This way we arrive at 
 \begin{equation}
 	\label{lin:probl:on:M}
-	\inf \setcond{\sprod{c}{v}}{ v \in M_{n,2d}}.
+	\inf \setcond{\sprod{c}{v}}{ v \in M_{n,2d}}\,, \quad \blue{\textrm{ where } \quad M_{n,2d} := \cl(\conv(m(\R^n)))} \,.
 \end{equation}
-In general, $M_{n,2d}$ is hard to describe, but at least we can relax it to a set that we can describe with SDP. By Caratheodory's theorem, every element of $v \in \conv(m(\R^n))$ is the convex combination of at most $\dim(m(\R^n))+1$ points of $m(\R^n)$. This convex combination can be written as integration 
+In general, $M_{n,2d}$ is hard to describe, but at least we can relax it to a set that we can describe with an SDP. By Carath\'{e}odory's theorem, every element of $v \in \conv(m(\R^n))$ is the convex combination of at most $\dim(m(\R^n))+1$ points of $m(\R^n)$. This convex combination can be written as the integral
 \[
-	v = v^\mu:= \int m(x) \mu( d x).
+	v = v^\mu:= \int m(x) \mu( d x) \,,
 \]
-with respect to a finitely supported probability measure $\mu$ on $\R^n$. Using the definition of Lebesgue integrability, one can show that if $\mu$ is any probability measure on $\R^n$, for which the above integral exists, the respective vector $v^\mu$ belongs to $M_{n,2d}=\cl(\conv(M_{n,2d}))$; see \cite[Definitions~11.21, 11.22]{Rudin}. Note that $v^\mu$ is called the vector of moments of $\mu$ of order at most $2d$. The problem of characterizing whether a given collection of numbers associated to the multi-indices $\alpha \in \Z_+^n$ is a collection of moments of a probability measure supported in a given set $S$ is a well-known problem in probability and it is known as the problem of moments. So, what special properties does the vector $v_\mu$ have? Consider an arbitrary vector $y=(y_\alpha)_{\alpha \in E_d^n} \in \R^{\binom{n+d}{n}}$. Of course $v^\mu_0=1$, since $\mu$ is a probability measure. Furthermore, for the matrix $A(v^\mu) = (v^\mu_{\alpha+\beta})_{\alpha,\beta \in E_d^n}$ one has
+with respect to a finitely supported probability measure $\mu$ on $\R^n$. Using the definition of Lebesgue integrability, one can show that if $\mu$ is any probability measure on $\R^n$, for which the above integral exists, the respective vector $v^\mu$ belongs to $M_{n,2d}=\cl(\blue{\conv(m(\R^n))})$; see \cite[Definitions~11.21, 11.22]{Rudin}. Note that $v^\mu$ is called the \emph{vector of moments} of $\mu$ of order at most $2d$. The problem of characterizing whether a given collection of numbers associated to the multi-indices $\alpha \in \Z_+^n$ is a collection of moments of a probability measure supported in a given set $S$ is a well-known problem in probability theory and it is known as the \emph{problem of moments}. So, what special properties does the vector $v^\mu$ have? Consider an arbitrary vector $y=(y_\alpha)_{\alpha \in E_d^n} \in \R^{\binom{n+d}{n}}$. Of course $v^\mu_0=1$, since $\mu$ is a probability measure. Furthermore, for the matrix $A(v^\mu) = (v^\mu_{\alpha+\beta})_{\alpha,\beta \in E_d^n}$ one has
 \begin{align*}
-	y^\top A(v^\mu) y & = \int x^{\alpha + \beta} y_\alpha y_\beta \mu(d x)
-	\\ & = \left( \int x^\alpha y_\alpha \mu(d x)\right)^2 
-	\\ & \ge 0.
+	y^\top A(v^\mu) y \ = \int x^{\alpha + \beta} y_\alpha y_\beta \mu(d x)
+ = \left( \int x^\alpha y_\alpha \mu(d x)\right)^2 
+ \ge 0.
 \end{align*}
-That is, $A(v^\mu)$ is psd and \eqref{lin:probl:on:M} can be relaxed to 
+That is, $A(v^\mu)$ is PSD and \eqref{lin:probl:on:M} can be relaxed to 
 \begin{equation}
 	\label{moment:relaxation}
 	\inf \setcond{\sprod{c}{v}}{v_0=1, \ A(v) \ \text{psd}}.
 \end{equation}
-This is an SDP, because the condition that $A(v)$ is psd is a linear matrix inequality. The matrix $A(v)$ is called a localizing matrix. 
+This is an SDP, because the condition that $A(v)$ is PSD is a linear matrix inequality. The matrix $A(v)$ is called a \emph{localizing matrix}. 
 This is just the same problem we obtained in the previous section through dualization of the SOS relaxation. 
 
-In the constrained case, the arguments are quite similar and one also gets similar inequalities. Just to give one example. Let $\mu$ be a measure supported on a set for which the inequality $g \ge 0$ is fulfilled, where $g = \sum_\alpha g_\alpha X^\alpha$ is a polynomial, and assume that $v^\mu$ is well-defined. Then, for every $y=(y_\beta)_\beta$ one has
+In the constrained case, the arguments are quite similar and one also gets similar inequalities. Just to give one example. Let $\mu$ be a measure supported on the set $\{g \ge 0\}$, where $g = \sum_\alpha g_\alpha X^\alpha$ is a polynomial, and assume that $v^\mu$ is well-defined. Then, for every $y=(y_\beta)_\beta$ one has
 \[
-	\int g(x) \left( \sum_\beta x^\beta \right)^2 \mu( d x) \ge 0
+	\int g(x) \left( \sum_\beta x^\beta \right)^2 \mu( d x) \ge 0 \,,
 \] 
 which again turns out to be a condition $y^\top A_g(v^\mu) y$ for some matrix $A_g$. Thus we arrive at linear matrix inequalities (of a bit more general form). 
 
-The above considerations show that the problem of moments and the positivstellens{\"a}tze and nichtnegativstellensätze are closely linked. By characterizing non-negativity of a polynomial on $\R, [0,+\infty),[0,1]$ in terms of sos, we arrive at a characterization of sequences of moments of probability measures supported by the respective sets. All these are classical results in measure theory and probability. 
+The above considerations show that the problem of moments and the positivstellens{\"a}tze and nichtnegativstellensätze are closely linked. By characterizing non-negativity of a polynomial on $\R, [0,+\infty),[0,1]$ in terms of SOS, we arrive at a characterization of sequences of moments of probability measures supported by the respective sets. All these are classical results in measure theory and probability theory.
+ 
 
 \subsection{Peculiarities of SDP}
 
@@ -549,7 +588,7 @@ In contrast to LP, there are difficulties in solving SDP in exact arithmetics, a
 	Show that even if the input data of an SDP (coefficients of vectors and matrices) is rational, the optimal solution need not be rational. 
 \end{exercise}
 \begin{solution}
-	One can formulate the problem $\min \setcond{y}{y \ge x^2, \ y \ge 1 -x}$ as an sdp. The minimum is attained for a positive $x > 0$ with $x^2 = 1 -x$, which is not a rational number.
+	One can formulate the problem $\min \setcond{y}{y \ge x^2, \ y \ge 1 -x}$ as an sdp. The minimum is attained for \blue{any $x \in \R$} with $x^2 = 1 -x$, which is not a rational number.
 \end{solution}
 
 \begin{exercise}
@@ -597,7 +636,7 @@ This subsection is not necessary for discussing polynomial optimization. It can 
 
 	\emph{Second-order cone programming (second order cone problem)} (SOCP for short) is more general than LP and less general than SDP. SOCP is the conic programming with respect to the second-order cones 
 	\[
-		\SOC_{n}:=\setcond{(x,y)}{x \in \R^n, u \ge \|x \|} \subseteq \R^{n+1}.
+		\SOC_{n}:=\setcond{(x,y)}{x \in \R^n, y \ge \|x \|} \subseteq \R^{n+1}.
 	\]
 	In particular, $\SOC_0=\R_+$. Thus, LP is indeed a special case.
 	
@@ -623,16 +662,14 @@ This subsection is not necessary for discussing polynomial optimization. It can 
 		\det A(x,1) = \det \begin{pmatrix} 
 		 I & x
 		\\ x^\top & 1
-		\end{pmatrix}
+		\end{pmatrix} .
 	\]
 	The matrix $A(x,1)$ can be brought to a lower triangular form by subtracting a linear combination of the $n$ first columns from the last one. The lower triangular matrix will have $1,\ldots,1, 1- \| x \|^2$ on the diagonal. Thus $\det A(x,1) = 1 - \| x \|^2$. Viewing the determinant as an element of $\R[x,y] = \R[x_1,\ldots,x_n,y]$, we compute
 	\begin{align*}
 		\det A(x,y) = \det (y A(x/y,1)) = y^{n+1} ( 1 - \frac{1}{y^2} \| x\|^2) = y^{n-1}( y^2  - \|x\|^2). 
 	\end{align*}
 	
-	It follows that $\det A(x,y-\lambda) = (y-\lambda)^{n-1} ((y-\lambda)^2 - \|x\|^2)$. This shows that the eigenvalues of $A(x,y)$ are 
-	
-	$\lambda = y$ and $\lambda = y \pm \| x \|$. Consequently, $A(x,y)$ is psd if and only if $y \ge \| x \| $ is fulfilled.
+	It follows that $\det A(x,y-\lambda) = (y-\lambda)^{n-1} ((y-\lambda)^2 - \|x\|^2)$. This shows that the eigenvalues of $A(x,y)$ are $\lambda = y$ and $\lambda = y \pm \| x \|$. Consequently, $A(x,y)$ is psd if and only if $y \ge \| x \| $ is fulfilled.
 	\end{solution}
 	
 	\begin{remark}
