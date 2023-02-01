@@ -15,9 +15,9 @@ For solving SDP we are free to choose any of the methods listed above; however, 
 
 Consider the system $A x \le b$ which we can write as $\sprod{a_i}{x} \le b_i$, so $a_1,\ldots,a_m$ are the rows of $A$. We assume that the polyhedron $P$ defined by $A x \le b$ has non-empty interior. We assume that none of the inequalities are trivial ones having the form $\sprod{0}{x} \le 0$. In this case the interior of $P$ is described by $A x < b$. We introduce the objective $f(x) = \sprod{c}{x}$. Our problem is $\inf \setcond{f(x)}{x \in P}$. For every $\mu \ge 0$ consider the auxiliary objective function 
 \[
-	f_\mu(x) = \sprod{c}{x} - \mu \sum_{i=1}^m \ln(b_i- \sprod{a_i}{x})
+	f_\mu(x) = \sprod{c}{x} - \mu \sum_{i=1}^m \ln(b_i- \sprod{a_i}{x}) \,.
 \]
-The sum of the logarithms is called a barrier function. For each given $\mu> 0$, we get the auxiliary problem $\min \setcond{f_\mu(x)}{x \in \intr(P)}$. 
+The sum of the logarithms is called a \emph{barrier function}. For each given $\mu> 0$, we get the auxiliary problem $\min \setcond{f_\mu(x)}{x \in \intr(P)}$. 
 
 \begin{exercise}
 	Show that, if the above assumptions on $P$ are fulfilled, and $P$ is bounded, then $f_\mu$ is strictly convex on $\intr(P)$. Show that $f_\mu$ attains its infimum on $\intr(P)$. 
@@ -28,28 +28,29 @@ Thus, if $P$ is bounded, the auxiliary problem has a unique optimal solution $x^
 The idea of central path methods is to start with $x^\ast(\mu)$ for some $\mu>0$ and then decrease $\mu$ until a desired accuracy is reached. If $\mu_2 \ge \mu_1$ and $x^\ast(\mu_2)$ is given we can use $x^\ast(\mu_2)$ as an approximation for $x^\ast(\mu_1)$, so that one can invoke various kinds of iterative methods (most notably Newton and damped Newton) that would start with $x^\ast(\mu_2)$ to determine $x^\ast(\mu_1)$. In this way, we can gradually decrease $\mu$ reaching arbitrarily small values and making our auxiliary problem arbitrarily close to the original one.
 
 \subsection{Central path for LP with constraints \texorpdfstring{$Ax=b, x \ge 0$}{Ax = b, x >= 0}}
+\label{sect:central-path-LP}
 
 Here we consider the problem in the form 
 \[
-	\min \setcond{\sprod{c}{x}}{A x = b, x \ge 0}.
+	\min \setcond{\sprod{c}{x}}{A x = b, x \ge 0} \,,
 \]
 where $A \in \R^{m \times n}$, $b \in \R^m$ and $x=(x_1,\ldots,x_n)$ is the vector of decision variables.
 We assume that there exists $x > 0$ with $A x =b$. In that case we can introduce the auxiliary  problem $\inf \setcond{f_\mu(x)}{A x= b, x > 0}$ with the auxiliary objective 
 \[
-	f_\mu(x) = \sprod{c}{x} - \mu \sum_{j=1}^n \ln x_j
+	f_\mu(x) = \sprod{c}{x} - \mu \sum_{j=1}^n \ln x_j \,,
 \]
 where $\mu>0$ is a parameter. For the function $f_\mu$ defined on $\setcond{x}{A x =b, x >0}$ one can establish analogous properties as for the function from the previous section (it is strictly convex and the optimum is attained, when $\setcond{x}{A x=b,x \ge 0}$ is bounded). 
 
-Since $f_\mu$ is convex, a necessary and a sufficient condition for $x >0$ to be optimal for $f_\mu(x)$ is that $Ax =b$ is fulfilled and $\nabla f_\mu(x)$ is orthogonal to the space $A x =b$. Since $\setcond{x}{A x =b}$ coincides with $\ker(A)$ up to translations, we get the condition $\nabla f_\mu(x) \in \ker(A)^\perp$. Since $\ker(A)^\perp = \im(A^\top)$, the condition can be rewritten as $\nabla f_\mu(x) \in \im(A^\top)$. The latter means that $\nabla f_\mu(x)$ is in the linear hull of the columns of $A$. The condition $\nabla f_\mu(x) \in \im(A^\top)$ is exactly the KKT condition, phrased in geometric terms. Noticing that $\nabla f_\mu(x) = c+ \mu (1/x_1,\ldots,1/x_n)$, we can now formulate the KKT conditions as
+Since $f_\mu$ is convex, a necessary and a sufficient condition for $x >0$ to be optimal for $f_\mu(x)$ is that $Ax =b$ is fulfilled and $\nabla f_\mu(x)$ is orthogonal to the space $A x =b$. Since $\setcond{x}{A x =b}$ coincides with $\ker(A)$ up to translations, we get the condition $\nabla f_\mu(x) \in \ker(A)^\perp$. Since $\ker(A)^\perp = \im(A^\top)$, the condition can be rewritten as $\nabla f_\mu(x) \in \im(A^\top)$. The latter means that $\nabla f_\mu(x)$ is in the linear hull of the columns of $A$. The condition $\nabla f_\mu(x) \in \im(A^\top)$ is exactly the KKT condition, phrased in geometric terms. Noticing that $\nabla f_\mu(x) = \blue{c - \mu (1/x_1,\ldots,1/x_n)}$, we can now formulate the KKT conditions as
 \begin{align*}
 	A x & = b,
-	\\ 	c+ \mu (1/x_1,\ldots,1/x_n) & = A^\top y
+	\\ 	\blue{c - \mu (1/x_1,\ldots,1/x_n)} & = A^\top y
 \end{align*}
 where $y \in \R^m$. Introducing the vector $s= \mu (1/x_1,\ldots,1/x_n)$, we can rewrite the latter conditions as 
 
 \begin{align}
 	A x & = b, \label{primal:eq}
-	\\ A^\top y - s & = c \label{dual:eq}
+	\\ \blue{A^\top y + s} & = c \label{dual:eq}
 	\\ (s_1 x_1,\ldots,s_n x_n) & = \mu (1,\ldots,1) \label{mu:slack}
 	\\ x, s & > 0. \label{strict:pos}
 \end{align}
@@ -57,14 +58,39 @@ where $y \in \R^m$. Introducing the vector $s= \mu (1/x_1,\ldots,1/x_n)$, we can
 All the equations are linear apart from the equations $s_i x_i = \mu$. 
 
 
-	For solving the system \eqref{primal:eq}--\eqref{strict:pos} we can use the Newton method. If we have an approximate solution $x, y, s$, which satisfies $A x = b$ and $A^\top y -s  =c$ exactly and satisfies the conditions $x_i s_i = \mu$ approximately, we can try to determine a better solution in the form $x + \Delta x, y + \Delta y, s + \Delta s$. For $\Delta x, \Delta y$ and $\Delta s$, we obtain the conditions $A \Delta x = 0$, $A^\top \Delta y - \Delta s = 0$. By linearizing the condition $(s_i + \Delta s_i) (x_i + \Delta x_i)  = \mu$ removing the quadratic term $\Delta s_i \Delta x_i$, we arrive at $s_i \Delta x_i + \Delta s_i x_i = \mu - s_i x_i$. The variables $\Delta s_i$ can be eliminated, as we can express them via $\Delta y$. In this way we end up with a linear system of equalities in the unknowns $\Delta x, \Delta y$. The size of the system is $m+n$. If $A$ has full row rank (which we can assume wlog), then the latter system has a unique solution). We would have to take care that the update produces a solution which is still positive (so, we are on the safe side if we use damped Newton). 
+	For solving the system \eqref{primal:eq}--\eqref{strict:pos} we can use the Newton method.
+\blue{More precisely, for a function $F : \R^\ell \to \R^\ell$ a solution to the equation $F(x) = 0$ can be approximately found via the iteration $D F(x_k) (x_{k+1} - x_k) = - F(x_k)$, for $k \in \N$, in which $D F(X)_{ij} = \frac{\partial F(x)_i}{\partial x_j}$, $1 \leq i,j \leq \ell$, are the entries of the Jacobian of~$F$.
+The system \eqref{primal:eq}--\eqref{strict:pos} corresponds to the function $F : \R^n \times \R^m \times \R^n \to \R^m \times \R^n \times \R^n$ with $F(x,y,s) := \left( Ax - b, A^\intercal y + s - c, s_1x_1 - \mu, \ldots, s_nx_n - \mu \right)$, whose Jacobian is given by
+\[
+DF(x,y,s) = \left(
+\begin{matrix}
+& A & & 0 & & 0 & \\
+& 0 & & A^\intercal & & I_n & \\
+s_1 & & & & x_1 & & \\
+& \ddots & & 0 & & \ddots & \\
+& & s_n & & & & x_n
+\end{matrix}
+\right) \,.
+\]
+}	
+If we have an approximate solution $x, y, s$, which satisfies $A x = b$ and $\blue{A^\top y + s}  =c$ exactly and satisfies the conditions $x_i s_i = \mu$ approximately, we can try to determine a better solution in the form $x + \Delta x, y + \Delta y, s + \Delta s$.
+\blue{The conditions for a Newton step given by $DF(x,y,s)(\Delta x,\Delta y,\Delta s)^\intercal = -F(x,y,s)$, then translate into
+\begin{align*}
+A \Delta x & = 0, \\
+A^\top \Delta y + \Delta s & = 0, \\
+s_i \Delta x_i + \Delta s_i x_i & = \mu - s_i x_i, \textrm{ for } i \in [m] \,.
+\end{align*}
+}
+%
+%By linearizing the condition $(s_i + \Delta s_i) (x_i + \Delta x_i)  = \mu$ removing the quadratic term $\Delta s_i \Delta x_i$, we arrive at $s_i \Delta x_i + \Delta s_i x_i = \mu - s_i x_i$.
+The variables $\Delta s_i$ can be eliminated, as we can express them via $\Delta y$. In this way we end up with a linear system of equalities in the unknowns $\Delta x, \Delta y$. The size of the system is $m+n$. If $A$ has full row rank (which we can assume wlog), then the latter system has a unique solution). We would have to take care that the update produces a solution which is still positive (so, we are on the safe side if we use damped Newton). 
 
-	Let's estimate how well the auxiliary problem approximates the original one. In view of the boundedness assumption LP duality gives us the equality
+	Let's estimate how well the auxiliary problem approximates the original one. In view of the boundedness assumption, LP duality gives us the equality
 	\[
-		\alpha := \min \setcond{ \sprod{c}{x} }{x \in \R^n, \ A x = b, x \ge 0} = \max \setcond{ \sprod{b}{y}}{ y \in \R^m, \ A^\top y \le c} \in \R.
+		\alpha := \min \setcond{ \sprod{c}{x} }{x \in \R^n, \ A x = b, x \ge 0} = \max \setcond{ \sprod{b}{y}}{ y \in \R^m, \ A^\top y \le c} \in \R
 	\]
 	of the optimal values of the primal and the dual problem. 
-	The dual problem can also be written using the slack vector $s \ge 0$ as $A^\top y + s = c, y \in \R^m s \in \R_+^n$. We can thus see now that this version of the central path method constructs a primal/dual pair of solutions. It turns out, these solutions get nearly optimal as $\mu \to 0$. 
+	The dual problem can also be written using the slack vector $s \ge 0$ as $A^\top y + s = c, y \in \R^m s \in \R_+^n$. We thus see that this version of the central path method constructs a primal/dual pair of solutions. It turns out, that these solutions get nearly optimal as $\mu \to 0$. 
 	
 	Indeed, repeating the derivation of the weak duality, we get the estimates
 	\[
@@ -82,9 +108,9 @@ All the equations are linear apart from the equations $s_i x_i = \mu$.
 
 \subsection{\texorpdfstring{$\ln(\det(X))$}{ln(det(X))} is a good barrier for SDP}
 
-A natural barrier we can employ for the SDP cone is $\ln(\det(X))$. Indeed, on the boundary of $\cS_+^k$ the determinant gets zero, while in the interior of $\cS_+^k$ the determinant is strictly positive. So, taking the logarithm, we create a function that goes to (minus) infinity on the boundary. This is exactly what we want. 
+A natural barrier we can employ for the SDP cone is $\ln(\det(X))$. Indeed, on the boundary of $\cS_+^k$ the determinant gets zero, while in the interior of $\cS_+^k$ the determinant is strictly positive. So, taking the logarithm, we create a function that goes to (minus) infinity near the boundary. This is exactly what we want. 
 
-For the auxiliary problem to be convex, the respective barrier needs to be a convex (or concave) function. We'll verify that $\ln(\det(X))$ is concave in $X$. Furthermore, in order to be able to apply first and second order methods for solving the auxiliary problem, we need to determine the first and the second derivatives of $\ln(\det(X))$. Note that the gradient and the Hesse matrix in an abstract Euclidean space can be defined analogously to the concrete space $\R^n$. That is, $\nabla f(x^\ast)$ satisfies $f(x) = f(x^\ast) + \sprod{\nabla f(x^\ast)}{x-x^\ast} + o(\|x-x^\ast\|)$, where $o(x-x^\ast)$ is a function with $o(\|x-x^\ast\|) / \|x-x^\ast\| \to 0$ for $x \to x^\ast$ and the `Hesse-Matrix' $\nabla^2 f(x^\ast)$ is a self-adjoint operator satisfying $f(x) = f(x^\ast) + \sprod{\nabla f(x^\ast)}{x-x^\ast} + \frac{1}{2} \sprod{\nabla^2 f(x^\ast) (x-x^\ast)}{x-x^\ast} + o(\|x-x^\ast\|^2)$. 
+For the auxiliary problem to be convex, the respective barrier needs to be a convex (or concave) function. We'll verify that $\ln(\det(X))$ is concave in $X$. Furthermore, in order to be able to apply first and second order methods for solving the auxiliary problem, we need to determine the first and the second derivatives of $\ln(\det(X))$. Note that the gradient and the Hesse matrix in an abstract Euclidean space can be defined analogously to the concrete space $\R^n$. That is, $\nabla f(x^\ast)$ satisfies $f(x) = f(x^\ast) + \sprod{\nabla f(x^\ast)}{x-x^\ast} + o(\|x-x^\ast\|)$, where $o(\|x-x^\ast\|)$ is a function with $o(\|x-x^\ast\|) / \|x-x^\ast\| \to 0$ for $x \to x^\ast$ and the `Hesse-Matrix' $\nabla^2 f(x^\ast)$ is a self-adjoint operator satisfying $f(x) = f(x^\ast) + \sprod{\nabla f(x^\ast)}{x-x^\ast} + \frac{1}{2} \sprod{\nabla^2 f(x^\ast) (x-x^\ast)}{x-x^\ast} + o(\|x-x^\ast\|^2)$. 
 
 
 \begin{exercise}[Root of a psd matrix]
@@ -110,18 +136,18 @@ For the auxiliary problem to be convex, the respective barrier needs to be a con
 	\]
 	and its `Hesse-Matrix' is the operator
 	\[
-		(\nabla^2 f(X)) (U) = X^{-1} U X^{-1}
+		(\nabla^2 f(X)) (U) = \blue{- X^{-1} U X^{-1}}
 	\]
 	These two formulas can also be summarized as the second-order Taylor expansion 
 	\[
-		f(X+U) = f(X) + \sprod{X^{-1}}{U} + \frac{1}{2} \sprod{X^{-1} U X^{-1} }{U} + o(\|U\|^2), \qquad \text{as} \ U \to 0
+		f(X+U) = f(X) + \sprod{X^{-1}}{U} \blue{- \frac{1}{2} \sprod{X^{-1} U X^{-1} }{U}} + o(\|U\|^2), \qquad \text{as} \ U \to 0
 	\]
 	for every $X \in \intr(\cS_+^k)$. (The norm $\|U\|$ is the norm with respect to the scalar product that we fixed in $\cS^k$; it is the so-called Frobenius norm)
 \end{proposition}
 \begin{proof}
 	Note that $\det(X)$ is a polynomial function with respect to the components of $X$ and it is strictly positive on $\intr(S^k)$. The function $\ln$ is infinitely differentiable on $\R_{>0}$. So, $f$ is infinitely differentiable. 
 	
-	\emph{Strict concavity of $f$}. It suffices to check the strict concavity on each line. This means that we check the strict concavity of $\phi(t) = \ln \det(X+ t U)$ for every $X \in \cS_+^k \setminus \{0\}$ and every $U \in \cS^k \setminus \{0\}$. We do this by showing that the second derivative is strictly negative
+	\emph{Strict concavity of $f$}. It suffices to check the strict concavity on each line. This means that we check the strict concavity of $\phi(t) = \ln \det(X+ t U)$ for every $X \in \blue{\intr(\cS_+^k) }$ and every $U \in \cS^k \setminus \{0\}$. We do this by showing that the second derivative is strictly negative
 	
 	\begin{align*}
 		\phi(t) & = \ln ( \det(X^{1/2} X^{1/2} + t U) )
@@ -133,19 +159,19 @@ For the auxiliary problem to be convex, the respective barrier needs to be a con
 	\begin{align*}
 		\phi(t) = \ln(\det(X)) + \ln \det(I+ t \Tilde{U}).
 	\end{align*}
-	It suffices to compute the derivative of $\ln \det(I + t \Tilde{U})$. $\Tilde{U}$ is symmetric, and we introduce its eigenvalues $\Tilde{\lambda}_i$ (taking into account the multiplicities). Then $1 + t \Tilde{\lambda}_i$ are the eigenvalues of $I + t \Tilde{U}$. Since $I + t \Tilde{U}$ (for $X + t U \in \intr(\cS_+^k)$) is positive definite, we have $1 + t \Tilde{\lambda}_i > 0$. Since the determinant of a symmetric matrix is a product of all the eigenvalues, we obtain 
+	It suffices to compute the derivative of $\ln \det(I + t \Tilde{U})$. $\Tilde{U}$ is symmetric, and we introduce its eigenvalues $\Tilde{\lambda}_i$ (taking into account the multiplicities). Then $1 + t \Tilde{\lambda}_i$ are the eigenvalues of $I + t \Tilde{U}$. Since $I + t \Tilde{U}$ (for $X + t U \in \intr(\cS_+^k)$) is positive definite, we have $1 + t \Tilde{\lambda}_i > 0$. Since the determinant of a symmetric matrix is the product of all its the eigenvalues, we obtain 
 	\[
-		\phi'(t) = \sum_{i=1}^n \parti{}{t} \ln(1+ t \Tilde{\lambda}_i) = \sum_{i=1}^n \frac{\Tilde{\lambda}_i}{1 + t \Tilde{\lambda}_i}.
+		\phi'(t) = \sum_{i=1}^k \parti{}{t} \ln(1+ t \Tilde{\lambda}_i) = \sum_{i=1}^k \frac{\Tilde{\lambda}_i}{1 + t \Tilde{\lambda}_i}
 	\]
 	and the second derivative is 
 	\[
-		\phi''(t) = - \sum_{i=1}^n \frac{ \Tilde{\lambda}_i^2}{ (1 + t \Tilde{\lambda}_i)^2}
+		\phi''(t) = - \sum_{i=1}^k \frac{ \Tilde{\lambda}_i^2}{ (1 + t \Tilde{\lambda}_i)^2} \,.
 	\]
 	We have $\phi''(t) \le 0$. We cannot have $\phi''(t) = 0$, because this would imply $\Tilde{\lambda}_i = 0$ for all $i$. But then we'd have $\Tilde{U} = 0$ and by this $U = 0$.
 	
 	For computing the gradient of $f$ we can use the above computation for  $\phi'(t)$. We get
 	\[
-		\phi'(0)= \sum_{i=1}^n \Tilde{\lambda}_i = \tr(X^{-1/2} U X^{-1/2}) = \tr( X^{-1/2} X^{-1/2} U) = \tr(X^{-1} U) = \sprod{X^{-1}}{U}.
+		\phi'(0)= \sum_{i=1}^k \Tilde{\lambda}_i = \tr(X^{-1/2} U X^{-1/2}) = \tr( X^{-1/2} X^{-1/2} U) = \tr(X^{-1} U) = \sprod{X^{-1}}{U}.
 	\]
 	So, we get the `directional' derivative
 	\[
@@ -155,10 +181,10 @@ For the auxiliary problem to be convex, the respective barrier needs to be a con
 	
 	For the derivation of the `Hesse-Matrix' we can use the above equation for $\phi''(t)$. We get
 	\begin{align*}
-		\phi''(0) = - \sum_{i=1}^n \Tilde{\lambda}_i^2 = \tr( \Tilde{U}^2) & = \tr(X^{-1/2} U X^{-1/2} X^{-1/2} U X^{-1/2} ) 	
-		\\ & = \tr(X^{-1/2} U X^{-1} U X^{-1/2}) 
-		\\ & = \tr(U X^{-1} U X^{-1} )  & & \text{(by Exercise~\ref{interchange})}
-		\\ & = \sprod{U}{X^{-1} U X^{-1}}.
+		\phi''(0) = - \sum_{i=1}^k \Tilde{\lambda}_i^2 = \blue{-} \tr( \Tilde{U}^2) & = \blue{-} \tr(X^{-1/2} U X^{-1/2} X^{-1/2} U X^{-1/2} ) 	
+		\\ & = \blue{-} \tr(X^{-1/2} U X^{-1} U X^{-1/2}) 
+		\\ & = \blue{-} \tr(U X^{-1} U X^{-1} )  & & \text{\hspace{-.5cm}(by Exercise~\ref{interchange})}
+		\\ & = \blue{-} \sprod{U}{X^{-1} U X^{-1}}.
 	\end{align*}
 \end{proof}
 
@@ -178,40 +204,40 @@ We assume that the problem is strictly feasible, that is, there exists $X \in \i
 	\inf \setcond{ \sprod{C}{X} - \mu \ln(\det(X)) }{X \in \intr(\cS_+^k), \ \sprod{A_i}{X} = b_i \ \forall i \in [m]}.
 \]
 
-Our auxiliary objective function $f_\mu(X)$ is strictly convex and the the infimum is actually a minimum, because $f_\mu(X) \to \infty$ when $X$ approaches the boundary of $\cS_+^k$. Due to the strict convexity, the minimum is unique. By KKT-condition, the gradient of $f_\mu$ is orthogonal to the affine space $\setcond{X \in \cS^k}{\sprod{A_i}{X}=b_i \ \forall i \in [m]}$. Thus, we can write the gradient of $f_\mu$ as a linear combination of the `normal vectors' $A_i$ of the hyperplanes $\sprod{A_i}{X}=b_i$. So, we arrive at the condition 
+Our auxiliary objective function $f_\mu(X)$ is strictly convex and the infimum is actually a minimum, because $f_\mu(X) \to \infty$ when $X$ approaches the boundary of~$\cS_+^k$. Due to the strict convexity, the minimum is unique. By the KKT-conditions, the gradient of $f_\mu$ is orthogonal to the affine space $\setcond{X \in \cS^k}{\sprod{A_i}{X}=b_i \ \forall i \in [m]}$. Thus, we can write the gradient of $f_\mu$ as a linear combination of the `normal vectors'~$A_i$ of the hyperplanes $\sprod{A_i}{X}=b_i$. So, we arrive at the condition 
 
 \[
-	C - \mu X^{-1} = \sum_{i=1}^m y_i A_i
+	C - \mu X^{-1} = \sum_{i=1}^m y_i A_i\blue{, \quad \textrm{for some} \quad y_i \in \R \,.}
 \]
-
+%
 We introduce the matrix $S = \mu X^{-1}$, for which the identity $S X = \mu I$ holds. Summarizing, we arrive at the system
 
 \begin{align}
-	X, S & \in \intr(\cS_+^k),  \ y_1,\ldots,y_m \in \R \label{eq:prim:dual:var} \\
 	\sprod{A_i}{X} & = b_i \label{eq:lin:eq} \qquad \forall i \in [m]\\
-		S + \sum_{i=1}^m y_i A_i & = C,  \label{eq:prim:dual:lin:eq}\\ 
-	S X & = \mu I. \label{eq:mu:slackness}
+		\sum_{i=1}^m y_i A_i + S & = C,  \label{eq:prim:dual:lin:eq}\\ 
+	S X & = \mu I. \label{eq:mu:slackness}\\
+	X, S & \in \intr(\cS_+^k),  \ y_1,\ldots,y_m \in \R \label{eq:prim:dual:var}
 \end{align}
-
+%
 As in the case of LP, one can see that $y_1,\ldots,y_m$ satisfying the above conditions is a feasible solution of the dual problem: 
 
 \[
 	\sup \setcond{y_1 b_1 + \cdots + y_m b_m}{ C - \sum_{i=1}^m y_i A_i \in \cS_+^k}.
 \]
+%
+Note also that $S X  = \mu I$ is a kind of modified complementary slackness condition.
 
-Note also that $S X  = \mu I$ is a kind of modified complementary slackness. 
+Again, \eqref{eq:lin:eq}--\eqref{eq:prim:dual:var} can be solved using iterative methods (say, damped Newton). Assume that we have $X,S,y_1,\ldots,y_m$ that satisfy all the above constraints exactly, except for the constraint $S X = \mu I$, which is only satisfied approximately.
 
-Again, \eqref{eq:prim:dual:var}--\eqref{eq:mu:slackness} can be solved using iterative methods (say, damped Newton). Assume that we have $X,S,y_1,\ldots,y_m$ that satisfy all the above constraints exactly, except for the constraint $S X = \mu I$, which is only satisfied approximately.
-
-For updating the current approximation $X,S,y_1,\ldots,y_m$ to a new $X+\Delta{X}, S + \Delta{S}, y_1 + \Delta{y_1},\ldots,y_m + \Delta{y_m}$, we plug in the new approximation and linearize the last constraint with respect to the $\Delta{S}$ and $\Delta{X}$:
+For updating the current approximation $X,S,y_1,\ldots,y_m$ to a new $X+\Delta{X}, S + \Delta{S}, y_1 + \Delta{y_1},\ldots,y_m + \Delta{y_m}$, we plug in the new approximation and linearize the last constraint with respect to the $\Delta{S}$ and $\Delta{X}$ (compare Section~\ref{sect:central-path-LP}):
 
 \begin{align}
 	\sprod{A_i}{\Delta X} & = 0, \qquad \forall i \in [m] \label{eq:for:delta:1}
-	\\ \Delta{S} + \sum_{i=1}^m \Delta{y_i} A_i & = 0,\label{eq:for:delta:2}
+	\\ \sum_{i=1}^m \Delta{y_i} A_i + \Delta{S} & = 0,\label{eq:for:delta:2}
 	\\ \Delta{S} X + S \Delta{X} & = \mu I - S X \label{eq:for:delta:3}
 \end{align}
-
-That is the point, where the theory of interior-point methods for SDP starts. We've got a system of linear equations. Solving such equations is linear algebra, but the size is large and we want to solve the system approximately. 
+%
+This is the point, where the theory of interior-point methods for SDP starts. We've got a system of linear equations. Solving such equations is linear algebra, but the size is large and we want to solve the system approximately. 
 
 Various approaches exist. One approach is to first give up the symmetry of $\Delta{X}$ and then do an update using  $(\Delta{X} + \Delta{X}^\top) /2$ rather than $\Delta{X}$. With this approach, from \eqref{eq:for:delta:3} we get 
 
@@ -222,11 +248,11 @@ We plug in $\Delta{S}$ from \eqref{eq:for:delta:2} and get
 \[
 	\Delta{X} = \mu S^{-1} - X + \sum_{j=1}^m \Delta{y}_j S^{-1} A_j X.
 \]
-
+%
 Inserting this expression for $\Delta{X}$ into \eqref{eq:for:delta:1}, which can be written as \mbox{$\tr(A_i \Delta{X}) = 0$}, we arrive at the equation 
 
 \[
-	\sum_{j=1}^m \tr(A_i S^{-1} A_j X) \Delta{y}_j = \tr((X - \mu S^{-1}) A_i).
+	\sum_{j=1}^m \tr(A_i S^{-1} A_j X) \Delta{y}_j = \tr((X - \mu S^{-1}) A_i)\blue{, \quad\textrm{for all}\quad i \in [m] \,.}
 \]
-
-This is a $m \times m$ linear system. It can be shown that, if $A_1,\ldots,A_m$ are linearly independent vectors of the space $\cS^k$, then the matrix of the system is symmetric positive definite (so that there exists a unique solution). The method of finding the non-symmetric $\Delta X$ and then symmetrizing works well in practice (though polynomial time bounds on the number of iterations are obtained using different, more involved methods, references can be found in \cite{Gaertner:Matousek:2012}). Regarding the complexity: Determination of $\Delta{X}$ can be viewed as solving $k$ linear equations of size $k \times k$. So, $O(k^4)$ operations. Solving the linear system for the $\Delta{y}_1,\ldots,\Delta{y}_m$ requires $O(m^3)$ operations. Note that $m$ can be as large as $O(k^2)$. Thus, we end up with $O(m^3) = O(k^6)$. When $m$ is not large, say $m=O(k)$, we still have $O(k^4)$ in one iteration of the Newton step. In the applications related to polynomial optimization, both $m$ and $k$ are big. So, one is forced to work with really huge matrices.
+%
+This is an $m \times m$ linear system. It can be shown that, if $A_1,\ldots,A_m$ are linearly independent vectors of the space $\cS^k$, then the matrix of the system is symmetric positive definite (so that there exists a unique solution). The method of finding the non-symmetric $\Delta X$ and then symmetrizing works well in practice (though polynomial time bounds on the number of iterations are obtained using different, more involved methods, references can be found in \cite{Gaertner:Matousek:2012}). Regarding the complexity: Determination of $\Delta{X}$ can be viewed as solving $k$ linear equations of size $k \times k$. So, $O(k^4)$ operations. Solving the linear system for the $\Delta{y}_1,\ldots,\Delta{y}_m$ requires $O(m^3)$ operations. Note that $m$ can be as large as $O(k^2)$. Thus, we end up with $O(m^3) = O(k^6)$. When $m$ is not large, say $m=O(k)$, we still have $O(k^4)$ in one iteration of the Newton step. In the applications related to polynomial optimization, both $m$ and $k$ are big. So, one is forced to work with really huge matrices.
