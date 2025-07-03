@@ -585,14 +585,14 @@ The above considerations show that the problem of moments and the positivstellen
 In contrast to LP, there are difficulties in solving SDP in exact arithmetics, as the following two exercises indicate. 
 
 \begin{exercise}
-	Show that even if the input data of an SDP (coefficients of vectors and matrices) is rational, the optimal solution need not be rational. 
+	Show that even if the input data of an SDP (coefficients of vectors and matrices) is rational, \blue{there need not exist an optimal solution that is rational}.
 \end{exercise}
 \begin{solution}
-	One can formulate the problem $\min \setcond{y}{y \ge x^2, \ y \ge 1 -x}$ as an sdp. The minimum is attained for \blue{any $x \in \R$} with $x^2 = 1 -x$, which is not a rational number.
+	One can formulate the problem $\min \setcond{y}{y \ge x^2, \ y \ge 1 -x}$ as an SDP. The minimum is attained for \blue{any $x \in \R$} with $x^2 = 1 -x$, which is not a rational number.
 \end{solution}
 
 \begin{exercise}
-	Even if the input data and the optimal solution of an SDP are rational, the encoding size of the output can be huge (the encoding size is the number of one needs to write down the solution, if one encodes rational values through numerator and denominator and the numerators and denominators are encoded in binary system). By huge, we mean exponential in the size of the input. 
+	Even if the input data and the optimal solution of an SDP are rational, the encoding size of the output can be huge (the encoding size is the number of \blue{bits} one needs to write down the solution, if one encodes rational values through numerator and denominator and the numerators and denominators are encoded in binary system). By huge, we mean exponential in the size of the input. 
 \end{exercise}
 \begin{solution}
 	Consider the constraints $x_j \ge x_{j-1}^2$ for $j > 1$, for variables $x_1,\ldots,x_n$ with the constraint $x_1 \ge \frac{1}{2}$. Minimizing $x_n$ under these constraints gives the optimal solution $(x_1,\ldots,x_n) = (\frac{1}{2}, \frac{1}{2^2},\ldots,\frac{1}{2^{2^n}})$. So for encoding $x_n$ (in the standard form) one would need exponentially many bits. 
