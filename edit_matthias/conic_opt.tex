@@ -555,12 +555,12 @@ If we enlarge $m(\R^n)$ to $\conv(m(\R^n))$ or even to $\cl(\conv(m(\R^n)))$, th
 \end{equation}
 In general, $M_{n,2d}$ is hard to describe, but at least we can relax it to a set that we can describe with an SDP. By Carath\'{e}odory's theorem, every element of $v \in \conv(m(\R^n))$ is the convex combination of at most $\dim(m(\R^n))+1$ points of $m(\R^n)$. This convex combination can be written as the integral
 \[
-	v = v^\mu:= \int m(x) \mu( d x) \,,
+	v = v^\mu:= \int_{\R^n} m(x) \mu( d x) \,,
 \]
 with respect to a finitely supported probability measure $\mu$ on $\R^n$. Using the definition of Lebesgue integrability, one can show that if $\mu$ is any probability measure on $\R^n$, for which the above integral exists, the respective vector $v^\mu$ belongs to $M_{n,2d}=\cl(\blue{\conv(m(\R^n))})$; see \cite[Definitions~11.21, 11.22]{Rudin}. Note that $v^\mu$ is called the \emph{vector of moments} of $\mu$ of order at most $2d$. The problem of characterizing whether a given collection of numbers associated to the multi-indices $\alpha \in \Z_+^n$ is a collection of moments of a probability measure supported in a given set $S$ is a well-known problem in probability theory and it is known as the \emph{problem of moments}. So, what special properties does the vector $v^\mu$ have? Consider an arbitrary vector $y=(y_\alpha)_{\alpha \in E_d^n} \in \R^{\binom{n+d}{n}}$. Of course $v^\mu_0=1$, since $\mu$ is a probability measure. Furthermore, for the matrix $A(v^\mu) = (v^\mu_{\alpha+\beta})_{\alpha,\beta \in E_d^n}$ one has
 \begin{align*}
-	y^\top A(v^\mu) y \ = \int x^{\alpha + \beta} y_\alpha y_\beta \mu(d x)
- = \left( \int x^\alpha y_\alpha \mu(d x)\right)^2 
+	y^\top A(v^\mu) y \ = \blue{\sum_{\alpha,\beta \in E_d^n} \int_{\R^n} x^{\alpha + \beta} y_\alpha y_\beta \mu(d x)
+ = \left( \int_{\R^n} \left(\sum_{\alpha \in E_d^n} x^\alpha y_\alpha \right) \mu(d x)\right)^2 }
  \ge 0.
 \end{align*}
 That is, $A(v^\mu)$ is PSD and \eqref{lin:probl:on:M} can be relaxed to 
